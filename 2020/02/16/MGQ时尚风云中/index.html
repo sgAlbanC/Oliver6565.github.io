@@ -260,9 +260,21 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div class="notification is-danger">
-    You forgot to set the <code>appid</code> or <code>conf</code> for Changyan. Please set it in <code>_config.yml</code>.
-</div>
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '48b0fe5a31b778bdae98f3eb9167e4df',
+		owner: 'Oliver6565',
+		repo: 'https://github.com/Oliver6565/Oliver6565.github.io.git',
+		oauth: {
+			client_id: '4e3fb0cd3921e7281d4f',
+			client_secret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
+		},
+	})
+	gitment.render('comment-container')
+</script>
 
     </div>
 </div>
@@ -272,7 +284,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
     
@@ -405,6 +417,12 @@
                 
             </div>
         </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=57ovmacmjl7&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
     </div>
 </div>
     
@@ -891,5 +909,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+
 </body>
 </html>
