@@ -198,19 +198,20 @@
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <div id="comment-container"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
 <script>
-	var gitment = new Gitment({
-		id: 'dfbbe12a98242d8bb71c1e96d5e0289a',
-		owner: 'Oliver6565',
-		repo: 'https://github.com/Oliver6565/Oliver6565.github.io.git',
-		oauth: {
-			client_id: '4e3fb0cd3921e7281d4f',
-			client_secret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
-		},
-	})
-	gitment.render('comment-container')
+    var gitalk = new Gitalk({
+        clientID: '4e3fb0cd3921e7281d4f',
+        clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
+        id: 'dfbbe12a98242d8bb71c1e96d5e0289a',
+        repo: 'Oliver6565/Oliver6565.github.io.git',
+        owner: 'Oliver6565',
+        admin: "Oliver6565",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
 </script>
 
     </div>
@@ -255,6 +256,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/18/npm%E7%9B%B8%E5%85%B3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="npm相关">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-18T03:43:19.000Z">2020-02-18</time></div>
+                    <a href="/2020/02/18/npm%E7%9B%B8%E5%85%B3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">npm相关</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -346,6 +366,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/npm/">
+                        <span class="tag">npm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%A1%88%E4%BB%B6/">
                         <span class="tag">案件</span>
                         <span class="tag is-grey">1</span>
@@ -403,7 +430,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -427,7 +454,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            2
+                            3
                         </p>
                     </a>
                 </div>
@@ -490,7 +517,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -548,7 +575,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -572,7 +599,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            2
+                            3
                         </p>
                     </a>
                 </div>
@@ -635,7 +662,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
