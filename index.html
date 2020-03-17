@@ -120,13 +120,335 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-14T03:50:46.000Z">2020-03-14</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1032 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/14/Promise%E7%9B%B8%E5%85%B3/">Promise相关</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="1-Promise用法"><a href="#1-Promise用法" class="headerlink" title="1.Promise用法"></a>1.Promise用法</h3><h4 id="1-1-异步调用"><a href="#1-1-异步调用" class="headerlink" title="1.1 异步调用"></a>1.1 异步调用</h4><ul>
+<li><p>异步效果分析</p>
+<ul>
+<li><p>定时任务 setTimeout setInterver</p>
+</li>
+<li><p>Ajax 异步ajax请求（jqurey）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ret = <span class="string">''</span></span><br><span class="line">$ajax&#123;(</span><br><span class="line">	url:<span class="string">'http://localhost:3000/...'</span>,</span><br><span class="line">	success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(data)</span><br><span class="line">		ret = data;</span><br><span class="line">    	<span class="built_in">console</span>.log(ret)  <span class="comment">// 这里可以</span></span><br><span class="line">	&#125;</span><br><span class="line">)&#125;</span><br><span class="line"><span class="built_in">console</span>.log(ret)  <span class="comment">// 这里的ret是获取不到里面的东西的</span></span><br><span class="line"><span class="comment">// 只能在回调函数中，获得值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件函数</p>
+</li>
+</ul>
+</li>
+<li><p>多次异步调用的依赖分析</p>
+<ul>
+<li><p>多次异步调用的<u>结果顺序不确定</u></p>
+</li>
+<li><p>异步调用结果如果存在依赖，那么我们需要多次多次嵌套，就是传说中的“十八层地域”，回调地狱。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-Promise-概述"><a href="#1-2-Promise-概述" class="headerlink" title="1.2 Promise 概述"></a>1.2 Promise 概述</h4><p>Promise 是异步编程的一种解决方案，从语法上讲，Promise是一个对象，从它可以获取异步操作的消息。</p>
+<ul>
+<li>可以避免多层异步调用嵌套问题（回调地狱）。</li>
+<li>Promise对象提供了简介的API，使得控制异步操作更加容易</li>
+</ul>
+<h4 id="1-3-Promise-基本用法"><a href="#1-3-Promise-基本用法" class="headerlink" title="1.3 Promise 基本用法"></a>1.3 Promise 基本用法</h4><ul>
+<li><p>实例化Promise 对象，构造函数中传递函数，该函数中用于处理异步任务</p>
+</li>
+<li><p>resolve和reject两个参数（都是方法，可以调用）用于处理成功和失败两种情况，并通过p.the获取处理结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 成功时调用 resolve()</span></span><br><span class="line">    <span class="comment">// 失败时调用 reject()</span></span><br><span class="line">&#125;)</span><br><span class="line">p.then(<span class="function"><span class="keyword">function</span>(<span class="params">ret</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 返回成功的结果ret</span></span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 返回失败的结果</span></span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line">-------------------------------------------------</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> flag = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">            <span class="comment">// 正常情况</span></span><br><span class="line">            resolve(<span class="string">'hello'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 异常情况</span></span><br><span class="line">            reject(<span class="string">'出错'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">100</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">p.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="1-4-基于Promise处理Ajax请求"><a href="#1-4-基于Promise处理Ajax请求" class="headerlink" title="1.4 基于Promise处理Ajax请求"></a>1.4 基于Promise处理Ajax请求</h4><ol>
+<li>处理原生Ajax</li>
+</ol>
+<h4 id="1-5-then参数中的函数返回值"><a href="#1-5-then参数中的函数返回值" class="headerlink" title="1.5 then参数中的函数返回值"></a>1.5 then参数中的函数返回值</h4><p>1.返回Promise实例对象</p>
+<ul>
+<li>返回的该实例对象会调用下一个then</li>
+</ul>
+<p>2.返回普通值</p>
+<ul>
+<li>返回的普通值会直接传递给下一个then，通过then参数中函数的参数接收该值</li>
+</ul>
+<h4 id="1-6-Promise常用的API"><a href="#1-6-Promise常用的API" class="headerlink" title="1.6 Promise常用的API"></a>1.6 Promise常用的API</h4><p>1.实例方法（在原型中的方法，需要用实例去调用）</p>
+<ul>
+<li>p.then() 得到异步任务的正确结果</li>
+<li>p.catch() 获取异常信息</li>
+<li>p.finally() 成功与否都会执行（尚且不是正式标准）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           <span class="comment">// resolve(123);</span></span><br><span class="line">            reject(error)</span><br><span class="line">        &#125;,<span class="number">100</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(data)</span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>))</span>&#123;</span><br><span class="line">     	<span class="built_in">console</span>.log(data)      </span><br><span class="line">    &#125;)</span><br><span class="line">    .finally(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'finished'</span>)</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2.对象方法</p>
+<ul>
+<li>Promise.all() 并发处理多个异步任务，所有任务都执行完成才能得到结果</li>
+<li>Promise.race() 并发处理多个异步任务，只要有一个任务完成就能得到结果</li>
+</ul>
+<h3 id="2-接口调用-fetch用法"><a href="#2-接口调用-fetch用法" class="headerlink" title="2 接口调用 -fetch用法"></a>2 接口调用 -fetch用法</h3><h4 id="2-1-基本特性"><a href="#2-1-基本特性" class="headerlink" title="2.1 基本特性"></a>2.1 基本特性</h4><ul>
+<li>更加简单的数据获取方式，功能更强大，更灵活，可以看做是xhr的升级版</li>
+<li>基于Promise实现</li>
+</ul>
+<h4 id="2-2-语法结构"><a href="#2-2-语法结构" class="headerlink" title="2.2 语法结构"></a>2.2 语法结构</h4><p>fetch(url).then(fn2)</p>
+<p>​                .then(fn3)</p>
+<p>​                …</p>
+<p>​                .catch(fn)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'http://localhost:3000/fdata'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> data.text(); <span class="comment">//text()方法属于fetchAPI的一部分，它返回一个Promise实例对象，用于获取后台返回的数据</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-fetch请求参数"><a href="#2-3-fetch请求参数" class="headerlink" title="2.3 fetch请求参数"></a>2.3 fetch请求参数</h4><ol>
+<li>常用配置选项<ul>
+<li>method(String): HTTP请求方法，默认为GET POST PUT DELETE</li>
+<li>body(String): HTTP请求参数</li>
+<li>header(Object): HTTP的请求头，默认为{}</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-axios-用法"><a href="#3-axios-用法" class="headerlink" title="3. axios 用法"></a>3. axios 用法</h3><h4 id="3-1-axios-的基本特性"><a href="#3-1-axios-的基本特性" class="headerlink" title="3.1 axios 的基本特性"></a>3.1 axios 的基本特性</h4><p>axios（官网：<a href="https://github.com/axios/axios）是一个基于Promise用于浏览器和node.js的HTTP客户端">https://github.com/axios/axios）是一个基于Promise用于浏览器和node.js的HTTP客户端</a></p>
+<p>它有以下特性：</p>
+<ul>
+<li>支持浏览器和node.js</li>
+<li>支持promise</li>
+<li>能拦截请求和响应</li>
+<li>自动转换JSON数据</li>
+</ul>
+<h4 id="3-2-axios-的基本用法"><a href="#3-2-axios-的基本用法" class="headerlink" title="3.2 axios 的基本用法"></a>3.2 axios 的基本用法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'/adata'</span>)</span><br><span class="line">	.then(<span class="function"><span class="params">ret</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//data属性名称是固定的，用于获取后台响应的数据</span></span><br><span class="line">    <span class="built_in">console</span>.log(ret.data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-axios-常用API"><a href="#3-3-axios-常用API" class="headerlink" title="3.3 axios 常用API"></a>3.3 axios 常用API</h4><ul>
+<li>get：      添加数据</li>
+<li>post：    删除数据</li>
+<li>put：      修改数据</li>
+<li>delete： 删除数据</li>
+</ul>
+<ol>
+<li>GET 传递参数<ul>
+<li>通过 URL 传递参数</li>
+<li>通过params 选项传递参数</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'/adata?id=123'</span>)</span><br><span class="line">	.then(<span class="function"><span class="params">ret</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(ret.data)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 后台接口</span></span><br><span class="line">app.get(<span class="string">'/axios'</span>,(req,res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="string">'axios get 传递参数'</span> + req.query.id)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'/adata/123'</span>)</span><br><span class="line">	.then(<span class="function"><span class="params">ret</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(ret.data)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 后台接口</span></span><br><span class="line">app.get(<span class="string">'/axios/:id'</span>,(req,res) =&gt; &#123;</span><br><span class="line">    res.send(<span class="string">'axios get (Restful) 传递参数'</span> + req.params.id)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'/adata'</span>,&#123;</span><br><span class="line">	params:&#123;</span><br><span class="line">		id:<span class="number">123</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">ret</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(ret.data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-13T02:19:12.000Z">2020-03-13</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1263 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/13/webapp%E6%90%AD%E5%BB%BAvue/">webapp搭建vue</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="webapp-外卖系统（移动端）"><a href="#webapp-外卖系统（移动端）" class="headerlink" title="webapp 外卖系统（移动端）"></a>webapp 外卖系统（移动端）</h2><p>！（前言：学习Vue项目搭建流程，记录心得（<strong>部分筆記為課件</strong>）。<strong>学习视频</strong> -&gt; <a href="https://www.bilibili.com/video/av49099807">https://www.bilibili.com/video/av49099807</a></p>
+<h4 id="1-使用-vue-cli-脚手架-搭建项目"><a href="#1-使用-vue-cli-脚手架-搭建项目" class="headerlink" title="1. 使用 vue-cli(脚手架)搭建项目"></a>1. 使用 vue-cli(脚手架)搭建项目</h4><ol>
+<li>Vue-cli 是 vue 官方提供的用于搭建基于 vue+webpack+es6 项目的脚手架工具 </li>
+<li>在线文档:<a href="https://github.com/vuejs/vue-cli">https://github.com/vuejs/vue-cli</a> </li>
+<li>操作: npm install -g vue-cli vue init webpack gshop cd gshop npm install npm run dev 访问: localhost:8080</li>
+</ol>
+<h4 id="2-项目结构分析"><a href="#2-项目结构分析" class="headerlink" title="2. 项目结构分析"></a>2. 项目结构分析</h4><p>gshop </p>
+<ul>
+<li>|– build : webpack 相关的配置文件夹(基本不需要修改) </li>
+<li>|– config: webpack 相关的配置文件夹(基本不需要修改) </li>
+<li>|– index.js: 指定的后台服务的端口号和静态资源文件夹 </li>
+<li>|– node_modules </li>
+<li>|– src : 源码文件夹 </li>
+<li>|– main.js: 应用入口 js </li>
+<li>|– static: 静态资源文件夹 </li>
+<li>|– .babelrc: babel 的配置文件 </li>
+<li>|– .editorconfig: 通过编辑器的编码/格式进行一定的配置 </li>
+<li>|– .eslintignore: eslint 检查忽略的配置 </li>
+<li>|– .eslintrc.js: eslint 检查的配置 </li>
+<li>|– .gitignore: git 版本管制忽略的配置 </li>
+<li>|– index.html: 主页面文件 </li>
+<li>|– package.json: 应用包配置文件 </li>
+<li>|– README.md: 应用描述说明的 readme 文件</li>
+</ul>
+<h4 id="3-编码测试与打包发布项目"><a href="#3-编码测试与打包发布项目" class="headerlink" title="3. 编码测试与打包发布项目"></a>3. 编码测试与打包发布项目</h4><ol>
+<li>编码测试 npm run dev 访问:<a href="http://localhost:8080">http://localhost:8080</a> 编码, 自动编译打包(HMR), 查看效果 </li>
+<li>打包发布 npm run build npm install -g serve serve dist 访问:<a href="http://localhost:5000">http://localhost:5000</a></li>
+</ol>
+<h4 id="4-項目源碼目錄設計"><a href="#4-項目源碼目錄設計" class="headerlink" title="4. 項目源碼目錄設計"></a>4. 項目源碼目錄設計</h4><ul>
+<li><p>src</p>
+<ul>
+<li><p>api    与后台交互模块文件夹</p>
+</li>
+<li><p>common（asstes） 通用资源文件夹，如fonts/img/stylus</p>
+<p>(stylus: css预编译器，Sass/Less</p>
+<p><em>npminstallstylusstylus-loader–save-dev</em>）</p>
+</li>
+<li><p>components    非路由组件文件夹</p>
+</li>
+<li><p>filters    自定义过滤器模块文件夹</p>
+</li>
+<li><p>mock     模拟数据接口文件夹</p>
+</li>
+<li><p>pages    路由组件文件夹</p>
+</li>
+<li><p>router    路由器文件夹-&gt;index.js/router.js 暴露router给入口文件main.js</p>
+</li>
+<li><p>store    vuex相关模块文件夹</p>
+</li>
+<li><p>App.vue    应用组件</p>
+</li>
+<li><p>main.js    入口JS</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><h4 id="props的详解："><a href="#props的详解：" class="headerlink" title="props的详解："></a><strong>props</strong>的详解：</h4><p>组件示例的作用域是孤立的，意味着不能（也不应该）在子组件的模板内直接引用父组件的数据。父组件的数据要通过prop才能下发到子组件中。</p>
+<p>props是子组件访问父组件数据的唯一接口</p>
+<ul>
+<li>一个组件可以直接在模板里面渲染data里面的数据（双大括号）。</li>
+</ul>
+<ul>
+<li>子组件不能直接在模板里面渲染父元素的数据。</li>
+</ul>
+<ul>
+<li>如果子组件想要引用父元素的数据，那么就在prop里面声明一个变量（比如a），这个变量就可以引用父元素的数据。然后在模板里渲染这个变量（前面的a），这时候渲染出来的就是父元素里面的数据。 </li>
+</ul>
+<h4 id="slot的详解："><a href="#slot的详解：" class="headerlink" title="slot的详解："></a><strong>slot</strong>的详解：</h4><p>给<slot>元素指定一个name后可以分发多个内容</p>
+<p>一个简单的小例子：</p>
+<ul>
+<li>1.父组件传递了todos数组给子组件</li>
+<li>2.子组件通过props接受了数组数据，这里应该没有任何问题</li>
+<li>3.子组件拿到数组后v-for渲染列表，并且通过 <slot :todo="todo">的方式，把数组内的每一个todo对象，传递给父组件</li>
+<li>4.父组件通过slot-scope=”slotProps”的方式，接受todo对象，之后就可以通过slotProps.todo.xxx的方式来使用了</li>
+</ul>
+<p>所以数据的流动经历了</p>
+<ul>
+<li>父组件传递todos数组给子组件</li>
+<li>子组件遍历todos数组，把里面的todo对象传递给父组件</li>
+</ul>
+<h4 id="Swiper"><a href="#Swiper" class="headerlink" title="Swiper"></a><strong>Swiper</strong></h4><p>左右滑动插件 npm i swiper -D 先下载 ——<em>可以去官网查看html结构，这样写会有好的css样式</em></p>
+<p>import Swiper from ‘swiper’</p>
+<h4 id="阿里巴巴iconfont"><a href="#阿里巴巴iconfont" class="headerlink" title="阿里巴巴iconfont"></a><strong>阿里巴巴iconfont</strong></h4><p>inconfont矢量标记图标。登录账号，选择图标添加购物车，生成网上链接，可以直接使用。<em>使用方式</em> 去官网看。</p>
+<h4 id="Svg图片"><a href="#Svg图片" class="headerlink" title="Svg图片"></a>Svg图片</h4><p>可以做验证码</p>
+<h4 id="router-back"><a href="#router-back" class="headerlink" title="$router.back()"></a>$router.back()</h4><p>&lt;a href=”javascript:” class=”go_back” @click=”$router.back()”&gt;</p>
+<p>返回到之前的路由</p>
+<p>$route 代表当前路由</p>
+<h4 id="postman"><a href="#postman" class="headerlink" title="postman"></a>postman</h4><p>创建集合，以便归类请求</p>
+<h4 id="封装ajax请求"><a href="#封装ajax请求" class="headerlink" title="封装ajax请求"></a>封装ajax请求</h4><h4 id="跨域问题的解决"><a href="#跨域问题的解决" class="headerlink" title="跨域问题的解决"></a>跨域问题的解决</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><h4 id="01"><a href="#01" class="headerlink" title="01"></a>01</h4><ol>
+<li><p>项目开发准备</p>
+<ul>
+<li>项目描述</li>
+<li>技术选型</li>
+<li>API接口（接口文档 -&gt; postman 测接口）</li>
+<li>从此项目学到什么</li>
+</ul>
+</li>
+<li><p>开启项目开发</p>
+<ul>
+<li>使用脚手架创建项目</li>
+<li>安装依赖</li>
+<li>开发环境运行</li>
+<li>生产环境打包与发布</li>
+</ul>
+</li>
+<li><p>搭建项目整体界面结构</p>
+<ul>
+<li><p>stylus的理解和使用（结构化，变量，函数/minxin（混合</p>
+</li>
+<li><p>vue-router的理解和使用</p>
+<ul>
+<li>router-view/router-link/keep-alive</li>
+<li>$router: 路由对象，包含一些操作路由的功能函数，来实现编程式导航（跳转路由）</li>
+<li>$route: 当前路由对象，一些当前路由信息数据的容器，path/meta/query/params</li>
+</ul>
+</li>
+<li><p><strong>项目路由拆分</strong></p>
+<p>一般组件和导航路由组件</p>
+</li>
+<li><p>抽取组件</p>
+</li>
+<li><p>登录路由组件</p>
+</li>
+<li><p>后台项目</p>
+</li>
+<li><p>前后台交互</p>
+<p>ajax请求库：axios</p>
+<p>ajax请求函数封装：axios + promise</p>
+<p>接口请求函数封装，每个后台接口</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="02"><a href="#02" class="headerlink" title="02"></a>02</h4>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-12T03:36:47.000Z">2020-03-12</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1672 个字)
+                    13 分钟 读完 (大约 1886 个字)
                 </span>
                 
                 
@@ -214,7 +536,7 @@
 </li>
 </ul>
 <h4 id="7-打包处理css文件"><a href="#7-打包处理css文件" class="headerlink" title="7. 打包处理css文件"></a>7. 打包处理css文件</h4><ol>
-<li><p>运行 <em>npm i style-loader css-loader -D</em> 命令，安装处理css文件的loader</p>
+<li><p>运行 *<u>npm i style-loader css-loader -D</u>* 命令，安装处理css文件的loader</p>
 </li>
 <li><p>在webpack.config.js的module -&gt; rules 数组中，添加loader：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有第三方文件模块的匹配规则</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">	rules: [</span><br><span class="line">		&#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">use</span>: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>]&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -228,7 +550,7 @@
 </li>
 </ol>
 <h4 id="8-打包处理less文件"><a href="#8-打包处理less文件" class="headerlink" title="8. 打包处理less文件"></a>8. 打包处理less文件</h4><ol>
-<li><p>运行 <em>npm i less-loader less -D</em> 命令</p>
+<li><p>运行 <u><em>npm i less-loader less -D</em></u> 命令</p>
 </li>
 <li><p>在webpack.config.js 的module -&gt; rules 数组中，添加loader:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有第三方文件模块的匹配规则</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">	rules: [</span><br><span class="line">		&#123; <span class="attr">test</span>: <span class="regexp">/\.less$/</span>, <span class="attr">use</span>: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>, <span class="string">'less-loader'</span>]&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -236,7 +558,7 @@
 </li>
 </ol>
 <h4 id="9-打包处理sass文件"><a href="#9-打包处理sass文件" class="headerlink" title="9. 打包处理sass文件"></a>9. 打包处理sass文件</h4><ol>
-<li><p>运行 <em>npm i sass-loader node-sass -D</em> 命令</p>
+<li><p>运行 <u><em>npm i sass-loader node-sass -D</em></u> 命令</p>
 </li>
 <li><p>在webpack.config.js 的module -&gt; rules 数组中，添加loader:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有第三方文件模块的匹配规则</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">	rules: [</span><br><span class="line">		&#123; <span class="attr">test</span>: <span class="regexp">/\.scss$/</span>, <span class="attr">use</span>: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>, <span class="string">'sass-loader'</span>]&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -244,7 +566,7 @@
 </li>
 </ol>
 <h4 id="10-配置postCSS-自动添加css的兼容前缀"><a href="#10-配置postCSS-自动添加css的兼容前缀" class="headerlink" title="10. 配置postCSS 自动添加css的兼容前缀"></a>10. 配置postCSS 自动添加css的兼容前缀</h4><ol>
-<li><p>运行 <em>npm i postcss-loader autoprofixer -D</em> 命令</p>
+<li><p>运行 <u><em>npm i postcss-loader autoprofixer -D</em></u> 命令</p>
 </li>
 <li><p>在项目根目录中创建 postcss 的配置文件 postcss.config.js</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> autoprofixer = <span class="built_in">require</span>(<span class="string">'autoprofixer'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    plugins:[autoprofixer]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -255,7 +577,7 @@
 </li>
 </ol>
 <h4 id="11-打包样式表中的图片和文字文件"><a href="#11-打包样式表中的图片和文字文件" class="headerlink" title="11. 打包样式表中的图片和文字文件"></a>11. 打包样式表中的图片和文字文件</h4><ol>
-<li><p>运行 <em>npm i url-loader file-loader</em> -D 命令</p>
+<li><p>运行 <u><em>npm i url-loader file-loader</em> -D</u> 命令</p>
 </li>
 <li><p>在webpack.config.js 的module -&gt; rules数组中，添加loader：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">	rules: [</span><br><span class="line">		&#123; <span class="attr">test</span>: <span class="regexp">/\.jpg|png|gif|bmp|ttf|svg|woff|woff2$/</span>, <span class="attr">use</span>:<span class="string">'url-loader?limit=16940'</span>&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -283,6 +605,18 @@
 <p>其中，exclude为排除项，表示babel-loader不需要处理node_modules中的js文件</p>
 </li>
 </ol>
+<h4 id="13-打包vue组件"><a href="#13-打包vue组件" class="headerlink" title="13. 打包vue组件"></a>13. 打包vue组件</h4><p>.vue文件，需要安装相关的loader </p>
+<p><u><em>npm i vue-loader vue-temlate-compiler -D</em></u></p>
+<p>在webpack.config.js配置文件中，新增loader配置项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">test</span>: <span class="regexp">/\.vue$/</span>, <span class="attr">use</span>: <span class="string">'vue-loader'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结梳理：webpack中如何使用vue："><a href="#总结梳理：webpack中如何使用vue：" class="headerlink" title="总结梳理：webpack中如何使用vue："></a>总结梳理：webpack中如何使用vue：</h3><p>1.安装vue的包：<u><em>npm i vue -S</em></u></p>
+<p>2.由于在webpack中，推荐使用.vue这个组件模板文件定义组件，所以，需要安装 能解析这种文件的loader  <u><em>cnpm i vue-template-complier -D</em></u></p>
+<p>3.在main.js中，导入vue模块 import Vue from ‘vue’</p>
+<p>4.定义一个.vue结尾的组件，其中，组件有三部分组成：template script style </p>
+<p>5.使用import导入这个组件</p>
+<p>6.创建vm的实例，var vm = new Vue（ {el: ‘#app’, render: c=&gt; c(login) })</p>
+<p>7.在页面中创建一个id为app的div元素，作为我们vm实例要控制的区域</p>
 
         </div>
         
@@ -418,7 +752,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 95 个字)
+                    1 分钟 读完 (大约 157 个字)
                 </span>
                 
                 
@@ -427,13 +761,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/02/18/Nodejs%E6%90%AD%E5%BB%BAblog-%E8%AE%B0%E5%BD%95/">Nodejs搭建blog-记录</a>
+                <a class="has-link-black-ter" href="/2020/02/18/Nodejs%E7%9B%B8%E5%85%B3/">Nodejs相关</a>
             
         </h1>
         <div class="content">
-            <p><img src="F:%5Cproject%5CHexo%5Csource_posts%5CNodejs%E6%90%AD%E5%BB%BAblog-%E8%AE%B0%E5%BD%95%5Cb.png" alt=""></p>
-<p>前言：学了node的一些基础知识，理解了node的语法和建立服务器 连接数据库相关的知识。然后登录注册退出功能已完成。后续的学习把后台管理和展示内容部分做出来，然后部署上下测试。</p>
+            <p>前言：学了node的一些基础知识，理解了node的语法和建立服务器 连接数据库相关的知识。然后登录注册退出功能已完成。后续的学习把后台管理和展示内容部分做出来，然后部署上下测试。</p>
 <p>2020.2.18</p>
+<ul>
+<li><strong>在ES6中</strong>，<em>导入模块</em>：import 模块名称 from ‘模块标识     import ’表示路径‘</li>
+<li><em>向外暴露成员</em>：export default   和export</li>
+<li><strong>在Node中</strong>，<em>导入模块</em>  使用 var 名称 = require(‘模块标识符’)</li>
+<li><em>向外暴露成员</em>：module.exports 和exports来暴露成员</li>
+</ul>
 
         </div>
         
@@ -476,7 +815,7 @@
         </h1>
         <div class="content">
             <ul>
-<li><p>在node.js中开启mongodb       mongod –dbpath 存放data\db的路径  （F:\mongodb\data\db）</p>
+<li><p>在node.js中开启mongodb       mongod –dbpath 存放data\db的路径  （F:/mongodb/data/db）</p>
 </li>
 <li><p>node.js中连接数据库，用mongoose</p>
 </li>
@@ -809,60 +1148,25 @@ required: true</code></pre><p>  },……数据集合</p>
 
 
 
+
     
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-16T07:50:26.929Z">2020-02-16</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 123 个字)
-                </span>
-                
-                
-            </div>
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">上一页</a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/02/16/hello-world/">Hello World</a>
-            
-        </h1>
-        <div class="content">
-            <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">下一页</a>
         </div>
-        
-        
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -903,6 +1207,44 @@ required: true</code></pre><p>  },……数据集合</p>
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/14/Promise%E7%9B%B8%E5%85%B3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Promise相关">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-14T03:50:46.000Z">2020-03-14</time></div>
+                    <a href="/2020/03/14/Promise%E7%9B%B8%E5%85%B3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Promise相关</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/03/13/webapp%E6%90%AD%E5%BB%BAvue/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="webapp搭建vue">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:19:12.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/webapp%E6%90%AD%E5%BB%BAvue/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webapp搭建vue</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -961,44 +1303,6 @@ required: true</code></pre><p>  },……数据集合</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/18/Nodejs%E6%90%AD%E5%BB%BAblog-%E8%AE%B0%E5%BD%95/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Nodejs搭建blog-记录">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-18T14:49:00.000Z">2020-02-18</time></div>
-                    <a href="/2020/02/18/Nodejs%E6%90%AD%E5%BB%BAblog-%E8%AE%B0%E5%BD%95/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Nodejs搭建blog-记录</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/02/18/mongodb%E7%9B%B8%E5%85%B3/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="mongodb">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-18T14:32:24.000Z">2020-02-18</time></div>
-                    <a href="/2020/02/18/mongodb%E7%9B%B8%E5%85%B3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">mongodb</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1046,6 +1350,13 @@ required: true</code></pre><p>  },……数据集合</p>
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/node/">
+                        <span class="tag">node</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/npm/">
                         <span class="tag">npm</span>
                         <span class="tag is-grey">1</span>
@@ -1053,15 +1364,22 @@ required: true</code></pre><p>  },……数据集合</p>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/webpack/">
-                        <span class="tag">webpack</span>
+                    <a class="tags has-addons" href="/tags/promise-axios-%E5%BC%82%E6%AD%A5/">
+                        <span class="tag">promise axios 异步</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
-                        <span class="tag">学习记录</span>
+                    <a class="tags has-addons" href="/tags/vue/">
+                        <span class="tag">vue</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/webpack/">
+                        <span class="tag">webpack</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1124,7 +1442,7 @@ required: true</code></pre><p>  },……数据集合</p>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            9
+                            11
                         </p>
                     </a>
                 </div>
@@ -1148,7 +1466,7 @@ required: true</code></pre><p>  },……数据集合</p>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            7
+                            9
                         </p>
                     </a>
                 </div>
@@ -1211,7 +1529,7 @@ required: true</code></pre><p>  },……数据集合</p>
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1280,7 +1598,7 @@ required: true</code></pre><p>  },……数据集合</p>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            9
+                            11
                         </p>
                     </a>
                 </div>
@@ -1304,7 +1622,7 @@ required: true</code></pre><p>  },……数据集合</p>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            7
+                            9
                         </p>
                     </a>
                 </div>
@@ -1367,7 +1685,7 @@ required: true</code></pre><p>  },……数据集合</p>
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
