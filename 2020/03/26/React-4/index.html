@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="组件的生命周期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 4">
+<meta property="og:url" content="http://yoursite.com/2020/03/26/React-4/index.html">
+<meta property="og:site_name" content="费罗里">
+<meta property="og:description" content="组件的生命周期">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/26/React-4/React%E4%B8%AD%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/26/React-4/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%A1%A8%E6%A0%BC.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/26/React-4/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A.png">
+<meta property="article:published_time" content="2020-03-26T13:32:53.000Z">
+<meta property="article:modified_time" content="2020-03-27T06:03:30.615Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/26/React-4/React%E4%B8%AD%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/26/React-4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>React 4 | 费罗里</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="费罗里" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">费罗里</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/26/React-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Oliver">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="费罗里">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React 4
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-26 21:32:53" itemprop="dateCreated datePublished" datetime="2020-03-26T21:32:53+08:00">2020-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-27 14:03:30" itemprop="dateModified" datetime="2020-03-27T14:03:30+08:00">2020-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h4><a id="more"></a>
+
+<ul>
+<li><p>概念：在组件创建、到加载到页面上运行、以及组件被销毁的过程中，总是伴随着各种各样的事件，这些在组件特定时期，触发的事件，统称为 组件的生命周期；</p>
+</li>
+<li><p>组件生命周期分为三部分：</p>
+<ul>
+<li><strong>组件创建阶段</strong>：组件创建阶段的生命周期函数，有一个显著的特点：创建阶段的生命周期函数，在组件的一辈子中，只执行一次；</li>
+</ul>
+<blockquote>
+<p>componentWillMount: 组件将要被挂载，此时还没有开始渲染虚拟DOM<br>render：第一次开始渲染真正的虚拟DOM，当render执行完，内存中就有了完整的虚拟DOM了<br>componentDidMount: 组件完成了挂载，此时，组件已经显示到了页面上，当这个方法执行完，组件就进入都了 运行中 的状态</p>
+</blockquote>
+<ul>
+<li><strong>组件运行阶段</strong>：也有一个显著的特点，根据组件的state和props的改变，有选择性的触发0次或多次；</li>
+</ul>
+<blockquote>
+<p>componentWillReceiveProps: 组件将要接收新属性，此时，只要这个方法被触发，就证明父组件为当前子组件传递了新的属性值；<br>shouldComponentUpdate: 组件是否需要被更新，此时，组件尚未被更新，但是，state 和 props 肯定是最新的<br>componentWillUpdate: 组件将要被更新，此时，尚未开始更新，内存中的虚拟DOM树还是旧的<br>render: 此时，又要重新根据最新的 state 和 props 重新渲染一棵内存中的 虚拟DOM树，当 render 调用完毕，内存中的旧DOM树，已经被新DOM树替换了！此时页面还是旧的<br>componentDidUpdate: 此时，页面又被重新渲染了，state 和 虚拟DOM 和 页面已经完全保持同步</p>
+</blockquote>
+<ul>
+<li><strong>组件销毁阶段</strong>：也有一个显著的特点，一辈子只执行一次；</li>
+</ul>
+<blockquote>
+<p>componentWillUnmount: 组件将要被卸载，此时组件还可以正常使用；</p>
+</blockquote>
+</li>
+</ul>
+<p><a href="https://cn.vuejs.org/v2/guide/instance.html#生命周期图示" target="_blank" rel="noopener">vue中的生命周期图</a><br><a href="http://www.race604.com/react-native-component-lifecycle/" target="_blank" rel="noopener">React Native 中组件的生命周期</a></p>
+<img src="/2020/03/26/React-4/React%E4%B8%AD%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" class>
+
+<h5 id="defaultProps"><a href="#defaultProps" class="headerlink" title="defaultProps"></a>defaultProps</h5><blockquote>
+<p>在组件创建之前，会先初始化默认的props属性，这是全局调用一次，严格地来说，这不是组件的生命周期的一部分。在组件被创建并加载候，首先调用 constructor 构造器中的 this.state = {}，来初始化组件的状态。</p>
+</blockquote>
+<p>React生命周期的回调函数总结成表格如下：</p>
+<img src="/2020/03/26/React-4/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%A1%A8%E6%A0%BC.png" class>
+
+<ul>
+<li><p>Mounting：</p>
+<ul>
+<li>constructor()</li>
+<li>componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+</li>
+<li><p>Updating：</p>
+<ul>
+<li>componentWillReceiveProps(nextProps)</li>
+<li>shouldComponentUpdate(nextProps, nextState)</li>
+<li>componentWillUpdate(nextProps, nextState)</li>
+<li>render()</li>
+<li>componentDidUpdate(prevProps, prevState)</li>
+</ul>
+</li>
+<li><p>Unmounting：</p>
+<ul>
+<li>componentWillUnmount()</li>
+</ul>
+</li>
+</ul>
+<h4 id="通过Counter计数器的小案例-了解生命周期函数"><a href="#通过Counter计数器的小案例-了解生命周期函数" class="headerlink" title="通过Counter计数器的小案例 - 了解生命周期函数"></a>通过Counter计数器的小案例 - 了解生命周期函数</h4><ol>
+<li>给组件设置默认属性：</li>
+<li>给属性进行类型校验，需要先运行<code>cnpm i prop-types --save</code></li>
+</ol>
+<h4 id="组件初始化时生命周期事件总结"><a href="#组件初始化时生命周期事件总结" class="headerlink" title="组件初始化时生命周期事件总结"></a>组件初始化时生命周期事件总结</h4><ol>
+<li>componentWillMount：</li>
+<li>render：</li>
+<li>componentDidMount：</li>
+<li>注意：在render函数中，不能调用<code>setState()</code>方法</li>
+</ol>
+<h4 id="通过原生的方式获取元素并绑定事件"><a href="#通过原生的方式获取元素并绑定事件" class="headerlink" title="通过原生的方式获取元素并绑定事件"></a>通过原生的方式获取元素并绑定事件</h4><h4 id="React中使用ref属性获取DOM元素引用"><a href="#React中使用ref属性获取DOM元素引用" class="headerlink" title="React中使用ref属性获取DOM元素引用"></a>React中使用ref属性获取DOM元素引用</h4><h4 id="使用React中的事件，绑定count自增"><a href="#使用React中的事件，绑定count自增" class="headerlink" title="使用React中的事件，绑定count自增"></a>使用React中的事件，绑定count自增</h4><h4 id="组件运行中事件的对比"><a href="#组件运行中事件的对比" class="headerlink" title="组件运行中事件的对比"></a>组件运行中事件的对比</h4><ol>
+<li>shouldComponentUpdate：</li>
+<li>componentWillUpdate：</li>
+<li>render：</li>
+<li>componentDidUpdate：</li>
+</ol>
+<h4 id="绑定this并传参的三种方式"><a href="#绑定this并传参的三种方式" class="headerlink" title="绑定this并传参的三种方式"></a>绑定this并传参的三种方式</h4><ol>
+<li>在事件中绑定this并传参：</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"在事件中绑定this并传参"</span> onClick=&#123;<span class="keyword">this</span>.handleMsg1.bind(<span class="keyword">this</span>, <span class="string">'🍕'</span>, <span class="string">'🍟'</span>)&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在事件中绑定this并传参</span></span><br><span class="line">handleMsg1(arg1, arg2) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// 此时this是个null</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg: <span class="string">'在事件中绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在构造函数中绑定this并传参:</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改构造函数中的代码：</span></span><br><span class="line"><span class="keyword">this</span>.handleMsg2 = <span class="keyword">this</span>.handleMsg2.bind(<span class="keyword">this</span>, <span class="string">'🚗'</span>, <span class="string">'🚚'</span>);</span><br><span class="line"></span><br><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"在构造函数中绑定this并传参"</span> onClick=&#123;<span class="keyword">this</span>.handleMsg2&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在构造函数中绑定this并传参</span></span><br><span class="line">handleMsg2(arg1, arg2) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg: <span class="string">'在构造函数中绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>用箭头函数绑定this并传参：</p>
+<p>箭头函数 本身就是一个 匿名的 function函数</p>
+<p>function默认的this，谁调用这个function，this就指向谁</p>
+<p>但箭头函数 this指向 外层 上下文</p>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    &lt;input type=<span class="string">"button"</span> value=<span class="string">"用箭头函数绑定this并传参"</span> onClick=&#123;() =&gt; &#123; <span class="keyword">this</span>.handleMsg3(<span class="string">'👩'</span>, <span class="string">'👰'</span>) &#125;&#125; /&gt;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用箭头函数绑定this并传参</span></span><br><span class="line">        handleMsg3(arg1, arg2) &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                msg: <span class="string">'用箭头函数绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">// ----------------------------------------------------------------- //</span></span><br><span class="line">		</span><br><span class="line">		handleMsg3 = <span class="function">(<span class="params">arg1, arg2</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                msg: <span class="string">'用箭头函数绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="绑定文本框与state中的值"><a href="#绑定文本框与state中的值" class="headerlink" title="绑定文本框与state中的值"></a>绑定文本框与state中的值</h4><ol>
+<li>在Vue.js中，默认可以通过<code>v-model</code>指令，将表单控件和我们的<code>data</code>上面的属性进行双向数据绑定，数据变化和页面之间的变化是同步的！</li>
+<li>在React.js中，默认没有提供双向数据绑定这一功能，默认的，只能把<code>state</code>之上的数据同步到界面的控件上，但是不能默认实现把界面上数据的改变，同步到<code>state</code>之上，需要程序员手动调用相关的事件，来进行逆向的数据传输！</li>
+<li>绑定文本框和state的值：</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="comment">/*只要将value属性，和state上的状态进行绑定，那么，这个表单元素就变成了受控表单元素，这时候，如果没有调用相关的事件，是无法手动修改表单元素中的值的*/</span>&#125;</span><br><span class="line">&lt;input style=&#123;&#123; <span class="attr">width</span>: <span class="string">'100%'</span> &#125;&#125; ref=<span class="string">"txt"</span> type=<span class="string">"text"</span> value=&#123;<span class="keyword">this</span>.state.msg&#125; onChange=&#123;<span class="keyword">this</span>.handleTextChange&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是文本框内容改变时候的处理函数</span></span><br><span class="line">handleTextChange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg: <span class="keyword">this</span>.refs.txt.value</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="/2020/03/26/React-4/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A.png" class>
+
+<ol start="4">
+<li><p>注意 <code>setState</code>的一个问题：</p>
+<p>在 <code>setState</code>， 只会把 对应的 state 状态更新，而不会 覆盖其他的state状态</p>
+<p><code>this.setState</code>  方法的执行 是异步的</p>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保存最新的state状态值，在保存的时候，是异步地进行保存的，所以，如果想要获取最新的，刚刚保存的那个状态，需要通过回掉函数的形式去获取最新state</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">    msg: <span class="keyword">this</span>.refs.txt.value</span><br><span class="line">    <span class="comment">// msg: e.target.value</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取最新的state状态值</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.msg);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="发表评论案例"><a href="#发表评论案例" class="headerlink" title="发表评论案例"></a>发表评论案例</h4><h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><h5 id="context特性"><a href="#context特性" class="headerlink" title="context特性"></a>context特性</h5><p>记住一串单词组合<code>getChildContextTypes</code><br>前3个、后3个、后两个<br>一个方法、两个静态属性</p>
+<h4 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h4><p><a href="https://facebook.github.io/react/docs/typechecking-with-proptypes.html" target="_blank" rel="noopener">类型校验</a><br><a href="https://reactjs.org/docs/animation.html#high-level-api-reactcsstransitiongroup" target="_blank" rel="noopener">Animation Add-Ons</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+       <div style="text-align:center;color:#bfbfbf;font-size:16px;">
+             <span>-------- 本文结束 </span>
+             ，
+             <span> 感谢阅读 --------</span>
+       </div>
+    
+</div>
+      
+    </div>
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/25/ES6-class%E5%85%B3%E9%94%AE%E5%AD%9702/" rel="prev" title="ES6-class关键字02">
+      <i class="fa fa-chevron-left"></i> ES6-class关键字02
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/27/jQuery/" rel="next" title="jQuery">
+      jQuery <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的生命周期"><span class="nav-number">1.</span> <span class="nav-text">组件的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#defaultProps"><span class="nav-number">1.1.</span> <span class="nav-text">defaultProps</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Counter计数器的小案例-了解生命周期函数"><span class="nav-number">2.</span> <span class="nav-text">通过Counter计数器的小案例 - 了解生命周期函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件初始化时生命周期事件总结"><span class="nav-number">3.</span> <span class="nav-text">组件初始化时生命周期事件总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过原生的方式获取元素并绑定事件"><span class="nav-number">4.</span> <span class="nav-text">通过原生的方式获取元素并绑定事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#React中使用ref属性获取DOM元素引用"><span class="nav-number">5.</span> <span class="nav-text">React中使用ref属性获取DOM元素引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用React中的事件，绑定count自增"><span class="nav-number">6.</span> <span class="nav-text">使用React中的事件，绑定count自增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件运行中事件的对比"><span class="nav-number">7.</span> <span class="nav-text">组件运行中事件的对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定this并传参的三种方式"><span class="nav-number">8.</span> <span class="nav-text">绑定this并传参的三种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定文本框与state中的值"><span class="nav-number">9.</span> <span class="nav-text">绑定文本框与state中的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发表评论案例"><span class="nav-number">10.</span> <span class="nav-text">发表评论案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展"><span class="nav-number">11.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#context特性"><span class="nav-number">11.1.</span> <span class="nav-text">context特性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关文章"><span class="nav-number">12.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oliver"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Oliver</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oliver6565" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oliver6565" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oliver</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">56k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">51 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
