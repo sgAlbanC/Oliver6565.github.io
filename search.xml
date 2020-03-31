@@ -1,157 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>面试基础篇03</title>
-    <url>/2020/03/29/%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%AF%8703/</url>
-    <content><![CDATA[<p><strong>从浏览器地址栏输入url到显示页面的步骤</strong></p>
+    <title>网络安全之攻守道</title>
+    <url>/2020/03/30/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E6%94%BB%E5%AE%88%E9%81%93/</url>
+    <content><![CDATA[<p>网络安全，就是攻守之间的对抗</p>
 <a id="more"></a>
 
-<hr>
 <blockquote>
-<p>学习文档转自<a href="http://blog.poetries.top/FE-Interview-Questions/base/" target="_blank" rel="noopener">http://blog.poetries.top/FE-Interview-Questions/base/</a></p>
+<p>学习地址指路 <a href="https://www.bilibili.com/video/BV1yW411q7GF" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1yW411q7GF</a></p>
 </blockquote>
-<hr>
-<h5 id="基础版本"><a href="#基础版本" class="headerlink" title="基础版本"></a><strong>基础版本</strong></h5><ul>
-<li>浏览器根据请求的<code>URL</code>交给<code>DNS</code>域名解析，找到真实<code>IP</code>，向服务器发起请求；</li>
-<li>服务器交给后台处理完成后返回数据，浏览器接收文件（<code>HTML、JS、CSS</code>、图象等）；</li>
-<li>浏览器对加载到的资源（<code>HTML、JS、CSS</code>等）进行语法解析，建立相应的内部数据结构（如<code>HTML</code>的<code>DOM</code>）；</li>
-<li>载入解析到的资源文件，渲染页面，完成。</li>
-</ul>
-<h5 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a><strong>详细版</strong></h5><ol>
-<li><p>在浏览器地址栏输入URL</p>
+<h5 id="Http-传输数据存在的问题"><a href="#Http-传输数据存在的问题" class="headerlink" title="Http 传输数据存在的问题"></a>Http 传输数据存在的问题</h5><p>http协议传输，超文本传输协议HTTP协议被用于在Web浏览器和网络服务器之间传递信息。HTTP协议以明文方式发送内容，不提供任何方式的数据加密。所以如果黑客截取了Web浏览器和网站服务器之间的传输报文，就可以直接读取重要信息（密码 账号 卡号等）。</p>
+<h5 id="Https-简介"><a href="#Https-简介" class="headerlink" title="Https 简介"></a>Https 简介</h5><p>https协议，安全套接字层超文本传输协议HTTPS。是在HTTP的基础上加了SSL（Secure，Sockets，Layer，安全套接字层）。SSL依靠证书来验证服务器的身份，为浏览器和服务器之间的通信加密。</p>
+<img src="/2020/03/30/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E6%94%BB%E5%AE%88%E9%81%93/w1.png" class>
+
+
+
+<h5 id="Https-和Http-的区别"><a href="#Https-和Http-的区别" class="headerlink" title="Https 和Http 的区别"></a>Https 和Http 的区别</h5><ol>
+<li>https协议需要到 ca 申请证书，一般都要收费</li>
+<li>http是超文本传输协议，信息是明文传输，连接很简单，https协议是由SSL+HTTP协议构建的 可进行 加密传输、身份认证的网络协议。安全性更高</li>
+<li>http 和 https 使用的是完全 不同 的连接方式，用的端口不一样。前者是 80 端口，后者是 443</li>
+</ol>
+<h5 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a><a href="https://baike.sogou.com/v214573.htm?fromTitle=ssl" target="_blank" rel="noopener">SSL</a></h5><ol>
+<li><p>定义</p>
+<p>SSL(Secure Sockets Layer<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=7628534&ss_c=ssc.citia" target="_blank" rel="noopener">安全套接层</a>,及其继任者<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=25967&ss_c=ssc.citiao.link" target="_blank" rel="noopener">传输层安全</a>（<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=101608365&ss_c=ssc.citiao.link" target="_blank" rel="noopener">Transport</a> Layer Security，TLS）是为网络通信提供安全及<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=340077&ss_c=ssc.citiao.link" target="_blank" rel="noopener">数据完整性</a>的一种安全协议。TLS与SSL在传输层与<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=16954&ss_c=ssc.citiao.link" target="_blank" rel="noopener">应用层</a>之间对网络连接进行加密。</p>
 </li>
-<li><p>浏览器查看</p>
-<p>缓存</p>
-<p>，如果请求资源在缓存中并且新鲜，跳转到转码步骤</p>
+<li><p>作用</p>
+<p>认证用户和服务器，确保数据发送到正确的 客户机 和 服务器；</p>
+<p>加密数据以防止数据中途被窃取；</p>
+<p>维护数据的完整性，确保数据在传输过程中不被改变。</p>
+</li>
+<li><p>服务器类型</p>
 <ol>
-<li><p>如果资源未缓存，发起新请求</p>
+<li><p>Tomcat 5.x</p>
 </li>
-<li><p>如果已缓存，检验是否足够新鲜，足够新鲜直接提供给客户端，否则与服务器进行验证。</p>
+<li><p>Nginx</p>
 </li>
-<li><p>检验新鲜通常有两个HTTP头进行控制</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Expires</span><br></pre></td></tr></table></figure>
+<li><p>IIS</p>
+</li>
+<li><p>Apache 2.x</p>
+</li>
+<li><p>IBM HTTP SERVER 6.0</p>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="SSL-安全加密方式"><a href="#SSL-安全加密方式" class="headerlink" title="SSL 安全加密方式"></a>SSL 安全加密方式</h5><p>了解加密方式，分为对称加密和非对称加密</p>
+<ol>
+<li>对称加密(Symmetric Cryptography)<ul>
+<li>原理：加密算法是公开的，靠的是密钥来加密数据；使用一个密钥加密，使用相同的密钥解密</li>
+<li>常用对称加密算法：DES,  3DES， AES(破解难度大)</li>
+<li>注意：在传输加密数据之前，需要传递密钥</li>
+<li><img src="/2020/03/30/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E6%94%BB%E5%AE%88%E9%81%93/w4.png" class></li>
+<li><img src="/2020/03/30/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E6%94%BB%E5%AE%88%E9%81%93/w2.png" class></li>
+</ul>
+</li>
+<li>对称加密优缺点<ul>
+<li>优点：计算量较小，加密和解密的速度比较快，适合加密比较大的数据</li>
+<li>缺点：密钥的传输容易泄露；一个用户需要对应一个密钥，服务器管理密钥比较麻烦</li>
+</ul>
+</li>
+<li>非对称加密<ul>
+<li>原理：算法公开，一个公钥(public key)和一个私钥(private key)。 公钥加密只能私钥解密；私钥加密只能公钥解密，加密和解密的钥匙不同，即非对称加密</li>
+<li>常用非对称加密算法：RSA</li>
+<li>注意：公钥私钥需要加密算法生成</li>
+<li><img src="/2020/03/30/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E6%94%BB%E5%AE%88%E9%81%93/w3.png" class></li>
+</ul>
+</li>
+<li>非对称加密优缺点<ul>
+<li>优点：加密和解密使用不同钥匙，可以传输公钥，数据传输是安全的</li>
+<li>缺点：计算量大，加密解密速度较慢</li>
+</ul>
+</li>
+</ol>
+<h5 id="Https-传输"><a href="#Https-传输" class="headerlink" title="Https 传输"></a>Https 传输</h5><p>Https加密、解密及验证过程，两种加密方式结合使用</p>
+<p>先使用非对称加密，服务器传输公钥 SSL数字证书；浏览器生成随机码，通过公钥传输给服务器。服务器通过私钥解开随机码。</p>
+<p>将随机码作为密钥，使用对称加密(速度快)，将用户的重要信息通过随机码也就是密钥加密传过去。服务器之前已经用私钥解开了随机码（密钥），所以服务器用随机码（密钥）解开重要信息。</p>
+<img src="/2020/03/30/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E6%94%BB%E5%AE%88%E9%81%93/w5.png" class>
 
-<p>和</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cache-Control</span><br></pre></td></tr></table></figure>
-
-<p>：</p>
+<h5 id="服务器实现Https-协议"><a href="#服务器实现Https-协议" class="headerlink" title="服务器实现Https 协议"></a>服务器实现Https 协议</h5><ol>
+<li><p>配置</p>
 <ul>
-<li>HTTP1.0提供Expires，值为一个绝对时间表示缓存新鲜日期</li>
-<li>HTTP1.1增加了Cache-Control: max-age=,值为以秒为单位的最大新鲜时间</li>
+<li><p>生成密钥库</p>
+<p>确保环境变量配置了%JAVA_HOME%\bin, 因为生成密钥库是使用 jdk 中的 keytool工具</p>
+<p>进入dos命令运行如下命令：</p>
+<p>keytool -genkeypair -alias test-cyq -validity 3650 -keyalg RSA -dname \</p>
+<p>123456</p>
+</li>
+<li><p>配置tomcat 启用https 协议并指定密钥库</p>
+<p>进入server.xml ，将http配置注释掉，打开https，并配置https两个属性，指定密钥库的位置和密钥库的密码</p>
+</li>
 </ul>
 </li>
-</ol>
-</li>
-<li><p>浏览器<strong>解析URL</strong>获取协议，主机，端口，path</p>
-</li>
-<li><p>浏览器<strong>组装一个HTTP（GET）请求报文</strong></p>
-</li>
-<li><p>浏览器</p>
-<p>获取主机ip地址</p>
-<p>，过程如下：</p>
-<ol>
-<li>浏览器缓存</li>
-<li>本机缓存</li>
-<li>hosts文件</li>
-<li>路由器缓存</li>
-<li>ISP DNS缓存</li>
-<li>DNS递归查询（可能存在负载均衡导致每次IP不一样）</li>
-</ol>
-</li>
-<li><p>打开一个socket与目标IP地址，端口建立TCP链接</p>
-<p>，三次握手如下：</p>
-<ol>
-<li>客户端发送一个TCP的<strong>SYN=1，Seq=X</strong>的包到服务器端口</li>
-<li>服务器发回<strong>SYN=1， ACK=X+1， Seq=Y</strong>的响应包</li>
-<li>客户端发送<strong>ACK=Y+1， Seq=Z</strong></li>
-</ol>
-</li>
-<li><p>TCP链接建立后<strong>发送HTTP请求</strong></p>
-</li>
-<li><p>服务器接受请求并解析，将请求转发到服务程序，如虚拟主机使用HTTP Host头部判断请求的服务程序</p>
-</li>
-<li><p>服务器检查<strong>HTTP请求头是否包含缓存验证信息</strong>如果验证缓存新鲜，返回<strong>304</strong>等对应状态码</p>
-</li>
-<li><p>处理程序读取完整请求并准备HTTP响应，可能需要查询数据库等操作</p>
-</li>
-<li><p>服务器将<strong>响应报文通过TCP连接发送回浏览器</strong></p>
-</li>
-<li><p>浏览器接收HTTP响应，然后根据情况选择</p>
-<p>关闭TCP连接或者保留重用，关闭TCP连接的四次握手如下</p>
-<p>：</p>
-<ol>
-<li>主动方发送<strong>Fin=1， Ack=Z， Seq= X</strong>报文</li>
-<li>被动方发送<strong>ACK=X+1， Seq=Z</strong>报文</li>
-<li>被动方发送<strong>Fin=1， ACK=X， Seq=Y</strong>报文</li>
-<li>主动方发送<strong>ACK=Y， Seq=X</strong>报文</li>
-</ol>
-</li>
-<li><p>浏览器检查响应状态吗：是否为1XX，3XX， 4XX， 5XX，这些情况处理与2XX不同</p>
-</li>
-<li><p>如果资源可缓存，<strong>进行缓存</strong></p>
-</li>
-<li><p>对响应进行<strong>解码</strong>（例如gzip压缩）</p>
-</li>
-<li><p>根据资源类型决定如何处理（假设资源为HTML文档）</p>
-</li>
-<li><p><strong>解析HTML文档，构件DOM树，下载资源，构造CSSOM树，执行js脚本</strong>，这些操作没有严格的先后顺序，以下分别解释</p>
-</li>
-<li><p>构建DOM树</p>
-<p>：</p>
-<ol>
-<li><strong>Tokenizing</strong>：根据HTML规范将字符流解析为标记</li>
-<li><strong>Lexing</strong>：词法分析将标记转换为对象并定义属性和规则</li>
-<li><strong>DOM construction</strong>：根据HTML标记关系将对象组成DOM树</li>
-</ol>
-</li>
-<li><p>解析过程中遇到图片、样式表、js文件，<strong>启动下载</strong></p>
-</li>
-<li><p>构建</p>
-<p>CSSOM树</p>
-<p>：</p>
-<ol>
-<li><strong>Tokenizing</strong>：字符流转换为标记流</li>
-<li><strong>Node</strong>：根据标记创建节点</li>
-<li><strong>CSSOM</strong>：节点创建CSSOM树</li>
-</ol>
-</li>
-<li><p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction" target="_blank" rel="noopener">根据DOM树和CSSOM树构建渲染树</a></p>
-<p>:</p>
-<ol>
-<li>从DOM树的根节点遍历所有<strong>可见节点</strong>，不可见节点包括：1）<code>script</code>,<code>meta</code>这样本身不可见的标签。2)被css隐藏的节点，如<code>display: none</code></li>
-<li>对每一个可见节点，找到恰当的CSSOM规则并应用</li>
-<li>发布可视节点的内容和计算样式</li>
-</ol>
-</li>
-<li><p>js解析如下</p>
-<p>：</p>
-<ol>
-<li>浏览器创建Document对象并解析HTML，将解析到的元素和文本节点添加到文档中，此时<strong>document.readystate为loading</strong></li>
-<li>HTML解析器遇到<strong>没有async和defer的script时</strong>，将他们添加到文档中，然后执行行内或外部脚本。这些脚本会同步执行，并且在脚本下载和执行时解析器会暂停。这样就可以用document.write()把文本插入到输入流中。<strong>同步脚本经常简单定义函数和注册事件处理程序，他们可以遍历和操作script和他们之前的文档内容</strong></li>
-<li>当解析器遇到设置了<strong>async</strong>属性的script时，开始下载脚本并继续解析文档。脚本会在它<strong>下载完成后尽快执行</strong>，但是<strong>解析器不会停下来等它下载</strong>。异步脚本<strong>禁止使用document.write()</strong>，它们可以访问自己script和之前的文档元素</li>
-<li>当文档完成解析，document.readState变成interactive</li>
-<li>所有<strong>defer</strong>脚本会<strong>按照在文档出现的顺序执行</strong>，延迟脚本<strong>能访问完整文档树</strong>，禁止使用document.write()</li>
-<li>浏览器<strong>在Document对象上触发DOMContentLoaded事件</strong></li>
-<li>此时文档完全解析完成，浏览器可能还在等待如图片等内容加载，等这些<strong>内容完成载入并且所有异步脚本完成载入和执行</strong>，document.readState变为complete，window触发load事件</li>
-</ol>
-</li>
-<li><p><strong>显示页面</strong>（HTML解析过程中会逐步显示页面）</p>
+<li><p>SSL 证书种类</p>
+<p>域名型 DVSSL</p>
+<p>企业型 OVSSL</p>
+<p>增强型 EVSSL</p>
 </li>
 </ol>
-<h5 id="详细简版"><a href="#详细简版" class="headerlink" title="详细简版"></a><strong>详细简版</strong></h5><ol>
-<li>从浏览器接收<code>url</code>到开启网络请求线程（这一部分可以展开浏览器的机制以及进程与线程之间的关系）</li>
-<li>开启网络线程到发出一个完整的<code>HTTP</code>请求（这一部分涉及到dns查询，<code>TCP/IP</code>请求，五层因特网协议栈等知识）</li>
-<li>从服务器接收到请求到对应后台接收到请求（这一部分可能涉及到负载均衡，安全拦截以及后台内部的处理等等）</li>
-<li>后台和前台的<code>HTTP</code>交互（这一部分包括<code>HTTP</code>头部、响应码、报文结构、<code>cookie</code>等知识，可以提下静态资源的<code>cookie</code>优化，以及编码解码，如<code>gzip</code>压缩等）</li>
-<li>单独拎出来的缓存问题，<code>HTTP</code>的缓存（这部分包括http缓存头部，<code>ETag</code>，<code>catch-control</code>等）</li>
-<li>浏览器接收到<code>HTTP</code>数据包后的解析流程（解析<code>html</code>-词法分析然后解析成<code>dom</code>树、解析<code>css</code>生成<code>css</code>规则树、合并成<code>render</code>树，然后<code>layout</code>、<code>painting</code>渲染、复合图层的合成、<code>GPU</code>绘制、外链资源的处理、<code>loaded</code>和<code>DOMContentLoaded</code>等）</li>
-<li><code>CSS</code>的可视化格式模型（元素的渲染规则，如包含块，控制框，<code>BFC</code>，<code>IFC</code>等概念）</li>
-<li><code>JS</code>引擎解析过程（<code>JS</code>的解释阶段，预处理阶段，执行阶段生成执行上下文，<code>VO</code>，作用域链、回收机制等等）</li>
-<li>其它（可以拓展不同的知识模块，如跨域，web安全，<code>hybrid</code>模式等等内容）</li>
-</ol>
+<h5 id="Https-优缺点"><a href="#Https-优缺点" class="headerlink" title="Https 优缺点"></a>Https 优缺点</h5><p>优点：安全性高</p>
+<p>缺点：收费，也不是绝对安全，耗电耗资源</p>
 ]]></content>
       <tags>
-        <tag>前端面试题</tag>
+        <tag>网络安全</tag>
       </tags>
   </entry>
   <entry>
@@ -1196,6 +1146,124 @@
       </tags>
   </entry>
   <entry>
+    <title>移动WEB开发之rem适配布局</title>
+    <url>/2020/03/23/%E7%A7%BB%E5%8A%A8WEB%E5%BC%80%E5%8F%91%E4%B9%8Brem%E9%80%82%E9%85%8D%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<p>rem 移动开发中重要的一种布局</p>
+<a id="more"></a>
+
+<h4 id="rem-基础"><a href="#rem-基础" class="headerlink" title="rem 基础"></a>rem 基础</h4><h5 id="rem-单位"><a href="#rem-单位" class="headerlink" title="rem 单位"></a>rem 单位</h5><p>rem（root em）是一个相对单位，类似于em，em是父元素字体大小。em，比如，父元素的字体大小<code>font-size = 12px</code>，子元素中就可以以1em = 12px 用em 来表示单位去设置 宽高大小 等。</p>
+<p>不同的是 rem 的基准是相对于 html 元素的字体大小</p>
+<p>比如，根元素（html）设置font-size = 12px；非根元素width：2rem，则换成px表示就是24px</p>
+<p>rem 优点：可以通过修改html里面的文字大小，来改变页面中元素的大小，可以整体控制</p>
+<h5 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h5><ol>
+<li><p>媒体查询（Media Query）是CSS3新语法</p>
+<ul>
+<li>使用@media 查询，可以针对不同的媒体类型定义不同的样式</li>
+<li>@media 可以针对不同的屏幕尺寸设置不同的样式</li>
+<li>当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面</li>
+<li>目前针对很多苹果手机，Android手机，平板等设备都用得到多媒体查询</li>
+</ul>
+</li>
+<li><p>语法规范</p>
+<p>@media mediatype and|not|only （media feature）{CSS-Code；}</p>
+<ul>
+<li><p>用@media开头，注意@符号</p>
+</li>
+<li><p>mediatype 媒体类型</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>all</td>
+<td>用于所有设备</td>
+</tr>
+<tr>
+<td>print</td>
+<td>用于打印机和打印预览</td>
+</tr>
+<tr>
+<td>screen（常用）</td>
+<td>用于电脑屏幕、平板电脑、智能手机</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>关键字 and not only</p>
+<p> and（常用）：可以将多个媒体特性链接到一起，相当于“且”</p>
+<p> not：排除某个媒体类型，相当于“非”</p>
+<p> only：指定某个特性的媒体类型</p>
+</li>
+<li><p>media feature 媒体特性 必须要有小括号包含</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width</td>
+<td>定义输出设备中页面课件区域的宽度</td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>定于输出设备中页面最小可见区域宽度</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>定于输出设备中页面最大可见区域宽度</td>
+</tr>
+</tbody></table>
+<p>eg：当宽度小于800px时，body背景色为粉色，当宽度小于400px时，背景色为黄色</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">800px</span>)&#123;</span></span><br><span class="line">       body&#123;</span><br><span class="line">          background-color: pink;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">400px</span>)&#123;</span></span><br><span class="line">       body&#123;</span><br><span class="line">          background-color: yellow;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>媒体查询+rem实现元素动态大小变化</p>
+<p> rem单位是跟着html 根元素字体大小来变化的</p>
+<p> 媒体查询可以根据不同设备宽度来修改样式</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span><span class="number">320px</span>)&#123;</span></span><br><span class="line">        html&#123;</span><br><span class="line"><span class="css">           <span class="selector-tag">font-size</span><span class="selector-pseudo">:50px</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span><span class="number">640px</span>)&#123;</span></span><br><span class="line">        html&#123;</span><br><span class="line"><span class="css">           <span class="selector-tag">font-size</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.top</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span><span class="selector-pseudo">:1rem</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span><span class="selector-pseudo">:.5rem</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">color</span>:<span class="selector-id">#fff</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">text-align</span><span class="selector-pseudo">:center</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">line-height</span><span class="selector-pseudo">:1rem</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"top"</span>&gt;</span></span><br><span class="line">        購物車</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入资源（理解）</p>
+</li>
+</ol>
+<h4 id="rem-适配方案"><a href="#rem-适配方案" class="headerlink" title="rem 适配方案"></a>rem 适配方案</h4><ol>
+<li>让一些不能等比自适应的元素，达到当设备尺寸发生改变的时候，等比例适配当前设备</li>
+<li>使用媒体查询根据不同设备按比例设置html 的字体大小，然后页面元素使用rem 做尺寸单位，当html 字体大小变化，元素尺寸也会发生变化， 从而达到等比缩放的适配</li>
+</ol>
+<h5 id="rem-实际开发适配方案"><a href="#rem-实际开发适配方案" class="headerlink" title="rem 实际开发适配方案"></a>rem 实际开发适配方案</h5><p>① 按照设计稿与设备宽度的比例，动态计算并设置html 根标签的 font-size大小；（媒体查询）</p>
+<p>② CSS中，设计稿元素的宽、高、相对位置等取值，按照同比例换算为rem为单位的值</p>
+<h5 id="rem-适配方案技术使用"><a href="#rem-适配方案技术使用" class="headerlink" title="rem 适配方案技术使用"></a>rem 适配方案技术使用</h5><p>技术方案1：</p>
+<ul>
+<li><p>less</p>
+</li>
+<li><p>媒体查询</p>
+</li>
+<li><p>rem</p>
+<p>设计稿中，常见宽度 750px or 720px；将宽度750px划分为15份，每一份为50px</p>
+<p>通过媒体查询设置，当最小宽度为750px时，将html 的font-size 设置为50px；min-width：320px，font-size：21.33px。这样就能在不同屏幕下，进行等比例缩放</p>
+</li>
+</ul>
+<p>技术方案2(推荐)：</p>
+<ul>
+<li>flexible.js</li>
+<li>rem</li>
+</ul>
+<p>总结：</p>
+<p>两种方案现在都存在</p>
+<p>方案2 更简单，因为flexible.js解决了很大一部分</p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>网页布局</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移动WEB开发之flex布局</title>
     <url>/2020/03/23/%E7%A7%BB%E5%8A%A8WEB%E5%BC%80%E5%8F%91%E4%B9%8Bflex%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h4 id="flex弹性布局"><a href="#flex弹性布局" class="headerlink" title="flex弹性布局"></a>flex弹性布局</h4><a id="more"></a>
@@ -1386,8 +1454,11 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
       <tags>
-        <tag>flex</tag>
+        <tag>网页布局</tag>
       </tags>
   </entry>
   <entry>
@@ -2018,6 +2089,160 @@
 ]]></content>
       <tags>
         <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试基础篇03</title>
+    <url>/2020/02/26/%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%AF%8703/</url>
+    <content><![CDATA[<p><strong>从浏览器地址栏输入url到显示页面的步骤</strong></p>
+<a id="more"></a>
+
+<hr>
+<blockquote>
+<p>学习文档转自<a href="http://blog.poetries.top/FE-Interview-Questions/base/" target="_blank" rel="noopener">http://blog.poetries.top/FE-Interview-Questions/base/</a></p>
+</blockquote>
+<hr>
+<h5 id="基础版本"><a href="#基础版本" class="headerlink" title="基础版本"></a><strong>基础版本</strong></h5><ul>
+<li>浏览器根据请求的<code>URL</code>交给<code>DNS</code>域名解析，找到真实<code>IP</code>，向服务器发起请求；</li>
+<li>服务器交给后台处理完成后返回数据，浏览器接收文件（<code>HTML、JS、CSS</code>、图象等）；</li>
+<li>浏览器对加载到的资源（<code>HTML、JS、CSS</code>等）进行语法解析，建立相应的内部数据结构（如<code>HTML</code>的<code>DOM</code>）；</li>
+<li>载入解析到的资源文件，渲染页面，完成。</li>
+</ul>
+<h5 id="详细版"><a href="#详细版" class="headerlink" title="详细版"></a><strong>详细版</strong></h5><ol>
+<li><p>在浏览器地址栏输入URL</p>
+</li>
+<li><p>浏览器查看</p>
+<p>缓存</p>
+<p>，如果请求资源在缓存中并且新鲜，跳转到转码步骤</p>
+<ol>
+<li><p>如果资源未缓存，发起新请求</p>
+</li>
+<li><p>如果已缓存，检验是否足够新鲜，足够新鲜直接提供给客户端，否则与服务器进行验证。</p>
+</li>
+<li><p>检验新鲜通常有两个HTTP头进行控制</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Expires</span><br></pre></td></tr></table></figure>
+
+<p>和</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cache-Control</span><br></pre></td></tr></table></figure>
+
+<p>：</p>
+<ul>
+<li>HTTP1.0提供Expires，值为一个绝对时间表示缓存新鲜日期</li>
+<li>HTTP1.1增加了Cache-Control: max-age=,值为以秒为单位的最大新鲜时间</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>浏览器<strong>解析URL</strong>获取协议，主机，端口，path</p>
+</li>
+<li><p>浏览器<strong>组装一个HTTP（GET）请求报文</strong></p>
+</li>
+<li><p>浏览器</p>
+<p>获取主机ip地址</p>
+<p>，过程如下：</p>
+<ol>
+<li>浏览器缓存</li>
+<li>本机缓存</li>
+<li>hosts文件</li>
+<li>路由器缓存</li>
+<li>ISP DNS缓存</li>
+<li>DNS递归查询（可能存在负载均衡导致每次IP不一样）</li>
+</ol>
+</li>
+<li><p>打开一个socket与目标IP地址，端口建立TCP链接</p>
+<p>，三次握手如下：</p>
+<ol>
+<li>客户端发送一个TCP的<strong>SYN=1，Seq=X</strong>的包到服务器端口</li>
+<li>服务器发回<strong>SYN=1， ACK=X+1， Seq=Y</strong>的响应包</li>
+<li>客户端发送<strong>ACK=Y+1， Seq=Z</strong></li>
+</ol>
+</li>
+<li><p>TCP链接建立后<strong>发送HTTP请求</strong></p>
+</li>
+<li><p>服务器接受请求并解析，将请求转发到服务程序，如虚拟主机使用HTTP Host头部判断请求的服务程序</p>
+</li>
+<li><p>服务器检查<strong>HTTP请求头是否包含缓存验证信息</strong>如果验证缓存新鲜，返回<strong>304</strong>等对应状态码</p>
+</li>
+<li><p>处理程序读取完整请求并准备HTTP响应，可能需要查询数据库等操作</p>
+</li>
+<li><p>服务器将<strong>响应报文通过TCP连接发送回浏览器</strong></p>
+</li>
+<li><p>浏览器接收HTTP响应，然后根据情况选择</p>
+<p>关闭TCP连接或者保留重用，关闭TCP连接的四次握手如下</p>
+<p>：</p>
+<ol>
+<li>主动方发送<strong>Fin=1， Ack=Z， Seq= X</strong>报文</li>
+<li>被动方发送<strong>ACK=X+1， Seq=Z</strong>报文</li>
+<li>被动方发送<strong>Fin=1， ACK=X， Seq=Y</strong>报文</li>
+<li>主动方发送<strong>ACK=Y， Seq=X</strong>报文</li>
+</ol>
+</li>
+<li><p>浏览器检查响应状态吗：是否为1XX，3XX， 4XX， 5XX，这些情况处理与2XX不同</p>
+</li>
+<li><p>如果资源可缓存，<strong>进行缓存</strong></p>
+</li>
+<li><p>对响应进行<strong>解码</strong>（例如gzip压缩）</p>
+</li>
+<li><p>根据资源类型决定如何处理（假设资源为HTML文档）</p>
+</li>
+<li><p><strong>解析HTML文档，构件DOM树，下载资源，构造CSSOM树，执行js脚本</strong>，这些操作没有严格的先后顺序，以下分别解释</p>
+</li>
+<li><p>构建DOM树</p>
+<p>：</p>
+<ol>
+<li><strong>Tokenizing</strong>：根据HTML规范将字符流解析为标记</li>
+<li><strong>Lexing</strong>：词法分析将标记转换为对象并定义属性和规则</li>
+<li><strong>DOM construction</strong>：根据HTML标记关系将对象组成DOM树</li>
+</ol>
+</li>
+<li><p>解析过程中遇到图片、样式表、js文件，<strong>启动下载</strong></p>
+</li>
+<li><p>构建</p>
+<p>CSSOM树</p>
+<p>：</p>
+<ol>
+<li><strong>Tokenizing</strong>：字符流转换为标记流</li>
+<li><strong>Node</strong>：根据标记创建节点</li>
+<li><strong>CSSOM</strong>：节点创建CSSOM树</li>
+</ol>
+</li>
+<li><p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction" target="_blank" rel="noopener">根据DOM树和CSSOM树构建渲染树</a></p>
+<p>:</p>
+<ol>
+<li>从DOM树的根节点遍历所有<strong>可见节点</strong>，不可见节点包括：1）<code>script</code>,<code>meta</code>这样本身不可见的标签。2)被css隐藏的节点，如<code>display: none</code></li>
+<li>对每一个可见节点，找到恰当的CSSOM规则并应用</li>
+<li>发布可视节点的内容和计算样式</li>
+</ol>
+</li>
+<li><p>js解析如下</p>
+<p>：</p>
+<ol>
+<li>浏览器创建Document对象并解析HTML，将解析到的元素和文本节点添加到文档中，此时<strong>document.readystate为loading</strong></li>
+<li>HTML解析器遇到<strong>没有async和defer的script时</strong>，将他们添加到文档中，然后执行行内或外部脚本。这些脚本会同步执行，并且在脚本下载和执行时解析器会暂停。这样就可以用document.write()把文本插入到输入流中。<strong>同步脚本经常简单定义函数和注册事件处理程序，他们可以遍历和操作script和他们之前的文档内容</strong></li>
+<li>当解析器遇到设置了<strong>async</strong>属性的script时，开始下载脚本并继续解析文档。脚本会在它<strong>下载完成后尽快执行</strong>，但是<strong>解析器不会停下来等它下载</strong>。异步脚本<strong>禁止使用document.write()</strong>，它们可以访问自己script和之前的文档元素</li>
+<li>当文档完成解析，document.readState变成interactive</li>
+<li>所有<strong>defer</strong>脚本会<strong>按照在文档出现的顺序执行</strong>，延迟脚本<strong>能访问完整文档树</strong>，禁止使用document.write()</li>
+<li>浏览器<strong>在Document对象上触发DOMContentLoaded事件</strong></li>
+<li>此时文档完全解析完成，浏览器可能还在等待如图片等内容加载，等这些<strong>内容完成载入并且所有异步脚本完成载入和执行</strong>，document.readState变为complete，window触发load事件</li>
+</ol>
+</li>
+<li><p><strong>显示页面</strong>（HTML解析过程中会逐步显示页面）</p>
+</li>
+</ol>
+<h5 id="详细简版"><a href="#详细简版" class="headerlink" title="详细简版"></a><strong>详细简版</strong></h5><ol>
+<li>从浏览器接收<code>url</code>到开启网络请求线程（这一部分可以展开浏览器的机制以及进程与线程之间的关系）</li>
+<li>开启网络线程到发出一个完整的<code>HTTP</code>请求（这一部分涉及到dns查询，<code>TCP/IP</code>请求，五层因特网协议栈等知识）</li>
+<li>从服务器接收到请求到对应后台接收到请求（这一部分可能涉及到负载均衡，安全拦截以及后台内部的处理等等）</li>
+<li>后台和前台的<code>HTTP</code>交互（这一部分包括<code>HTTP</code>头部、响应码、报文结构、<code>cookie</code>等知识，可以提下静态资源的<code>cookie</code>优化，以及编码解码，如<code>gzip</code>压缩等）</li>
+<li>单独拎出来的缓存问题，<code>HTTP</code>的缓存（这部分包括http缓存头部，<code>ETag</code>，<code>catch-control</code>等）</li>
+<li>浏览器接收到<code>HTTP</code>数据包后的解析流程（解析<code>html</code>-词法分析然后解析成<code>dom</code>树、解析<code>css</code>生成<code>css</code>规则树、合并成<code>render</code>树，然后<code>layout</code>、<code>painting</code>渲染、复合图层的合成、<code>GPU</code>绘制、外链资源的处理、<code>loaded</code>和<code>DOMContentLoaded</code>等）</li>
+<li><code>CSS</code>的可视化格式模型（元素的渲染规则，如包含块，控制框，<code>BFC</code>，<code>IFC</code>等概念）</li>
+<li><code>JS</code>引擎解析过程（<code>JS</code>的解释阶段，预处理阶段，执行阶段生成执行上下文，<code>VO</code>，作用域链、回收机制等等）</li>
+<li>其它（可以拓展不同的知识模块，如跨域，web安全，<code>hybrid</code>模式等等内容）</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>前端面试题</tag>
       </tags>
   </entry>
   <entry>
