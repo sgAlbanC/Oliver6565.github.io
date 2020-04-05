@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>django搭建</title>
+    <url>/2020/04/03/django%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>搭建django的一些坑</p>
+<a id="more"></a>
+
+<h5 id="1-下载安装python"><a href="#1-下载安装python" class="headerlink" title="1. 下载安装python"></a>1. 下载安装python</h5><p>3.4以上新版python下载后自带pip，pip根据提示自我更新</p>
+<h5 id="2-用python-的pip管理器去下载django"><a href="#2-用python-的pip管理器去下载django" class="headerlink" title="2. 用python 的pip管理器去下载django"></a>2. 用python 的pip管理器去下载django</h5><p>注意pip 和 django  和python 的版本</p>
+<p>注意 pip 自我更新 和下载django的时候，报错重来，多下几次。</p>
+<h5 id="3-配置django环境变量"><a href="#3-配置django环境变量" class="headerlink" title="3. 配置django环境变量"></a>3. 配置django环境变量</h5><p>在path中加入两个 一个是到script 一个是到bin</p>
+<h5 id="4-下载安装pycharm社区版（官网）"><a href="#4-下载安装pycharm社区版（官网）" class="headerlink" title="4. 下载安装pycharm社区版（官网）"></a>4. 下载安装pycharm社区版（官网）</h5><p>目前双击打不开，用cmd可以输入pycharm打开，命令不能关</p>
+<h5 id="5-pycharm-设置背景颜色-字体大小"><a href="#5-pycharm-设置背景颜色-字体大小" class="headerlink" title="5. pycharm 设置背景颜色 字体大小"></a>5. pycharm 设置背景颜色 字体大小</h5><p>settings里面的</p>
+<h5 id="6-project-interpreter"><a href="#6-project-interpreter" class="headerlink" title="6. project interpreter"></a>6. project interpreter</h5><p>在settings -&gt; Project 中添加 python</p>
+<h5 id="7-django项目要添加python-exe"><a href="#7-django项目要添加python-exe" class="headerlink" title="7. django项目要添加python.exe"></a>7. django项目要添加python.exe</h5><h5 id="8-在下面-的-Terminal终端中执行"><a href="#8-在下面-的-Terminal终端中执行" class="headerlink" title="8. 在下面 的 Terminal终端中执行"></a>8. 在下面 的 Terminal终端中执行</h5><p>python manage.py runserver 开启服务器，django自带一个小型服务器，自动开启8000端口号。可在settings文件中更改</p>
+<h5 id="9-python-3-x和2-x"><a href="#9-python-3-x和2-x" class="headerlink" title="9. python 3.x和2.x"></a>9. python 3.x和2.x</h5><p>两个版本是由差距的，会影响django还有一些依赖插件比如pymysql是3.x用的</p>
+<h5 id="10-接口测试时Forbidden-CSRF-cookie-not-set"><a href="#10-接口测试时Forbidden-CSRF-cookie-not-set" class="headerlink" title="10. 接口测试时Forbidden (CSRF cookie not set.)"></a>10. 接口测试时Forbidden (CSRF cookie not set.)</h5><p>可以去settings里面 MIDDLEWARE = [ 那个csrf. ]  注释掉</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt</span><br><span class="line"> </span><br><span class="line"><span class="meta">@csrf_exempt </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_api</span><span class="params">(request)</span>:</span></span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        dic[<span class="string">'message'</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(json.dumps(dic))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        dic[<span class="string">'message'</span>] = <span class="string">'方法错误'</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(json.dumps(dic, ensure_ascii=<span class="literal">False</span>))</span><br><span class="line">    </span><br><span class="line"> <span class="comment"># 这里是views里面的一个如何返回类似json文件的例子</span></span><br><span class="line"> <span class="comment"># 这样 就可以 简单的实现写views 不用管渲染的部分</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="11-ajax-简单传值"><a href="#11-ajax-简单传值" class="headerlink" title="11. ajax 简单传值"></a>11. ajax 简单传值</h5><img src="/2020/04/03/django%E6%90%AD%E5%BB%BA/d1.png" class>
+
+<h5 id="12-Django-中-request方法"><a href="#12-Django-中-request方法" class="headerlink" title="12. Django 中 request方法"></a>12. Django 中 request方法</h5><p>request.session</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">请求的路径，这里的路径是指相对路径，也就是说一个登陆后台页面的请求：http:&#96;&#96;&#x2F;&#96;&#96;&#x2F;&#96;&#96;127.0&#96;&#96;.&#96;&#96;0.1&#96;&#96;:&#96;&#96;8000&#96;&#96;&#x2F;&#96;&#96;admin 的路径是 &#96;&#96;&#x2F;&#96;&#96;admin</span><br><span class="line">获取完整路径（包括参数）：HttpRequest.get_full_path()</span><br><span class="line">获取绝对url： HttpRequest.bulid_absolute_uri(location) 此参数默认为完整路径</span><br></pre></td></tr></table></figure>
+
+<p>request.encoding</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">请求提交的数据的编码方式</span><br></pre></td></tr></table></figure>
+
+<p> request.session</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.session 获取的是一个类似于字典的对象，可以进行读取写入操作，常用来保存一些数据来实现会话跟踪技术。 因为 HTTP 是一个无状态，不连续的协议。如果想让服务器记住当前的访问对象，就需要记录请求者的一些信息来达到这个目的。</span><br><span class="line"># 设置session&#96;&#96;request.session[&#96;&#96;&quot;name&quot;&#96;&#96;] &#96;&#96;&#x3D;&#96; &#96;&quot;root&quot;&#96;&#96;# 获取session&#96;&#96;name &#96;&#96;&#x3D;&#96; &#96;request.sessin[&#96;&#96;&quot;name&quot;&#96;&#96;]</span><br></pre></td></tr></table></figure>
+
+<p>django会默认为session使用json序列化。json序列化只能序列化一些基本数据类型，如数字，字符串，列表等。所以session不能直接存储对象.可以简单的在settings中添加 SESSION_SERIALIZER = “django.contrib.sessions.serializers.PickleSerializer”</p>
+<p>request.method   请求方式POST/GET</p>
+<h5 id="13-request获取数据"><a href="#13-request获取数据" class="headerlink" title="13. request获取数据"></a>13. request获取数据</h5><p>request.body</p>
+<p>请求的主体，返回一个字符串</p>
+<p>request.data</p>
+<p>请求数据部分，返回一个字典对象，其他和request.body很想</p>
+<p><strong>request.POST</strong></p>
+<p>获取post方式表单中提交的数据</p>
+<p>request.POST[“username”]</p>
+<p>request.POST.get（“username”）</p>
+<p>request.GET</p>
+<p>获取get方式表单中或url提交的数据</p>
+<p>request.GET[“username”]</p>
+<p>request.GET.get（“username”）</p>
+<h5 id="14-postman请求"><a href="#14-postman请求" class="headerlink" title="14. postman请求"></a>14. postman请求</h5><p>请求post时，在body里面写参数！！</p>
+<p>请求get时，在params里面写参数！！</p>
+]]></content>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端UI框架小总结</title>
+    <url>/2020/04/01/%E5%89%8D%E7%AB%AFUI%E6%A1%86%E6%9E%B6%E5%B0%8F%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>收集前端UI框架 包括移动端 PC端的官网</p>
+<a id="more"></a>
+
+<hr>
+<blockquote>
+<h4 id="移动端UI框架"><a href="#移动端UI框架" class="headerlink" title="移动端UI框架"></a>移动端UI框架</h4></blockquote>
+<h5 id="Mint-UI（饿了么团队）"><a href="#Mint-UI（饿了么团队）" class="headerlink" title="Mint UI（饿了么团队）"></a><strong>Mint UI（饿了么团队）</strong></h5><p>中文官网：<a href="http://mint-ui.github.io/#!/zh-cn" target="_blank" rel="noopener">http://mint-ui.github.io/#!/zh-cn</a></p>
+<p>描述：基于vue的移动端UI框架<br>基于vue</p>
+<p>GitHub地址：<a href="https://github.com/ElemeFE/mint-ui/" target="_blank" rel="noopener">https://github.com/ElemeFE/mint-ui/</a></p>
+<h5 id="Weui（微信官方设计团队）"><a href="#Weui（微信官方设计团队）" class="headerlink" title="Weui（微信官方设计团队）"></a>Weui（微信官方设计团队）</h5><p>描述：WeUI 为微信 Web 服务量身设计,是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信 Web 开发量身设计，可以令用户的使用感知更加统一。</p>
+<p>GitHub地址：<a href="https://github.com/weui/weui" target="_blank" rel="noopener">https://github.com/weui/weui</a></p>
+<h5 id="Pure"><a href="#Pure" class="headerlink" title="Pure"></a>Pure</h5><p>中文官网：<a href="https://www.purecss.cn/" target="_blank" rel="noopener">https://www.purecss.cn/</a><br>描述：纯CSS<br>美国雅虎公司出品的一组轻量级、响应式纯css模块，适用于任何Web项目。<br>GitHub：<a href="https://github.com/yahoo/pure/" target="_blank" rel="noopener">https://github.com/yahoo/pure/</a></p>
+<blockquote>
+<h4 id="PC-端-UI框架"><a href="#PC-端-UI框架" class="headerlink" title="PC 端 UI框架"></a><strong>PC 端 UI框架</strong></h4></blockquote>
+<h5 id="Element-UI（饿了么团队）"><a href="#Element-UI（饿了么团队）" class="headerlink" title="Element UI（饿了么团队）"></a>Element UI（饿了么团队）</h5><p>官方地址：<a href="http://element-cn.eleme.io/#/zh-CN" target="_blank" rel="noopener">http://element-cn.eleme.io/#/zh-CN</a><br>描述：基于 Vue 2.0 的桌面端组件库<br>GitHub：<a href="https://github.com/ElemeFE/element" target="_blank" rel="noopener">https://github.com/ElemeFE/element</a></p>
+<h5 id="iView"><a href="#iView" class="headerlink" title="iView"></a>iView</h5><p>官网地址：<a href="https://www.iviewui.com/" target="_blank" rel="noopener">https://www.iviewui.com/</a><br>描述：一套基于 Vue.js 的高质量 UI 组件库。iView 是一套基于 Vue.js 的开源 UI 组件库，主要服务于 PC 界面的中后台产品。<br>GitHub地址：<a href="https://github.com/iview/iview" target="_blank" rel="noopener">https://github.com/iview/iview</a></p>
+<h5 id="layui"><a href="#layui" class="headerlink" title="layui"></a>layui</h5><p>官方地址：<a href="http://www.layui.com/" target="_blank" rel="noopener">http://www.layui.com/</a></p>
+<p>描述：更多是为服务端程序员量身定做，你无需涉足各种前端工具的复杂配置，只需面对浏览器本身，让一切你所需要的元素与交互，从这里信手拈来。</p>
+<p>layui 兼容人类正在使用的全部浏览器（IE6/7除外），可作为 PC 端后台系统与前台界面的速成开发方案。</p>
+<p>GitHub：<a href="https://github.com/sentsin/layui/" target="_blank" rel="noopener">https://github.com/sentsin/layui/</a></p>
+<h5 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h5><p>中文官网：<a href="http://www.bootcss.com/" target="_blank" rel="noopener">http://www.bootcss.com/</a><br>描述：简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
+<p>GitHub地址：<a href="https://github.com/twbs/bootstrap" target="_blank" rel="noopener">https://github.com/twbs/bootstrap</a></p>
+<h5 id="jQuery-UI"><a href="#jQuery-UI" class="headerlink" title="jQuery UI"></a>jQuery UI</h5><p>官方网址：<a href="http://jqueryui.com/" target="_blank" rel="noopener">http://jqueryui.com/</a></p>
+]]></content>
+      <tags>
+        <tag>UI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>网络安全之攻守道</title>
     <url>/2020/03/30/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E6%94%BB%E5%AE%88%E9%81%93/</url>
     <content><![CDATA[<p>网络安全，就是攻守之间的对抗</p>
@@ -150,9 +231,15 @@
 <p>从JS对象转换为JSON字符串，使用JSON.stringify()方法：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.stringify(&#123;<span class="string">"a"</span>:<span class="string">"hello"</span>,<span class="string">"b"</span>:<span class="string">"world"</span>&#125;)</span><br></pre></td></tr></table></figure>
 
+<h5 id="jQuery-parseJSON-函数"><a href="#jQuery-parseJSON-函数" class="headerlink" title="jQuery.parseJSON()函数"></a>jQuery.parseJSON()函数</h5><p>用于将格式完好的JSON字符串转为与之对应的JavaScript对象。</p>
+<p>所谓”格式完好”，就是要求指定的字符串必须符合严格的JSON格式，例如：属性名称必须加双引号、字符串值也必须用双引号。</p>
+<p>如果传入一个格式不”完好”的JSON字符串将抛出一个JS异常，</p>
+<p>例如：以下字符串均符合JSON格式，但它们不是格式完好的JSON字符串(因此会抛出异常)：</p>
+<p>// 以下均是字符串值，省略了两侧的引号，以便于展现内容</p>
+<p>{id: 1} // id是属性名称，必须加双引号<br>{‘id’: 1} // id是属性名称，必须用双引号(不能用单引号)<br>{“name”: ‘CodePlayer’} // name属性的值是字符串，必须用双引号(不能用单引号)</p>
 ]]></content>
       <tags>
-        <tag>json</tag>
+        <tag>json ajax</tag>
       </tags>
   </entry>
   <entry>
