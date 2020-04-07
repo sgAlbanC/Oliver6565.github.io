@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>RESTfull</title>
+    <url>/2020/04/06/RESTfull/</url>
+    <content><![CDATA[<p>RESTfull <em>一种软件架构风格、设计风格</em>，不是标准，提供了一组设计原则和约束条件。</p>
+<a id="more"></a>
+
+<p>主要用于客户端和服务器交互类软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存机制。<a href="https://baike.sogou.com/v73300762.htm?fromTitle=RESTful" target="_blank" rel="noopener">查看词条</a></p>
+<h5 id="原则条件"><a href="#原则条件" class="headerlink" title="原则条件"></a>原则条件</h5><ol>
+<li>REST 指的是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是 RESTful。</li>
+<li>Web应用程序最重要的REST原则是，客户端和服务器之间的交互在请求之间是（http请求）无状态的。客户端到服务器的每一个请求都必须包含理解请求所必需的信息。</li>
+<li>在服务器端，应用程序状态和功能可以分为各种资源。向客户端公开。每个资源都使用 URL 得到一个唯一的地址。所有资源都共享同一的接口，以便客户端和服务器之间传输状态。使用的是标准的 HTTP 方法，比如 GET、PUT、POST和DELETE</li>
+</ol>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>每个URL代表 1 种资源</li>
+<li>客户端使用GET、POST、PUT、DELETE4个表示操作方式的动词对服务端资源进行操作：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源；</li>
+<li>资源的表现形式是 XML 或者 HTML</li>
+<li>客户端与服务端之间的交互请求之间是无状态的。客户端到服务器的每一个请求都必须包含理解请求所必需的信息。</li>
+</ol>
+<h5 id="RESTful架构"><a href="#RESTful架构" class="headerlink" title="RESTful架构"></a>RESTful架构</h5><ol>
+<li><p>RESTful架构是对MVC架构改进后所形成的一种架构，通过使用事先定义好的接口与不同的服务联系起来。在RESTful架构中，浏览器使用POST，DELETE，PUT和GET四种请求方式分别对指定的URL资源进行增删改查操作。因此，RESTful是通过URI实现对资源的管理及访问，具有扩展性强、结构清晰的特点。</p>
+</li>
+<li><p>RESTful架构将服务器分成前端服务器和后端服务器两部分，前端服务器为用户提供无模型的视图；后端服务器为前端服务器提供接口。浏览器向前端服务器请求视图，通过视图中包含的AJAX函数发起接口请求获取模型。</p>
+</li>
+</ol>
+<h5 id="其他概念-更多"><a href="#其他概念-更多" class="headerlink" title="其他概念 (更多)"></a><a href="https://mp.weixin.qq.com/s?src=3&timestamp=1586138856&ver=1&signature=YaSPg7qpu0Qva1*0Fzsibkd*dUmaJaaRaWFCm3-pr1P-9LJdS0n17C0d*v1U1XkrVZ1MzAtvI5I*Euqi3Y9oBTCQGSLdTUalCdtpQVVTXLfAxGBasGoGcxLFxFzqUr7DADEmF*rpU-Hdyd0*7Pmvty3KNdVeA-ilKzurRx4iF5w=" target="_blank" rel="noopener">其他概念 (更多)</a></h5><h6 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h6><ol>
+<li>服务器设计接口，应当设计为无状态接口。即服务器端不保存任何与客户端相关的状态上下文信息。 客户端在每次调用接口时，需要提供足够的信息，以供服务器完成操作</li>
+<li>无状态设计中，服务端减少了保存客户端相关上下文数据，因此，一方面服务端能够更加容易实现动态扩展；减少了服务端从故障中恢复的任务量</li>
+<li>但无状态也会带来额外的问题。客户端将需要保存完整的用户状态信息，在每次与服务端交互时可能需要增加与用户状态相关的上下文信息，这样将导致请求数据的重复和增大</li>
+</ol>
+<h6 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h6><ol>
+<li>接口设计中增加缓存策略，服务器可以决定是否可以缓存当前返回的数据。这样 减少服务器被请求的次数，提高网络访问性能</li>
+<li>缓存要谨慎使用，需要缓存什么数据，缓存过期时间等，要根据实际情况设计。</li>
+<li>一般而言，数据字典类数据、修改频率非常低的数据、实时性要求很低的数据等，这些数据可以设计一定的缓存策略，以提高系统运行效率。</li>
+</ol>
+<h6 id="系统分层"><a href="#系统分层" class="headerlink" title="系统分层"></a>系统分层</h6><ol>
+<li><p>横向分层一般可以分为 交互层 、服务层 、数据层 </p>
+</li>
+<li><p>纵向分层则通常会按照不同的业务功能对系统进行切分</p>
+</li>
+</ol>
+<h6 id="统一接口"><a href="#统一接口" class="headerlink" title="统一接口"></a>统一接口</h6><p>​    统一接口，即是不同系统模块之间的调用接口统一规范，使用统一的调用协议，统一的数据格式等。统一接口带来的是系统交互的规范化，接口调用与业务解耦，各模块独立进化。</p>
+]]></content>
+      <tags>
+        <tag>rest</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>django搭建</title>
     <url>/2020/04/03/django%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>搭建django的一些坑</p>

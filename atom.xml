@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-04T13:42:22.941Z</updated>
+  <updated>2020-04-06T02:52:12.441Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RESTfull</title>
+    <link href="http://yoursite.com/2020/04/06/RESTfull/"/>
+    <id>http://yoursite.com/2020/04/06/RESTfull/</id>
+    <published>2020-04-06T02:26:24.000Z</published>
+    <updated>2020-04-06T02:52:12.441Z</updated>
+    
+    <content type="html"><![CDATA[<p>RESTfull <em>一种软件架构风格、设计风格</em>，不是标准，提供了一组设计原则和约束条件。</p><a id="more"></a><p>主要用于客户端和服务器交互类软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存机制。<a href="https://baike.sogou.com/v73300762.htm?fromTitle=RESTful" target="_blank" rel="noopener">查看词条</a></p><h5 id="原则条件"><a href="#原则条件" class="headerlink" title="原则条件"></a>原则条件</h5><ol><li>REST 指的是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是 RESTful。</li><li>Web应用程序最重要的REST原则是，客户端和服务器之间的交互在请求之间是（http请求）无状态的。客户端到服务器的每一个请求都必须包含理解请求所必需的信息。</li><li>在服务器端，应用程序状态和功能可以分为各种资源。向客户端公开。每个资源都使用 URL 得到一个唯一的地址。所有资源都共享同一的接口，以便客户端和服务器之间传输状态。使用的是标准的 HTTP 方法，比如 GET、PUT、POST和DELETE</li></ol><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol><li>每个URL代表 1 种资源</li><li>客户端使用GET、POST、PUT、DELETE4个表示操作方式的动词对服务端资源进行操作：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源；</li><li>资源的表现形式是 XML 或者 HTML</li><li>客户端与服务端之间的交互请求之间是无状态的。客户端到服务器的每一个请求都必须包含理解请求所必需的信息。</li></ol><h5 id="RESTful架构"><a href="#RESTful架构" class="headerlink" title="RESTful架构"></a>RESTful架构</h5><ol><li><p>RESTful架构是对MVC架构改进后所形成的一种架构，通过使用事先定义好的接口与不同的服务联系起来。在RESTful架构中，浏览器使用POST，DELETE，PUT和GET四种请求方式分别对指定的URL资源进行增删改查操作。因此，RESTful是通过URI实现对资源的管理及访问，具有扩展性强、结构清晰的特点。</p></li><li><p>RESTful架构将服务器分成前端服务器和后端服务器两部分，前端服务器为用户提供无模型的视图；后端服务器为前端服务器提供接口。浏览器向前端服务器请求视图，通过视图中包含的AJAX函数发起接口请求获取模型。</p></li></ol><h5 id="其他概念-更多"><a href="#其他概念-更多" class="headerlink" title="其他概念 (更多)"></a><a href="https://mp.weixin.qq.com/s?src=3&timestamp=1586138856&ver=1&signature=YaSPg7qpu0Qva1*0Fzsibkd*dUmaJaaRaWFCm3-pr1P-9LJdS0n17C0d*v1U1XkrVZ1MzAtvI5I*Euqi3Y9oBTCQGSLdTUalCdtpQVVTXLfAxGBasGoGcxLFxFzqUr7DADEmF*rpU-Hdyd0*7Pmvty3KNdVeA-ilKzurRx4iF5w=" target="_blank" rel="noopener">其他概念 (更多)</a></h5><h6 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h6><ol><li>服务器设计接口，应当设计为无状态接口。即服务器端不保存任何与客户端相关的状态上下文信息。 客户端在每次调用接口时，需要提供足够的信息，以供服务器完成操作</li><li>无状态设计中，服务端减少了保存客户端相关上下文数据，因此，一方面服务端能够更加容易实现动态扩展；减少了服务端从故障中恢复的任务量</li><li>但无状态也会带来额外的问题。客户端将需要保存完整的用户状态信息，在每次与服务端交互时可能需要增加与用户状态相关的上下文信息，这样将导致请求数据的重复和增大</li></ol><h6 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h6><ol><li>接口设计中增加缓存策略，服务器可以决定是否可以缓存当前返回的数据。这样 减少服务器被请求的次数，提高网络访问性能</li><li>缓存要谨慎使用，需要缓存什么数据，缓存过期时间等，要根据实际情况设计。</li><li>一般而言，数据字典类数据、修改频率非常低的数据、实时性要求很低的数据等，这些数据可以设计一定的缓存策略，以提高系统运行效率。</li></ol><h6 id="系统分层"><a href="#系统分层" class="headerlink" title="系统分层"></a>系统分层</h6><ol><li><p>横向分层一般可以分为 交互层 、服务层 、数据层 </p></li><li><p>纵向分层则通常会按照不同的业务功能对系统进行切分</p></li></ol><h6 id="统一接口"><a href="#统一接口" class="headerlink" title="统一接口"></a>统一接口</h6><p>​    统一接口，即是不同系统模块之间的调用接口统一规范，使用统一的调用协议，统一的数据格式等。统一接口带来的是系统交互的规范化，接口调用与业务解耦，各模块独立进化。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;RESTfull &lt;em&gt;一种软件架构风格、设计风格&lt;/em&gt;，不是标准，提供了一组设计原则和约束条件。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="rest" scheme="http://yoursite.com/tags/rest/"/>
+    
+  </entry>
   
   <entry>
     <title>django搭建</title>
@@ -410,27 +431,6 @@
     <summary type="html">
     
       &lt;h4 id=&quot;TypeScript中的函数&quot;&gt;&lt;a href=&quot;#TypeScript中的函数&quot; class=&quot;headerlink&quot; title=&quot;TypeScript中的函数&quot;&gt;&lt;/a&gt;TypeScript中的函数&lt;/h4&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="TS" scheme="http://yoursite.com/tags/TS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TypeScript01</title>
-    <link href="http://yoursite.com/2020/03/17/TypeScript01/"/>
-    <id>http://yoursite.com/2020/03/17/TypeScript01/</id>
-    <published>2020-03-17T05:39:31.000Z</published>
-    <updated>2020-03-27T04:44:16.474Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="TypeScript-基础"><a href="#TypeScript-基础" class="headerlink" title="TypeScript 基础"></a>TypeScript 基础</h4><a id="more"></a><p>Typescript 是微软推出的一门语言，是JavaScript的超集，包含ES567</p><p>新增了类型系统和完整的面向对象</p><h4 id="第一章-TypeScript-基础"><a href="#第一章-TypeScript-基础" class="headerlink" title="第一章 TypeScript 基础"></a>第一章 TypeScript 基础</h4><h4 id="01-TypeScript-环境安装"><a href="#01-TypeScript-环境安装" class="headerlink" title="01.TypeScript 环境安装"></a>01.TypeScript 环境安装</h4><ol><li><p>需要一个工具，将ts代码转换为浏览器或者nodejs识别的js代码，就需要ts环境（npm，nodejs的包管理器，用npm下载ts环境；网上下载安装nodejs，cmd node -v 查看）-&gt;cmd中 tsc -v 查看</p><ul><li>全局安装： <em>npm i -g typescript</em></li><li>校验typescript： <em>tsc -v</em></li><li>tsc的作用：<em>负责将ts代码转为浏览器、nodejs识别的js代码</em></li></ul></li><li><p>第一个ts程序</p><ul><li><p>在后缀名为.ts文件中写typescript代码</p></li><li><p>使用tsc工具将typescript代码编译为浏览器、nodejs识别的js代码</p></li><li><p>在浏览器或者nodejs中执行js代码</p><p><em>ts -&gt; js -&gt; html scprit标签引入</em></p></li></ul></li><li><p>在nodejs中执行typescript代码</p><ul><li>执行tsc转换过后的js代码   <em>node xxx.js</em></li></ul></li><li><p>ts-node ： 自动将ts代码转换为js代码，并将其在nodejs中执行</p><ul><li>安装 <em>npm i -g ts-node</em></li><li>使用 <em>ts-node xxx.ts</em>文件名</li></ul></li><li><p>vscode配置自动编译（功能同4）</p><ul><li>tsc –init 生成tsconfig.json 改”outDir”:’./js’</li><li>终端-运行任务-监视tsconfig.json</li></ul></li></ol><h4 id="02-TypeScript-数据类型-变量"><a href="#02-TypeScript-数据类型-变量" class="headerlink" title="02. TypeScript 数据类型 | 变量"></a>02. TypeScript 数据类型 | 变量</h4><ol><li><p>在JavaScript中，变量中可以存储任意类型的数据</p><p><em>var a = 10； a = “jack” ； a=true；</em></p></li><li><p>但是在TS语法规定：在声明变量的时候，必须制定变量的类型</p></li><li><p>声明变量的语法： </p><p><u>let 变量名：变量类型</u></p><p><em>let age： number</em></p><p><em>let myName： String</em></p></li><li><p>变量的类型一旦指定后，这个变量只能存储这个类型的数据</p><p><em>age = 18</em>； 这样可以的</p><p><em>age = “jack”</em> 错误 -&gt; 因为上面age指定了类型为number</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag: boolean = <span class="literal">true</span></span><br><span class="line">flag = <span class="literal">false</span></span><br><span class="line"><span class="built_in">console</span>.log(flag)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str: string = <span class="string">''</span></span><br><span class="line">str = <span class="string">'12300'</span></span><br><span class="line"><span class="built_in">console</span>.log(str)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr:number[]=[<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2:<span class="built_in">Array</span>&lt;number&gt;=[<span class="number">33</span>,<span class="number">22</span>,<span class="number">11</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3:string[]=[<span class="string">'1'</span>,<span class="string">'2str'</span>,<span class="string">'3str'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr4:object[]=[&#123;<span class="attr">name</span>:<span class="string">'hall'</span>,<span class="attr">age</span>:<span class="string">'18'</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">'xun'</span>,<span class="attr">age</span>:<span class="string">'19'</span>&#125;]</span><br><span class="line"><span class="built_in">console</span>.log(arr4)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 元组类型</span></span><br><span class="line"><span class="keyword">var</span> arr5:[number,string]=[<span class="number">123</span>,<span class="string">'this is str'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr5)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚舉类型，使用单词就能够知道单纯的数字表示什么意思。易读</span></span><br><span class="line">enum Flag &#123;success=<span class="number">1</span>,error=<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">let</span> s:Flag=Flag.success</span><br><span class="line"><span class="built_in">console</span>.log(s)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 任意类型</span></span><br><span class="line"><span class="keyword">var</span> num:any=<span class="number">123</span></span><br><span class="line">num=<span class="string">'str'</span></span><br><span class="line">num=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined null 类型</span></span><br><span class="line"><span class="keyword">var</span> a:<span class="literal">undefined</span></span><br><span class="line">a=<span class="literal">undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b:<span class="literal">null</span></span><br><span class="line">b=<span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c:never</span><br><span class="line"><span class="comment">// c='122' 报错 c是never类型，从不使用类型</span></span><br><span class="line"><span class="comment">// 抛出异常，不常用</span></span><br><span class="line">c=<span class="function">(<span class="params">(</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'错误'</span>)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;TypeScript-基础&quot;&gt;&lt;a href=&quot;#TypeScript-基础&quot; class=&quot;headerlink&quot; title=&quot;TypeScript 基础&quot;&gt;&lt;/a&gt;TypeScript 基础&lt;/h4&gt;
     
     </summary>
     
