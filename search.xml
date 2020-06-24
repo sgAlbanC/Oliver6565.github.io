@@ -1,6 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Second 算法</title>
+    <url>/2020/06/24/Second-%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>第二章 算法</p>
+<a id="more"></a>
+
+<h4 id="考点1-算法的概念"><a href="#考点1-算法的概念" class="headerlink" title="考点1 算法的概念"></a>考点1 算法的概念</h4><ul>
+<li><p>对数据的描述：数据结构</p>
+</li>
+<li><p>对操作的描述：算法</p>
+</li>
+<li><p><strong>程序 = 数据结构 + 算法</strong></p>
+</li>
+<li><p>计算机算法可分为两大类：数值运算算法和非数值运算</p>
+</li>
+</ul>
+<blockquote>
+<p>判断闰年： 能被4整除，但不能被100整除 || 能被100整除，又能被400整除</p>
+<p>判断是否为素数 n(n&gt;=3)：将n 作为被除数，将2 到 根号n 各个整数轮流作为除数，如果都不能被整除，则n 为素数</p>
+</blockquote>
+<h4 id="考点2-算法的特性"><a href="#考点2-算法的特性" class="headerlink" title="考点2 算法的特性"></a>考点2 算法的特性</h4><p>一个算法应该具有以下特性：</p>
+<ul>
+<li>有穷性：有限步骤，有限时间</li>
+<li>确定性</li>
+<li>有零个或多个输入</li>
+<li>有一个或多个输出：有“解”</li>
+<li>有效性：被除数不为0等</li>
+</ul>
+<h4 id="考点3-算法的表示"><a href="#考点3-算法的表示" class="headerlink" title="考点3 算法的表示"></a>考点3 算法的表示</h4><ul>
+<li><p>用<strong>自然语言</strong>表示算法</p>
+</li>
+<li><p>用<strong>流程图</strong>表示算法</p>
+<p>包括：起止框、处理框、判断框、输入输出框、流程线、连接点、注释框</p>
+<p>优点：用流程图表示算法要比文字描述算法逻辑清晰，易于理解</p>
+<p>一个流程图包括以下几部分：</p>
+<ol>
+<li><p>表示响应操作的框；</p>
+</li>
+<li><p>带箭头的流程线</p>
+</li>
+<li><p>框内外必要的文字说明</p>
+</li>
+</ol>
+</li>
+<li><p><strong>三种基本结构</strong></p>
+<p>顺序结构、选择结构、循环结构</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>First 考情分析</title>
+    <url>/2020/06/23/First-%E8%80%83%E6%83%85%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>考情分析、复习方法和概述 + 第一章</p>
+<a id="more"></a>
+
+<h4 id="考情分析"><a href="#考情分析" class="headerlink" title="考情分析"></a>考情分析</h4><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>算法的概述及其表示</td>
+<td>预处理命令</td>
+</tr>
+<tr>
+<td><strong>数据类型、运算符与表达式</strong></td>
+<td><strong>结构体</strong>、共同体、枚举类型</td>
+</tr>
+<tr>
+<td><strong>程序设计结构</strong></td>
+<td>位运算、位段</td>
+</tr>
+<tr>
+<td><strong>数组</strong></td>
+<td><strong>文件</strong></td>
+</tr>
+<tr>
+<td><strong>函数</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>指针</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h4><ul>
+<li><p>认真复习每个知识点，掌握C语言规则</p>
+<p>例如：针对字符数组和字符指针变量</p>
+</li>
+<li><p>对于容易混淆的知识点，善于归纳和总结</p>
+<p>例如：有关整型的数据类型</p>
+<table>
+<thead>
+<tr>
+<th>定义</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int p;</td>
+<td>定义整型变量p</td>
+</tr>
+<tr>
+<td>int *p;</td>
+<td>p为指向整型数据的指针变量</td>
+</tr>
+<tr>
+<td>int p[n];</td>
+<td>定义整型数组p，它有n个元素</td>
+</tr>
+<tr>
+<td>int *p[n];</td>
+<td>定义指针数组p，它由n个指向整型数据的指针元素组成</td>
+</tr>
+<tr>
+<td>int (*p)[n];</td>
+<td>p为指向含n个元素的以为数组的指针变量</td>
+</tr>
+<tr>
+<td>int p();</td>
+<td>p为返回整函数值的函数</td>
+</tr>
+<tr>
+<td>int *p();</td>
+<td>p为返回一个指针的函数，该指针指向整型数据</td>
+</tr>
+<tr>
+<td>int (*p)();</td>
+<td>p为指向函数的指针，该函数返回一个整型值</td>
+</tr>
+<tr>
+<td>int **p;</td>
+<td>p是一个指针变量，它指向一个指向整型数据的指针变量</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>培养认真分析的习惯，建立地址分配模型</p>
+</li>
+</ul>
+<h4 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h4><h5 id="C语言的历史背景"><a href="#C语言的历史背景" class="headerlink" title="C语言的历史背景"></a>C语言的历史背景</h5><p>高级语言</p>
+<h5 id="C语言的特点"><a href="#C语言的特点" class="headerlink" title="C语言的特点"></a>C语言的特点</h5><ul>
+<li>语言简介、紧凑、使用方便、灵活。32个关键字、9个控制语句</li>
+<li>34种运算符</li>
+<li>数据类型丰富，具有现代语言的各种数据结构</li>
+<li>具有结构化的控制语句，是完全模块化和结构化的语言</li>
+<li>语法限制不严格，程序设计自由度大</li>
+<li>允许直接访问物理地址，能进行位操作，能实现汇编语言的大部分功能，可直接对硬件进行操作</li>
+<li>目标代码质量高，程序执行效率高</li>
+<li>程序可移植性好。基本不用修改就用于各种型号的计算机和各种操作系统</li>
+</ul>
+<h5 id="简单的C语言程序"><a href="#简单的C语言程序" class="headerlink" title="简单的C语言程序"></a>简单的C语言程序</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#includ <span class="meta-string">&lt;stdio.h&gt;	/*文件包含*/</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span>			<span class="comment">/*主函数*/</span></span></span><br><span class="line"><span class="function"></span>&#123;					<span class="comment">/*函数体开始*/</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"This is a C program.\n"</span>);		<span class="comment">/*输出语句*/</span></span><br><span class="line">&#125;					<span class="comment">/*函数体结束*/</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：main-主函数名，void-函数类型</p>
+<p>每个C程序必须有一个主函数main，且程序执行首先从main开始，与main函数的位置无关</p>
+<p>{}是函数开始和结束的标志，不可省</p>
+<p>每个C语句以分号结束</p>
+<p>使用标准库函数是应在程序开头添加：#include &lt;stdio.h&gt;</p>
+<h5 id="运行C程序的步骤"><a href="#运行C程序的步骤" class="headerlink" title="运行C程序的步骤"></a>运行C程序的步骤</h5><ul>
+<li>上机输入与编辑源程序</li>
+<li>对源程序进行编译</li>
+<li>与库函数连接</li>
+<li>运行可执行目标程序</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>考研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mockjs</title>
+    <url>/2020/04/07/Mockjs/</url>
+    <content><![CDATA[<p>mockjs 生成随机数据</p>
+<a id="more"></a>
+
+<blockquote>
+<p>所有内容資料來自<a href="https://www.csdn.net/" target="_blank" rel="noopener"><img src="https://csdnimg.cn/cdn/content-toolbar/csdn-logo_.png?v=20190924.1" alt="img"></a></p>
+</blockquote>
+<p>前后端分离趋势，前端负责数据展示、页面动态效果等，后端负责编写应用程序接口，功页面、第三方等调用。有很多情况是，前端已经写好页面，一直等待后端接口的联调。所以现在就有造价数据的工具mockjs</p>
+<p><strong>jquery 中 使用 mockjs来拦截ajax请求，并返回假数据。</strong></p>
+<h5 id="引入mockjs"><a href="#引入mockjs" class="headerlink" title="引入mockjs"></a>引入mockjs</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Mock = <span class="built_in">require</span>(<span class="string">'mockjs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回字符串</span></span><br><span class="line">Mock.mock(<span class="string">'/api/data'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Mock.mock(&#123;</span><br><span class="line">        <span class="string">'string|3'</span>: <span class="string">'*'</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回指定范围的整数</span></span><br><span class="line">Mock.mock(<span class="string">'/api/getInteger'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Mock.mock(&#123;</span><br><span class="line">        <span class="string">'a|1-100'</span>: <span class="number">100</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回随机个数的对象</span></span><br><span class="line">Mock.mock(<span class="string">'/api/getObject'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Mock.mock(&#123;</span><br><span class="line">        <span class="string">'brand|1-3'</span>: &#123;</span><br><span class="line">            a: <span class="string">'京东'</span>,</span><br><span class="line">            b: <span class="string">'国美'</span>,</span><br><span class="line">            c: <span class="string">'苏宁'</span>,</span><br><span class="line">            d: <span class="string">'当当'</span>,</span><br><span class="line">            e: <span class="string">'天猫'</span>,</span><br><span class="line">            f: <span class="string">'淘宝'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回随机数组</span></span><br><span class="line">Mock.mock(<span class="string">'/api/getArr'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Mock.mock(&#123;</span><br><span class="line">        <span class="string">'data|1-10'</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="string">'name'</span>: <span class="string">'张三'</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回随机字符</span></span><br><span class="line">Mock.mock(<span class="string">'/api/getRandom1'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Mock.mock(&#123;</span><br><span class="line">        <span class="string">'random1'</span>: <span class="regexp">/[a-z]&#123;2&#125;[A-Z]&#123;2&#125;[0-9]/</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回随机字符</span></span><br><span class="line">Mock.mock(<span class="string">'/api/getRandom2'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Mock.mock(&#123;<span class="attr">random2</span>: <span class="string">'@string("lower", 5)'</span>&#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回UUID</span></span><br><span class="line">Mock.mock(<span class="string">'/api/getUUID'</span>, (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'uuid'</span>: Mock.Random.id()&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"id|+1"</span>: <span class="number">1</span>, <span class="comment">//id的递增</span></span><br><span class="line"><span class="string">"name"</span>: <span class="string">"@cname"</span>, <span class="comment">// 姓名</span></span><br><span class="line"><span class="string">"email"</span>: <span class="string">"@email"</span>, <span class="comment">//邮箱</span></span><br><span class="line"><span class="string">"mobile"</span>: <span class="regexp">/^(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]&#123;8&#125;$/</span>, <span class="comment">//生成手机11位号  可以使用正则表达式</span></span><br><span class="line"><span class="string">"sex"</span>: <span class="string">"@boolean, // 随机boolean</span></span><br><span class="line"><span class="string">"</span>avatar<span class="string">":"</span>@image<span class="string">" // 图片</span></span><br><span class="line"><span class="string">"</span>avatar<span class="string">":"</span>@image(<span class="string">'50x50'</span>,<span class="string">'red'</span>,<span class="string">'#fff'</span>,<span class="string">'文字‘)"</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="数据类"><a href="#数据类" class="headerlink" title="数据类"></a>数据类</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"Boolean"</span>: <span class="string">"@boolean"</span>, <span class="comment">// 布尔值</span></span><br><span class="line"><span class="string">"natural"</span>: <span class="string">"@natural"</span>, <span class="comment">// natural( min, max )</span></span><br><span class="line"><span class="string">"integer"</span>: <span class="string">"@integer"</span>, <span class="comment">// integer( min, max )</span></span><br><span class="line"><span class="string">"float"</span>: <span class="string">"@float(22,99,1,2)"</span>, <span class="comment">// float( min, max, dmin, dmax )</span></span><br><span class="line"><span class="string">"string"</span>: <span class="string">"@string"</span>, <span class="comment">//string(type,min,max) lower小写，upper大写，number数字，symbol符号，</span></span><br><span class="line"><span class="string">"range"</span>: <span class="string">"@range"</span>, <span class="comment">//range( start, stop, step ) step为间隔为，最后返回值为数组</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="時間"><a href="#時間" class="headerlink" title="時間"></a>時間</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"date"</span>: <span class="string">"@date"</span>, <span class="comment">// 日期</span></span><br><span class="line"><span class="string">"time"</span>: <span class="string">"@time"</span>, <span class="comment">// 时间</span></span><br><span class="line"><span class="string">"dataTime"</span>: <span class="string">"@datetime"</span>, <span class="comment">// 日期+时间</span></span><br><span class="line"><span class="string">"Now"</span>: <span class="string">"@now"</span>, <span class="comment">// 当前的日期时间</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h5><blockquote>
+<p>凡是@后加c就是为中文；例如name为英文，cname则是中文</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"paragraph"</span>: <span class="string">"@cparagraph"</span>, <span class="comment">// 段落</span></span><br><span class="line"><span class="string">"title"</span>:<span class="string">"@ctitle(1,10)"</span>,<span class="comment">//标题，长度为1-10</span></span><br><span class="line"><span class="string">"sentence"</span>: <span class="string">"@csentence"</span>, <span class="comment">//句子</span></span><br><span class="line"><span class="string">"first"</span>: <span class="string">"@cfirst"</span>, <span class="comment">//姓氏</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="地方"><a href="#地方" class="headerlink" title="地方"></a>地方</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"region"</span>: <span class="string">"@region"</span>, <span class="comment">//方位</span></span><br><span class="line"><span class="string">"province"</span>: <span class="string">"@province"</span>, <span class="comment">//省份 </span></span><br><span class="line"><span class="string">"city"</span>: <span class="string">"@city"</span>, <span class="comment">// 城市 +(true)，可以获取到上一级，例如：@city(true) 可以获取到省市</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="对象和数组"><a href="#对象和数组" class="headerlink" title="对象和数组"></a>对象和数组</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">"city|2-4"</span>: &#123;</span><br><span class="line">    <span class="string">"110000"</span>: <span class="string">"北京市"</span>,</span><br><span class="line">    <span class="string">"120000"</span>: <span class="string">"天津市"</span>,</span><br><span class="line">    <span class="string">"130000"</span>: <span class="string">"河北省"</span>,</span><br><span class="line">    <span class="string">"140000"</span>: <span class="string">"山西省"</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="string">"city|1"</span>: [</span><br><span class="line">    <span class="string">"北京市"</span>,</span><br><span class="line">    <span class="string">"天津市"</span>,</span><br><span class="line">    <span class="string">"河北省"</span>,</span><br><span class="line">    <span class="string">"山西省"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>mock</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RESTfull</title>
     <url>/2020/04/06/RESTfull/</url>
     <content><![CDATA[<p>RESTfull <em>一种软件架构风格、设计风格</em>，不是标准，提供了一组设计原则和约束条件。</p>
@@ -853,6 +1060,10 @@
 </ul>
 <h4 id="通过Counter计数器的小案例-了解生命周期函数"><a href="#通过Counter计数器的小案例-了解生命周期函数" class="headerlink" title="通过Counter计数器的小案例 - 了解生命周期函数"></a>通过Counter计数器的小案例 - 了解生命周期函数</h4><ol>
 <li>给组件设置默认属性：</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 设置 默认属性值 */</span></span><br><span class="line">   <span class="keyword">static</span> defaultProps = &#123;</span><br><span class="line">       initcount:<span class="number">0</span> <span class="comment">// 如果外界没有传initcount值，那就初始化为0</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
 <li>给属性进行类型校验，需要先运行<code>cnpm i prop-types --save</code></li>
 </ol>
 <h4 id="组件初始化时生命周期事件总结"><a href="#组件初始化时生命周期事件总结" class="headerlink" title="组件初始化时生命周期事件总结"></a>组件初始化时生命周期事件总结</h4><ol>
@@ -868,14 +1079,25 @@
 <li>componentDidUpdate：</li>
 </ol>
 <h4 id="绑定this并传参的三种方式"><a href="#绑定this并传参的三种方式" class="headerlink" title="绑定this并传参的三种方式"></a>绑定this并传参的三种方式</h4><ol>
-<li>在事件中绑定this并传参：</li>
+<li><p>在事件中绑定this并传参：</p>
+<blockquote>
+<p>bind 作用： 为前面的函数(handleMsg1)，修改函数内部的this指向，让函数内部的this，指向bind参数列表中的第一个参数</p>
+<p>bind 和 call/apply 之间的区别：</p>
+<p>call/aplly 修改完this指向后，会立即调用前面的函数，但是bind只会修改this 指向， 并不会调用</p>
+<p>注意：bind 中的第一个参数，是用来修改this指向的，第一个参数后面的所有参数，都会当作将来调用 前面函数时候的参数传递进去</p>
+</blockquote>
+</li>
 </ol>
 <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"在事件中绑定this并传参"</span> onClick=&#123;<span class="keyword">this</span>.handleMsg1.bind(<span class="keyword">this</span>, <span class="string">'🍕'</span>, <span class="string">'🍟'</span>)&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在事件中绑定this并传参</span></span><br><span class="line">handleMsg1(arg1, arg2) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// 此时this是个null</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg: <span class="string">'在事件中绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
-<li>在构造函数中绑定this并传参:</li>
+<li><p>在构造函数中绑定this并传参:</p>
+<blockquote>
+<p>全局只bind一次，上面那种每次调用这个方法(this.handleMsg2),都要bind一次</p>
+</blockquote>
+</li>
 </ol>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 修改构造函数中的代码：</span></span><br><span class="line"><span class="keyword">this</span>.handleMsg2 = <span class="keyword">this</span>.handleMsg2.bind(<span class="keyword">this</span>, <span class="string">'🚗'</span>, <span class="string">'🚚'</span>);</span><br><span class="line"></span><br><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"在构造函数中绑定this并传参"</span> onClick=&#123;<span class="keyword">this</span>.handleMsg2&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在构造函数中绑定this并传参</span></span><br><span class="line">handleMsg2(arg1, arg2) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg: <span class="string">'在构造函数中绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">   <span class="comment">// 修改构造函数中的代码：</span></span><br><span class="line"><span class="comment">// 注意：调用bind改变this指向后，bind函数调用的结果，有一个返回值。这个值，就是被改变this指向后的函数的应用</span></span><br><span class="line"><span class="comment">// 注意：bind不会修改原函数的this指向</span></span><br><span class="line">   <span class="keyword">this</span>.handleMsg2 = <span class="keyword">this</span>.handleMsg2.bind(<span class="keyword">this</span>, <span class="string">'🚗'</span>, <span class="string">'🚚'</span>);</span><br><span class="line"></span><br><span class="line">   &lt;input type=<span class="string">"button"</span> value=<span class="string">"在构造函数中绑定this并传参"</span> onClick=&#123;<span class="keyword">this</span>.handleMsg2&#125; /&gt;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 在构造函数中绑定this并传参</span></span><br><span class="line">   handleMsg2(arg1, arg2) &#123;</span><br><span class="line">       <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">           msg: <span class="string">'在构造函数中绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li><p>用箭头函数绑定this并传参：</p>
@@ -2691,6 +2913,8 @@ required: true</code></pre><p>  },……数据集合</p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h2 id="自定义样式"><a href="#自定义样式" class="headerlink" title="自定义样式"></a>自定义样式</h2><p>Hexo -&gt; source -&gt; _data -&gt; styles.styl</p>
+<p>开发者模式调试样式，然后复制样式名，粘贴到这里来，就可以覆盖原来的样式</p>
 ]]></content>
   </entry>
 </search>
