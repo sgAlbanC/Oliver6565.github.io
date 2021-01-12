@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="物理层 第四节 传输介质与物理层设备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网4">
+<meta property="og:url" content="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%BD%914/index.html">
+<meta property="og:site_name" content="费罗里的图书馆">
+<meta property="og:description" content="物理层 第四节 传输介质与物理层设备">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-07T04:25:30.000Z">
+<meta property="article:modified_time" content="2021-01-12T10:09:11.575Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="考研803">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%BD%914/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>计网4 | 费罗里的图书馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="费罗里的图书馆" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">费罗里的图书馆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%BD%914/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Oliver">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="费罗里的图书馆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计网4
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 12:25:30" itemprop="dateCreated datePublished" datetime="2020-05-07T12:25:30+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 18:09:11" itemprop="dateModified" datetime="2021-01-12T18:09:11+08:00">2021-01-12</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>物理层</strong> 第四节 传输介质与物理层设备</p>
+<a id="more"></a>
+
+<h4 id="双绞线、同轴电缆、光纤与无线传输介质"><a href="#双绞线、同轴电缆、光纤与无线传输介质" class="headerlink" title="双绞线、同轴电缆、光纤与无线传输介质"></a>双绞线、同轴电缆、光纤与无线传输介质</h4><p>传输介质，又称传输媒体，是发送设备和接收设备之间的物理通路，并非物理层的设备！！！。传输介质可分为<strong>导向传输介质</strong>和<strong>非导向传输介质</strong>。导向传输：电磁波被导向沿着固体媒介(铜线或光纤)传播；非导向传输：传输介质是空气、真空或海水。</p>
+<h5 id="双绞线"><a href="#双绞线" class="headerlink" title="双绞线"></a>双绞线</h5><ol>
+<li>最常用的古老传输介质，两根采用一定规则并排绞合、相互绝缘的铜导线组成。</li>
+<li>绞合减少对相邻导线电磁干扰。无层的双绞线是(UTP)，双绞线外面加一层金属丝编织成的屏蔽层，这就是屏蔽双绞线(STP)。</li>
+<li>双绞线便宜，在局域网和传统电话网中普遍使用。双绞线带宽取决于铜线粗细和传输距离。模拟传输和数字传输都可以使用双绞线，通信距离一般几千米到数十千米。距离太远，模拟传输需要用<strong>放大器放大</strong>衰减信号；数字传输需要用<strong>中继器</strong>将失真的信号<strong>整形</strong>。</li>
+</ol>
+<h5 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h5><ol>
+<li>同轴电缆由内导体、绝缘层、网状编织层屏蔽层和塑料外层构成。共用一个轴心。按特性阻抗数值的不同，分为两类：基带同轴电缆传输基带数字信号，用于局域网；宽带同轴电缆传输宽带信号，用于有线电视系统。</li>
+<li>外导体屏蔽层，良好抗干扰特性，广泛用于传输较高速率的数据，其传输距离更远，比双绞线贵。</li>
+</ol>
+<h5 id="光纤（考纲）"><a href="#光纤（考纲）" class="headerlink" title="光纤（考纲）"></a>光纤（考纲）</h5><ol>
+<li>光纤通信利用光导纤维（简称光纤）传递光脉冲来通信。有光脉冲为1，无光脉冲为0。光纤通信系统的带宽范围极大。</li>
+<li>光纤由<strong>纤芯</strong>（实心）和包层组成，光波通过纤芯进行传导，包层较纤芯有较低的折射率。当光纤从高折射率介质射向低折射率介质，其折射角大于入射角。如果入射角足够大，会形成全反射，即光线碰到包层时会折射回纤芯，这个过程不断重复，光沿着光纤传输下去。</li>
+<li>两种光纤：<ul>
+<li><strong>多模光纤</strong>：入射角不同，形成多束光纤传输。光源是发光二极管。光脉冲在多模光纤传输逐渐展宽，易失真，只适合短距离传输。</li>
+<li><strong>单模光纤</strong>：光纤直径减小到一个光波长度，光纤就像一根波导，可使光纤一直向前传播，不会产生过多反射。光源是定向性好的激光二极管，制作成本高，衰减小，适合远距离传输。</li>
+</ul>
+</li>
+</ol>
+<p>光纤特点：</p>
+<ul>
+<li>传输损耗小，中继距离长，对远距离传输特别经济</li>
+<li>抗雷电和电磁干扰好</li>
+<li>无串音干扰，保密性好</li>
+<li>体积小，重量轻</li>
+</ul>
+<h5 id="无线传输介质"><a href="#无线传输介质" class="headerlink" title="无线传输介质"></a>无线传输介质</h5><ol>
+<li>无线电波：信号向所有方向扩散；广泛用于通信领域：无线手机通信、计算机网络中的无线局域网（WLAN）等。</li>
+<li>微波、红外线和激光：高频率带宽；信号固定方向传播，直线；卫星通信使用微波信号。</li>
+</ol>
+<h4 id="物理层接口的特性"><a href="#物理层接口的特性" class="headerlink" title="物理层接口的特性"></a>物理层接口的特性</h4><p>主要任务：确定与传输媒体的接口有关的一些特性：</p>
+<p>机械特性、电器特性、功能特性、规程特性</p>
+<h4 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h4><ol>
+<li>中继器，又称转发器。主要功能，将信号整形并放大再转发出去，信号再生。放大器是放大模拟信号，中继器整形数字信号。</li>
+<li>具有5-4-3规则</li>
+</ol>
+<h4 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h4><ol>
+<li>集线器（Hub）实质上是一个多端口的中继器，也工作在物理层。由Hub组成的网络是共享式网络，但逻辑上仍是一个总线网。Hub只能在半双工状态下工作。</li>
+<li>对信号进行放大后发到其他所有端口。</li>
+<li>星型拓扑结构的中间就是集线器。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+       <div style="text-align:center;color:#bfbfbf;font-size:16px;">
+             <span>-------- 本文结束 </span>
+             ，
+             <span> 感谢阅读 --------</span>
+       </div>
+    
+</div>
+      
+    </div>
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%80%83%E7%A0%94803/" rel="tag"># 考研803</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/06/%E8%AE%A1%E7%BD%913/" rel="prev" title="计网3">
+      <i class="fa fa-chevron-left"></i> 计网3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/07/%E8%AE%A1%E7%BD%915/" rel="next" title="计网5">
+      计网5 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#双绞线、同轴电缆、光纤与无线传输介质"><span class="nav-number">1.</span> <span class="nav-text">双绞线、同轴电缆、光纤与无线传输介质</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#双绞线"><span class="nav-number">1.1.</span> <span class="nav-text">双绞线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同轴电缆"><span class="nav-number">1.2.</span> <span class="nav-text">同轴电缆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#光纤（考纲）"><span class="nav-number">1.3.</span> <span class="nav-text">光纤（考纲）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#无线传输介质"><span class="nav-number">1.4.</span> <span class="nav-text">无线传输介质</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层接口的特性"><span class="nav-number">2.</span> <span class="nav-text">物理层接口的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中继器"><span class="nav-number">3.</span> <span class="nav-text">中继器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集线器"><span class="nav-number">4.</span> <span class="nav-text">集线器</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oliver"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Oliver</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oliver6565" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oliver6565" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oliver</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">82k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:15</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
