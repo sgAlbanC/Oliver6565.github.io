@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2020/06/24/%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.svg">
 <meta property="article:published_time" content="2020-06-24T03:36:01.000Z">
-<meta property="article:modified_time" content="2021-01-12T03:24:20.740Z">
+<meta property="article:modified_time" content="2021-01-13T12:39:58.871Z">
 <meta property="article:author" content="Oliver">
 <meta property="article:tag" content="考研">
 <meta name="twitter:card" content="summary">
@@ -229,7 +229,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 11:24:20" itemprop="dateModified" datetime="2021-01-12T11:24:20+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-13 20:39:58" itemprop="dateModified" datetime="2021-01-13T20:39:58+08:00">2021-01-13</time>
               </span>
 
           <br>
@@ -375,14 +375,15 @@
 <p>一个字符变量在内存中占一个字节；</p>
 </li>
 <li><p>字符串常量</p>
-<p>字符串常量是一对双引号括起来的字符序列</p>
+<p>字符串常量是一对<strong>双引号</strong>括起来的字符序列</p>
 <p>“How do you do” “hello” “a”</p>
 <p>不能把一个字符串常量赋值给一个字符变量</p>
-<p>C规定以字符 <strong>‘\0’ 作为字符串结束标志</strong>。这个结束标志是会和字符串数据存到内存中的，占一个bit</p>
+<p>C规定，以字符 <strong>‘\0’ 作为字符串结束标志</strong>。这个结束标志是会和字符串数据存到内存中的，占一个bit</p>
 </li>
 </ol>
 <h4 id="考点6-变量赋初值"><a href="#考点6-变量赋初值" class="headerlink" title="考点6 变量赋初值"></a>考点6 变量赋初值</h4><ol>
-<li><p>C语言运行在定义变量的同时，使变量初始化</p>
+<li><p>C语言运行在定义变量的同时，变量初始化!</p>
+<p>例如：</p>
 <p>int a = 1；</p>
 <p>float f = 3.56；</p>
 <p>char c = ‘a’；  //指定c为字符变量，初值为‘a’</p>
@@ -397,13 +398,13 @@
 <li>逻辑运算符：！&amp;&amp; ||</li>
 <li>位运算符：&lt;&lt;&gt;&gt; ~ | ^ &amp;</li>
 <li>赋值运算符：=</li>
-<li>条件运算符：？：</li>
+<li>条件运算符：？：（三目运算符，条件运算符；max = （a&gt;b）?a:b ）</li>
 <li>逗号运算符：，</li>
 <li>指针运算符：* &amp;</li>
 <li>求字节数运算符：sizeof</li>
 <li>强制类型转换运算符：（类型）</li>
 <li>分量运算符：.-&gt;</li>
-<li>下标运算符： []</li>
+<li>下标运算符： []  ；查询数组的某个元素</li>
 <li>其他：函数调用</li>
 </ul>
 </li>
@@ -415,8 +416,7 @@
 <li><p>自增自减</p>
 </li>
 </ol>
-<h4 id="考点9-赋值运算符和赋值表达式"><a href="#考点9-赋值运算符和赋值表达式" class="headerlink" title="考点9 赋值运算符和赋值表达式"></a>考点9 赋值运算符和赋值表达式</h4><p>=</p>
-<p>a = 3 ；将3赋值给变量a；也可以将一个表达式赋值给变量a</p>
+<h4 id="考点9-赋值运算符和赋值表达式"><a href="#考点9-赋值运算符和赋值表达式" class="headerlink" title="考点9 赋值运算符和赋值表达式"></a>考点9 赋值运算符和赋值表达式</h4><p>a = 3 ；将3赋值给变量a；或将一个表达式赋值给变量a</p>
 <p>如果赋值运算两侧类型不一致，但都是数值型或字符型时，在赋值时要进行类转换</p>
 <ul>
 <li><p>将浮点型数据（单/双精度）赋值给整型变量时，舍弃浮点数的小数部分；即如果i为int型，那么i = 3.56，那么i的值最终为3，以整数形式存储在整型变量中</p>
