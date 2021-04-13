@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="搭建django的一些坑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django搭建">
+<meta property="og:url" content="http://yoursite.com/2020/04/03/django%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="费罗里的图书馆">
+<meta property="og:description" content="搭建django的一些坑">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/04/03/django%E6%90%AD%E5%BB%BA/d1.png">
+<meta property="article:published_time" content="2020-04-03T15:51:15.000Z">
+<meta property="article:modified_time" content="2020-04-04T13:42:22.941Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="Django">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/03/django%E6%90%AD%E5%BB%BA/d1.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/03/django%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>django搭建 | 费罗里的图书馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="费罗里的图书馆" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">费罗里的图书馆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/03/django%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Oliver">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="费罗里的图书馆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          django搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-03 23:51:15" itemprop="dateCreated datePublished" datetime="2020-04-03T23:51:15+08:00">2020-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-04 21:42:22" itemprop="dateModified" datetime="2020-04-04T21:42:22+08:00">2020-04-04</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>搭建django的一些坑</p>
+<a id="more"></a>
+
+<h5 id="1-下载安装python"><a href="#1-下载安装python" class="headerlink" title="1. 下载安装python"></a>1. 下载安装python</h5><p>3.4以上新版python下载后自带pip，pip根据提示自我更新</p>
+<h5 id="2-用python-的pip管理器去下载django"><a href="#2-用python-的pip管理器去下载django" class="headerlink" title="2. 用python 的pip管理器去下载django"></a>2. 用python 的pip管理器去下载django</h5><p>注意pip 和 django  和python 的版本</p>
+<p>注意 pip 自我更新 和下载django的时候，报错重来，多下几次。</p>
+<h5 id="3-配置django环境变量"><a href="#3-配置django环境变量" class="headerlink" title="3. 配置django环境变量"></a>3. 配置django环境变量</h5><p>在path中加入两个 一个是到script 一个是到bin</p>
+<h5 id="4-下载安装pycharm社区版（官网）"><a href="#4-下载安装pycharm社区版（官网）" class="headerlink" title="4. 下载安装pycharm社区版（官网）"></a>4. 下载安装pycharm社区版（官网）</h5><p>目前双击打不开，用cmd可以输入pycharm打开，命令不能关</p>
+<h5 id="5-pycharm-设置背景颜色-字体大小"><a href="#5-pycharm-设置背景颜色-字体大小" class="headerlink" title="5. pycharm 设置背景颜色 字体大小"></a>5. pycharm 设置背景颜色 字体大小</h5><p>settings里面的</p>
+<h5 id="6-project-interpreter"><a href="#6-project-interpreter" class="headerlink" title="6. project interpreter"></a>6. project interpreter</h5><p>在settings -&gt; Project 中添加 python</p>
+<h5 id="7-django项目要添加python-exe"><a href="#7-django项目要添加python-exe" class="headerlink" title="7. django项目要添加python.exe"></a>7. django项目要添加python.exe</h5><h5 id="8-在下面-的-Terminal终端中执行"><a href="#8-在下面-的-Terminal终端中执行" class="headerlink" title="8. 在下面 的 Terminal终端中执行"></a>8. 在下面 的 Terminal终端中执行</h5><p>python manage.py runserver 开启服务器，django自带一个小型服务器，自动开启8000端口号。可在settings文件中更改</p>
+<h5 id="9-python-3-x和2-x"><a href="#9-python-3-x和2-x" class="headerlink" title="9. python 3.x和2.x"></a>9. python 3.x和2.x</h5><p>两个版本是由差距的，会影响django还有一些依赖插件比如pymysql是3.x用的</p>
+<h5 id="10-接口测试时Forbidden-CSRF-cookie-not-set"><a href="#10-接口测试时Forbidden-CSRF-cookie-not-set" class="headerlink" title="10. 接口测试时Forbidden (CSRF cookie not set.)"></a>10. 接口测试时Forbidden (CSRF cookie not set.)</h5><p>可以去settings里面 MIDDLEWARE = [ 那个csrf. ]  注释掉</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt</span><br><span class="line"> </span><br><span class="line"><span class="meta">@csrf_exempt </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_api</span><span class="params">(request)</span>:</span></span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        dic[<span class="string">'message'</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(json.dumps(dic))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        dic[<span class="string">'message'</span>] = <span class="string">'方法错误'</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(json.dumps(dic, ensure_ascii=<span class="literal">False</span>))</span><br><span class="line">    </span><br><span class="line"> <span class="comment"># 这里是views里面的一个如何返回类似json文件的例子</span></span><br><span class="line"> <span class="comment"># 这样 就可以 简单的实现写views 不用管渲染的部分</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="11-ajax-简单传值"><a href="#11-ajax-简单传值" class="headerlink" title="11. ajax 简单传值"></a>11. ajax 简单传值</h5><img src="/2020/04/03/django%E6%90%AD%E5%BB%BA/d1.png" class>
+
+<h5 id="12-Django-中-request方法"><a href="#12-Django-中-request方法" class="headerlink" title="12. Django 中 request方法"></a>12. Django 中 request方法</h5><p>request.session</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请求的路径，这里的路径是指相对路径，也就是说一个登陆后台页面的请求：http:&#96;&#96;&#x2F;&#96;&#96;&#x2F;&#96;&#96;127.0&#96;&#96;.&#96;&#96;0.1&#96;&#96;:&#96;&#96;8000&#96;&#96;&#x2F;&#96;&#96;admin 的路径是 &#96;&#96;&#x2F;&#96;&#96;admin</span><br><span class="line">获取完整路径（包括参数）：HttpRequest.get_full_path()</span><br><span class="line">获取绝对url： HttpRequest.bulid_absolute_uri(location) 此参数默认为完整路径</span><br></pre></td></tr></table></figure>
+
+<p>request.encoding</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求提交的数据的编码方式</span><br></pre></td></tr></table></figure>
+
+<p> request.session</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.session 获取的是一个类似于字典的对象，可以进行读取写入操作，常用来保存一些数据来实现会话跟踪技术。 因为 HTTP 是一个无状态，不连续的协议。如果想让服务器记住当前的访问对象，就需要记录请求者的一些信息来达到这个目的。</span><br><span class="line"># 设置session&#96;&#96;request.session[&#96;&#96;&quot;name&quot;&#96;&#96;] &#96;&#96;&#x3D;&#96; &#96;&quot;root&quot;&#96;&#96;# 获取session&#96;&#96;name &#96;&#96;&#x3D;&#96; &#96;request.sessin[&#96;&#96;&quot;name&quot;&#96;&#96;]</span><br></pre></td></tr></table></figure>
+
+<p>django会默认为session使用json序列化。json序列化只能序列化一些基本数据类型，如数字，字符串，列表等。所以session不能直接存储对象.可以简单的在settings中添加 SESSION_SERIALIZER = “django.contrib.sessions.serializers.PickleSerializer”</p>
+<p>request.method   请求方式POST/GET</p>
+<h5 id="13-request获取数据"><a href="#13-request获取数据" class="headerlink" title="13. request获取数据"></a>13. request获取数据</h5><p>request.body</p>
+<p>请求的主体，返回一个字符串</p>
+<p>request.data</p>
+<p>请求数据部分，返回一个字典对象，其他和request.body很想</p>
+<p><strong>request.POST</strong></p>
+<p>获取post方式表单中提交的数据</p>
+<p>request.POST[“username”]</p>
+<p>request.POST.get（“username”）</p>
+<p>request.GET</p>
+<p>获取get方式表单中或url提交的数据</p>
+<p>request.GET[“username”]</p>
+<p>request.GET.get（“username”）</p>
+<h5 id="14-postman请求"><a href="#14-postman请求" class="headerlink" title="14. postman请求"></a>14. postman请求</h5><p>请求post时，在body里面写参数！！</p>
+<p>请求get时，在params里面写参数！！</p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+       <div style="text-align:center;color:#bfbfbf;font-size:16px;">
+             <span>-------- 本文结束 </span>
+             ，
+             <span> 感谢阅读 --------</span>
+       </div>
+    
+</div>
+      
+    </div>
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Django/" rel="tag"># Django</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/01/%E5%89%8D%E7%AB%AFUI%E6%A1%86%E6%9E%B6%E5%B0%8F%E6%80%BB%E7%BB%93/" rel="prev" title="前端UI框架小总结">
+      <i class="fa fa-chevron-left"></i> 前端UI框架小总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/06/RESTfull/" rel="next" title="RESTfull">
+      RESTfull <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-下载安装python"><span class="nav-number">1.</span> <span class="nav-text">1. 下载安装python</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-用python-的pip管理器去下载django"><span class="nav-number">2.</span> <span class="nav-text">2. 用python 的pip管理器去下载django</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-配置django环境变量"><span class="nav-number">3.</span> <span class="nav-text">3. 配置django环境变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-下载安装pycharm社区版（官网）"><span class="nav-number">4.</span> <span class="nav-text">4. 下载安装pycharm社区版（官网）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-pycharm-设置背景颜色-字体大小"><span class="nav-number">5.</span> <span class="nav-text">5. pycharm 设置背景颜色 字体大小</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-project-interpreter"><span class="nav-number">6.</span> <span class="nav-text">6. project interpreter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-django项目要添加python-exe"><span class="nav-number">7.</span> <span class="nav-text">7. django项目要添加python.exe</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-在下面-的-Terminal终端中执行"><span class="nav-number">8.</span> <span class="nav-text">8. 在下面 的 Terminal终端中执行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-python-3-x和2-x"><span class="nav-number">9.</span> <span class="nav-text">9. python 3.x和2.x</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-接口测试时Forbidden-CSRF-cookie-not-set"><span class="nav-number">10.</span> <span class="nav-text">10. 接口测试时Forbidden (CSRF cookie not set.)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-ajax-简单传值"><span class="nav-number">11.</span> <span class="nav-text">11. ajax 简单传值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-Django-中-request方法"><span class="nav-number">12.</span> <span class="nav-text">12. Django 中 request方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-request获取数据"><span class="nav-number">13.</span> <span class="nav-text">13. request获取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#14-postman请求"><span class="nav-number">14.</span> <span class="nav-text">14. postman请求</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oliver"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Oliver</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oliver6565" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oliver6565" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oliver</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">82k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:15</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

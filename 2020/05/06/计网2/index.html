@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="概述 第二节 计算机网络体系结构与参考模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网2">
+<meta property="og:url" content="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%912/index.html">
+<meta property="og:site_name" content="费罗里的图书馆">
+<meta property="og:description" content="概述 第二节 计算机网络体系结构与参考模型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%912/OSI%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%912/TCPIP%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg">
+<meta property="article:published_time" content="2020-05-06T11:03:33.000Z">
+<meta property="article:modified_time" content="2021-01-12T10:08:54.367Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="考研803">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%912/OSI%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%912/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>计网2 | 费罗里的图书馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="费罗里的图书馆" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">费罗里的图书馆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%912/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Oliver">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="费罗里的图书馆">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计网2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-06 19:03:33" itemprop="dateCreated datePublished" datetime="2020-05-06T19:03:33+08:00">2020-05-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 18:08:54" itemprop="dateModified" datetime="2021-01-12T18:08:54+08:00">2021-01-12</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>概述</strong> 第二节 计算机网络体系结构与参考模型</p>
+<a id="more"></a>
+
+<h4 id="计算机网络分层结构"><a href="#计算机网络分层结构" class="headerlink" title="计算机网络分层结构"></a>计算机网络分层结构</h4><ol>
+<li><p>我们把计算机网络的各层及其协议的集合 称为<strong>网络的体系结构</strong>，是从<strong>功能</strong>上描述计算机网络结构，是计算机网络中的层次、各层的协议及层间接口的集合。体系结构是抽象的，而实现是具体的。</p>
+</li>
+<li><p>分成的五个基本原则：</p>
+<ul>
+<li><p>每层都实现一种相对独立功能，降低大系统复杂度</p>
+</li>
+<li><p>各层之间界面自然清晰，易于理解，相互交流尽可能少</p>
+</li>
+<li><p>各层采用最合适的技术来实现</p>
+</li>
+<li><p>保持下层对上传的独立性，下层单项提供上层服务</p>
+</li>
+<li><p>整个分层结构促进标准化工作</p>
+</li>
+</ul>
+</li>
+<li><p>在计网分层结构中，第n层中的活动元素通常称为<strong>n层实体</strong>。不同及其上的同一层称为<strong>对等层</strong>，同一层的实体称为<strong>对等实体</strong>。n 提供服务给 n+1层。</p>
+</li>
+<li><p>在计网分层结构中，每个报文都分为两部分：数据部分 SDU 和控制信息部分 PCI，SDU+PCI = PDU</p>
+</li>
+<li><p>服务数据单元（SDU）、协议控制信息（PCI）、协议数据单元（PDU）；在各层间传输数据时，把从第n+1层收到的PDU作为第n层的SDU，加上第n层的PCI，变成了第n层的PDU，交给第n-1层作为SDU发送，接收方接收时做相反的处理。</p>
+</li>
+<li><p>物理层的PDU称为<strong>比特</strong>；链路层的PDU称为<strong>帧</strong>、网络层的PDU称为<strong>分组</strong>、传输层的PDU称为<strong>报文</strong>；</p>
+</li>
+</ol>
+<h4 id="计算机网络的协议、接口、服务的概念"><a href="#计算机网络的协议、接口、服务的概念" class="headerlink" title="计算机网络的协议、接口、服务的概念"></a>计算机网络的协议、接口、服务的概念</h4><h5 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h5><ol>
+<li>协议，就是规则的集合。为网络中的数据交换建立的规则、标准、约定称为<strong>网络协议</strong>（Network Protocol）；控制两个或多个对等实体进行通信的规则集合，是<strong>水平的</strong>。不对等实体之间是没有协议的。</li>
+<li>协议由<strong>语法</strong>、<strong>语义</strong>和<strong>同步</strong>三部分组成。语法规定传输数据的格式（比如二进制 01）；语义规定了所要完成的功能，需要发出何种控制信息、完成何种动作、答复；同步规定了执行各操作的条件、时序关系等。</li>
+<li>一个完整的协议通常具有线路管理（建立、释放连接）、差错控制、数据转换等功能。</li>
+</ol>
+<h5 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h5><p>接口时同一结点内相邻两层间交换信息的连接点，是一个系统内部的规定。每层只能为紧邻的层次之间定义接口，不能跨层定义接口。服务访问点（Service Access Point , SAP），服务是通过SAP提供给上层使用的。每个SAP都有一个能够表示它的地址。SAP是一个抽象概念，实际上是一个逻辑接口。</p>
+<h5 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h5><p>服务是指下层为紧邻的上层提供的功能调用，是<strong>垂直的</strong>。对等实体在协议的控制下，使得本层能为上层提供服务。OSI中称为服务原语：请求、指示、响应、证实。</p>
+<p>计算机网络提供的服务可按照以下分类</p>
+<ul>
+<li>面向连接服务与无连接服务</li>
+<li>可靠服务和不可靠服务</li>
+<li>有应答服务和无应答服务</li>
+</ul>
+<h4 id="ISO-OSI参考模型和TCP-IP模型（考纲）"><a href="#ISO-OSI参考模型和TCP-IP模型（考纲）" class="headerlink" title="ISO/OSI参考模型和TCP/IP模型（考纲）"></a>ISO/OSI参考模型和TCP/IP模型（考纲）</h4><p>目的：支持异构网络系统的互联互通。</p>
+<h5 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h5><p>国际标准化组织ISO提出的网络体系结构模型，称为开放系统互联参考模型OSI/RM，简称为OSI参考模型，有7层。</p>
+<img src="/2020/05/06/%E8%AE%A1%E7%BD%912/OSI%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg" class>
+
+<p>总结下：</p>
+<ol>
+<li>物理层：主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流(就是由1、0转化为电流强弱来进行传输，到达目的地后再转化为1、0，也就是我们常说的数模转换与模数转换)。这一层的数据叫做比特。</li>
+<li>数据链路层：定义了如何让格式化数据以进行传输，以及如何让控制对物理介质的访问。这一层通常还提供错误检测和纠正，以确保数据的可靠传输。</li>
+<li>网络层：在位于不同地理位置的网络中的两个主机系统之间提供连接和路径选择。Internet的发展使得从世界各站点访问信息的用户数大大增加，而网络层正是管理这种连接的层。</li>
+<li>传输层：定义了一些传输数据的协议和端口号(WWW端口80等)，如：TCP(传输控制协议，传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据)，UDP(用户数据报协议，与TCP特性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的）。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层数据叫做段。</li>
+<li>会话层：通过传输层(端口号：传输端口与接收端口)建立数据传输的通路。主要在你的系统之间发起会话或者接受会话请求(设备之间需要互相认识可以是IP也可以是MAC或者是主机名)。</li>
+<li>表示层：可确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取。例如，PC程序与另一台计算机进行通信，其中一台计算机使用扩展二一十进制交换吗(EBCDIC)，而另一台则使用美国信息交换标准码（ASCII）来表示相同的字符。如有必要，表示层会通过使用一种通格式来实现多种数据格式之间的转换。</li>
+<li>应用层：是最靠近用户的OSI层。这一层为用户的应用程序(例如电子邮件、文件传输和终端仿真)提供网络服务。</li>
+</ol>
+<h5 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP/IP模型"></a>TCP/IP模型</h5><p>事实标准 4层</p>
+<img src="/2020/05/06/%E8%AE%A1%E7%BD%912/TCPIP%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.jpg" class>
+
+<p>总结下：</p>
+<ol>
+<li>TCP/IP参考模型是首先由ARPANET所使用的<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=301274&ss_c=ssc.citiao.link" target="_blank" rel="noopener">网络体系结构</a>。这个体系结构在它的两个主要协议出现以后被称为TCP/IP参考模型(TCP/IP Reference Model)。这一网络协议共分为四层：<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=166609564&ss_c=ssc.citiao.link" target="_blank" rel="noopener">网络访问层</a>、<a href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=62691577&ss_c=ssc.citiao.link" target="_blank" rel="noopener">互联网层</a>、传输层和应用层</li>
+<li>TCP/IP协议不是 TCP和 IP这两个协议的合称，而是指因特网整个TCP/IP协议族。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+       <div style="text-align:center;color:#bfbfbf;font-size:16px;">
+             <span>-------- 本文结束 </span>
+             ，
+             <span> 感谢阅读 --------</span>
+       </div>
+    
+</div>
+      
+    </div>
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%80%83%E7%A0%94803/" rel="tag"># 考研803</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/06/%E8%AE%A1%E7%BD%911/" rel="prev" title="计网1">
+      <i class="fa fa-chevron-left"></i> 计网1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/06/%E8%AE%A1%E7%BD%913/" rel="next" title="计网3">
+      计网3 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机网络分层结构"><span class="nav-number">1.</span> <span class="nav-text">计算机网络分层结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机网络的协议、接口、服务的概念"><span class="nav-number">2.</span> <span class="nav-text">计算机网络的协议、接口、服务的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#协议"><span class="nav-number">2.1.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接口"><span class="nav-number">2.2.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务"><span class="nav-number">2.3.</span> <span class="nav-text">服务</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ISO-OSI参考模型和TCP-IP模型（考纲）"><span class="nav-number">3.</span> <span class="nav-text">ISO&#x2F;OSI参考模型和TCP&#x2F;IP模型（考纲）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">3.1.</span> <span class="nav-text">OSI参考模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP-IP模型"><span class="nav-number">3.2.</span> <span class="nav-text">TCP&#x2F;IP模型</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oliver"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Oliver</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oliver6565" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oliver6565" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oliver</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">82k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:15</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
