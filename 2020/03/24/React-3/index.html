@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>React 3 - Neitherland</title>
+
+
+    <meta name="description" content="React（转载）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 3">
+<meta property="og:url" content="http://yoursite.com/2020/03/24/React-3/index.html">
+<meta property="og:site_name" content="Neitherland">
+<meta property="og:description" content="React（转载）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-03-24T09:44:33.000Z">
+<meta property="article:modified_time" content="2020-03-29T03:41:34.000Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/%E5%9B%BE%E4%B9%A6%E9%A6%86.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="Neitherland" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="React 3" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-24T09:44:33.000Z">2020-03-24</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    26 分钟 读完 (大约 3918 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                React 3
+            
+        </h1>
+        <div class="content">
+            <h4 id="React（转载）"><a href="#React（转载）" class="headerlink" title="React（转载）"></a>React（转载）</h4><a id="more"></a>
+
+<blockquote>
+<p>学习文档转自黑马教程</p>
+</blockquote>
+<h4 id="ReactJS简介"><a href="#ReactJS简介" class="headerlink" title="ReactJS简介"></a>ReactJS简介</h4><ul>
+<li>React 起源于 Facebook 的内部项目，因为该公司对市场上所有 JavaScript MVC 框架，都不满意，就决定自己写一套，用来架设 Instagram 的网站。做出来以后，发现这套东西很好用，<strong>就在2013年5月开源了</strong>。</li>
+<li>由于 React 的设计思想极其独特，属于革命性创新，性能出众，代码逻辑却非常简单。所以，越来越多的人开始关注和使用，认为它可能是将来 Web 开发的主流工具。</li>
+<li>library</li>
+<li>Framework</li>
+</ul>
+<h4 id="前端三大主流框架"><a href="#前端三大主流框架" class="headerlink" title="前端三大主流框架"></a>前端三大主流框架</h4><ul>
+<li>Angular.js：出来最早的前端框架，学习曲线比较陡，NG1学起来比较麻烦，NG2开始，进行了一系列的改革，也开始启用组件化了；在NG中，也支持使用TS（TypeScript）进行编程；</li>
+<li>Vue.js：最火的一门前端框架，它是中国人开发的，对我我们来说，文档要友好一些；</li>
+<li>React.js：最流行的一门框架，因为它的设计很优秀；</li>
+<li>windowsPhone 7    7.5   8   10</li>
+</ul>
+<h4 id="React与vue-js的对比"><a href="#React与vue-js的对比" class="headerlink" title="React与vue.js的对比"></a>React与vue.js的对比</h4><h5 id="组件化方面"><a href="#组件化方面" class="headerlink" title="组件化方面"></a>组件化方面</h5><ol>
+<li><p>什么是模块化：从 <strong>代码</strong> 的角度，去分析问题，把我们编程时候的业务逻辑，分割到不同的模块中来进行开发，这样能够<strong>方便代码的重用</strong>；</p>
+</li>
+<li><p>什么是组件化：从 <strong>UI</strong> 的角度，去分析问题，把一个页面，拆分为一些互不相干的小组件，随着我们项目的开发，我们手里的组件会越来越多，最后，我们如果要实现一个页面，可能直接把现有的组件拿过来进行拼接，就能快速得到一个完整的页面， 这样方<strong>便了UI元素的重用</strong>；<strong>组件是元素的集合体</strong>；</p>
+</li>
+<li><p>组件化的好处：</p>
+</li>
+<li><p>Vue是如何实现组件化的：.vue 组件模板文件，浏览器不识别这样的.vue文件，所以，在运行前，会把 .vue 预先编译成真正的组件；</p>
+<ul>
+<li>template： UI结构</li>
+<li>script： 业务逻辑和数据</li>
+<li>style： UI的样式</li>
+</ul>
+</li>
+<li><p>React如何实现组件化：在React中实现组件化的时候，根本没有 像 .vue 这样的模板文件，而是，直接使用JS代码的形式，去创建任何你想要的组件；</p>
+<ul>
+<li>React中的组件，都是直接在 js 文件中定义的；</li>
+<li>React的组件，并没有把一个组件 拆分为 三部分（结构、样式、业务逻辑），而是全部使用JS来实现一个组件的；（也就是说：结构、样式、业务逻辑是混合在JS里面一起编写出来的）</li>
+</ul>
+</li>
+</ol>
+<h5 id="开发团队方面"><a href="#开发团队方面" class="headerlink" title="开发团队方面"></a>开发团队方面</h5><ul>
+<li>React是由FaceBook前端官方团队进行维护和更新的；因此，React的维护开发团队，技术实力比较雄厚；</li>
+<li>Vue：第一版，主要是有作者 尤雨溪 专门进行维护的，当 Vue更新到 2.x 版本后，也有了一个小团队进行相关的维护和开发；</li>
+</ul>
+<h5 id="社区方面"><a href="#社区方面" class="headerlink" title="社区方面"></a>社区方面</h5><ul>
+<li>在社区方面，React由于诞生的较早，所以社区比较强大，一些常见的问题、坑、最优解决方案，文档、博客在社区中都是可以很方便就能找到的；</li>
+<li>Vue是近两年才诞生开源出来的，所以，它的社区相对于React来说，要小巧一些，所以，可能有的一些坑，没人踩过；</li>
+</ul>
+<h5 id="移动APP开发体验方面"><a href="#移动APP开发体验方面" class="headerlink" title="移动APP开发体验方面"></a>移动APP开发体验方面</h5><ul>
+<li>Vue，结合 Weex 这门技术，提供了 迁移到 移动端App开发的体验（Weex，目前只是一个 小的玩具， 并没有很成功的 大案例；）</li>
+<li>React，结合 ReactNative，也提供了无缝迁移到 移动App的开发体验（RN用的最多，也是最火最流行的）；</li>
+</ul>
+<h4 id="为什么要学习React"><a href="#为什么要学习React" class="headerlink" title="为什么要学习React"></a>为什么要学习React</h4><ol>
+<li>设计很优秀，是基于组件化的，方便我们UI代码的重用；</li>
+<li>开发团队实力强悍，不必担心短更的情况；</li>
+<li>社区强大，很多问题都能找到对应的解决方案；</li>
+<li>提供了无缝转到 ReactNative 上的开发体验，让我们技术能力得到了拓展；增强了我们的核心竞争力</li>
+</ol>
+<h4 id="React中几个核心的概念"><a href="#React中几个核心的概念" class="headerlink" title="React中几个核心的概念"></a>React中几个核心的概念</h4><h5 id="虚拟DOM（Virtual-Document-Object-Model）"><a href="#虚拟DOM（Virtual-Document-Object-Model）" class="headerlink" title="虚拟DOM（Virtual Document Object Model）"></a>虚拟DOM（Virtual Document Object Model）</h5><ul>
+<li>DOM的本质是什么：就是用JS表示的UI元素</li>
+<li>DOM和虚拟DOM的区别：<ul>
+<li>DOM是由浏览器中的JS提供功能，所以我们只能人为的使用 浏览器提供的固定的API来操作DOM对象；</li>
+<li>虚拟DOM：并不是由浏览器提供的，而是我们程序员手动模拟实现的，类似于浏览器中的DOM，但是有着本质的区别；</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>为什么要实现虚拟DOM：</li>
+<li>什么是React中的虚拟DOM：</li>
+<li>虚拟DOM的目的：<img src="/2020/03/24/React-3/%E8%99%9A%E6%8B%9FDOM%E5%BC%95%E5%85%A5%E5%9B%BE%E7%89%87.png" class>
+
+</li>
+</ul>
+<h5 id="Diff算法"><a href="#Diff算法" class="headerlink" title="Diff算法"></a>Diff算法</h5><ul>
+<li>tree diff:新旧DOM树，逐层对比的方式，就叫做 tree diff,每当我们从前到后，把所有层的节点对比完后，必然能够找到那些 需要被更新的元素；</li>
+<li>component diff：在对比每一层的时候，组件之间的对比，叫做 component diff;当对比组件的时候，如果两个组件的类型相同，则暂时认为这个组件不需要被更新，如果组件的类型不同，则立即将旧组件移除，新建一个组件，替换到被移除的位置；</li>
+<li>element diff:在组件中，每个元素之间也要进行对比，那么，元素级别的对比，叫做 element diff；</li>
+<li>key：key这个属性，可以把 页面上的 DOM节点 和 虚拟DOM中的对象，做一层关联关系；<img src="/2020/03/24/React-3/Diff.png" class>
+
+</li>
+</ul>
+<h4 id="React项目的创建"><a href="#React项目的创建" class="headerlink" title="React项目的创建"></a>React项目的创建</h4><ol>
+<li><p>运行 <code>cnpm i react react-dom -S</code> 安装包</p>
+<p>1.1 react 这个包，是专门用来创建React组件、创建虛擬DOM、组件生命周期等这些东西的；<br>1.2 react-dom 里面主要封装了和 DOM 操作相关的包，进行DOM操作，最主要的应用场景是 ReactDOM， render()</p>
+</li>
+<li><p>在项目中导入两个相关的包：</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>使用JS的创建虚拟DOM节点：</p>
+<p>在 react 中，如要要创建 DOM 元素了，只能使用 React 提供的 JS API 来创建，不能【直接】像 Vue 中那样，手写 HTML 元素</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// React.createElement() 方法，用于创建 虚拟DOM 对象，它接收 3个及以上的参数</span></span><br><span class="line">   <span class="comment">// 参数1： 是个字符串类型的参数，表示要创建的元素类型</span></span><br><span class="line">   <span class="comment">// 参数2： 是一个属性对象，表示 创建的这个元素上，有哪些属性</span></span><br><span class="line">   <span class="comment">// 参数3： 从第三个参数的位置开始，后面可以放好多的虚拟DOM对象，这写参数，表示当前元素的子节点</span></span><br><span class="line">   <span class="comment">// &lt;div title="this is a div" id="mydiv"&gt;这是一个div&lt;/div&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> myH1 = React.createElement(<span class="string">'h1'</span>, <span class="literal">null</span>, <span class="string">'这是一个大大的H1'</span>)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> myDiv = React.createElement(<span class="string">'div'</span>, &#123; <span class="attr">title</span>: <span class="string">'this is a div'</span>, <span class="attr">id</span>: <span class="string">'mydiv'</span> &#125;, <span class="string">'这是一个div'</span>, myH1)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用 ReactDOM 把元素渲染到页面指定的容器中：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ReactDOM.render('要渲染的虚拟DOM元素', '要渲染到页面上的哪个位置中')</span></span><br><span class="line"><span class="comment">// 注意： ReactDOM.render() 方法的第二个参数，和vue不一样，不接受 "#app" 这样的字符串，而是需要传递一个 原生的 DOM 对象</span></span><br><span class="line">ReactDOM.render(myDiv, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="JSX语法-配合官方jsx文档"><a href="#JSX语法-配合官方jsx文档" class="headerlink" title="JSX语法 (配合官方jsx文档)"></a>JSX语法 (配合官方jsx文档)</h4><p>​    <em>Babel 是一个 JavaScript 编译器。（把浏览器不认识的语法，编译成浏览器认识的语法。）</em></p>
+<p>​    <em>webpack 是一个现代 JavaScript 应用程序的静态模块打包器。（项目打包）</em></p>
+<ol>
+<li><p>如要要使用 JSX 语法，必须先运行 <code>cnpm i babel-preset-react -D</code>，然后再 <code>.babelrc</code> 中添加 语法配置；</p>
+<p>运行 <code>cnpm i babel-core babel-loader babel-plugin-transform-runtime -D</code></p>
+<p>运行 <code>cnpm i babel-present-env babel-preset-stage -D</code></p>
+</li>
+<li><p>JSX语法的本质：还是以 React.createElement 的形式来实现的，并没有直接把 用户写的 HTML代码，渲染到页面上；</p>
+</li>
+<li><p>如果要在 JSX 语法内部，书写 JS 代码了，那么，所有的JS代码，必须写到 {} 内部；</p>
+<ul>
+<li><p>渲染数字</p>
+</li>
+<li><p>渲染字符串</p>
+</li>
+<li><p>渲染布尔值</p>
+</li>
+<li><p>为属性绑定值</p>
+</li>
+<li><p>渲染jsx元素</p>
+</li>
+<li><p>渲染jsx元素数组</p>
+</li>
+<li><p>将普通字符串数组 转为jsx数组并渲染到页面上</p>
+<p>eg：<code>let a = 10</code></p>
+</li>
+</ul>
+<p>​        <code>&lt;div&gt; {a} &lt;/div&gt;</code></p>
+<p>​        <code>&lt;div&gt; {a+2} &lt;/div&gt;</code>  也可以进行基本的运算</p>
+<img src="/2020/03/24/React-3/r1.png" class>
+</li>
+<li><p>当 编译引擎，在编译JSX代码的时候，如果遇到了<code>&lt;</code>那么就把它当作 HTML代码去编译，如果遇到了 <code>{}</code> 就把 花括号内部的代码当作 普通JS代码去编译；</p>
+</li>
+<li><p>在{}内部，可以写任何符合JS规范的代码；</p>
+</li>
+<li><p>在JSX中，如果要为元素添加<code>class</code>属性了，那么，必须写成<code>className</code>，因为 <code>class</code>在ES6中是一个关键字；和<code>class</code>类似，label标签的 <code>for</code> 属性需要替换为 <code>htmlFor</code>.</p>
+</li>
+<li><p>在JSX创建DOM的时候，所有的节点，必须有唯一的根元素进行包裹；</p>
+</li>
+<li><p>如果要写注释了，注释必须放到 <code>{/* */}</code> 内部</p>
+</li>
+</ol>
+<h4 id="React中：第一种创建组件的方式"><a href="#React中：第一种创建组件的方式" class="headerlink" title="React中：第一种创建组件的方式"></a>React中：第一种创建组件的方式</h4><blockquote>
+<p>使用构造构造函数来创造组件，如果要接收外界传递的数据，需要再 构造函数的参数列表中使用<code>props</code>来接收；必须要向外return一个合法的JSX创建的虚拟DOM</p>
+</blockquote>
+<ul>
+<li><p>创建组件：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意：组件首字母必须是大写</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// return null</span></span><br><span class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello 组件<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为组件传递数据：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用组件，并为组件传递props 数据</span></span><br><span class="line">&lt;Hello name=&#123;dog.name&#125; age=&#123;dog.age&#125; gender=&#123;dog.gender&#125;&gt;&lt;<span class="regexp">/Hello&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 在构造函数中，使用props 形参，接收外界传递过来的数据</span></span><br><span class="line"><span class="regexp">function Hello(props)&#123;</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/ props.name = 'zs'</span></span><br><span class="line"><span class="regexp">	console.log(props)</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/ 结论：不论是 Vue 还是 React，组建中的props 永远都是只读的；不被重新赋值；</span></span><br><span class="line"><span class="regexp">	return &lt;div&gt;Hello 组件----&#123;props.name&#125;----&#123;props.age&#125;----&#123;props.gender&#125;&lt;/</span>div&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="父组件向子组件传递数据"><a href="#父组件向子组件传递数据" class="headerlink" title="父组件向子组件传递数据"></a>父组件向子组件传递数据</h5><h5 id="使用-…obj-属性扩散传递数据"><a href="#使用-…obj-属性扩散传递数据" class="headerlink" title="使用(…obj)属性扩散传递数据"></a>使用(…obj)属性扩散传递数据</h5><h5 id="将组件封装到单独的文件中"><a href="#将组件封装到单独的文件中" class="headerlink" title="将组件封装到单独的文件中"></a>将组件封装到单独的文件中</h5><h4 id="React中：第二种创建组件的方式"><a href="#React中：第二种创建组件的方式" class="headerlink" title="React中：第二种创建组件的方式"></a>React中：第二种创建组件的方式</h4><h5 id="了解ES6中class关键字的使用"><a href="#了解ES6中class关键字的使用" class="headerlink" title="了解ES6中class关键字的使用"></a>了解ES6中class关键字的使用</h5><h5 id="基于class关键字创建组件"><a href="#基于class关键字创建组件" class="headerlink" title="基于class关键字创建组件"></a>基于class关键字创建组件</h5><ul>
+<li><p>使用 class 关键字来创建组件</p>
+<p>render 函数的作用： 是渲染 当前组件所对应的 虚拟DOM元素</p>
+<p>类中的 this 指向这个类的实例对象</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">       </span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="comment">// 这个this.state = &#123;&#125; 相当于vue中的data()&#123;return&#123;&#125;&#125;</span></span><br><span class="line">        <span class="comment">// 这个是可读可写的</span></span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            msg : <span class="string">'大家好！'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	</span><br><span class="line">    <span class="comment">// 在class创建的组件中，必须定义一个render函数</span></span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="comment">// 在render函数中，必须返回一个null或者符合规范的虚拟DOM元素</span></span><br><span class="line">        <span class="comment">// 在 class关键字创建的组件中，如果想使用 外界传递过来的 props 参数，不需要接收，直接通过 this.props.***</span></span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是用 class 关键字创建的组件！--- &#123; this.props.name &#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">        	<span class="tag">&lt;<span class="name">p</span>&gt;</span> &#123; this.state.msg &#125; <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的 Person 标签,就是 上面Person 类的一个实例对象</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    name=<span class="string">'zs'</span></span><br><span class="line">    age=<span class="number">22</span></span><br><span class="line">    gender:<span class="string">'男'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//&lt;Person name=&#123;user.name&#125; age=&#123;user.age&#125;&gt;&lt;/Person&gt;</span></span><br><span class="line">&lt;Person &#123;...user&#125;&gt;&lt;<span class="regexp">/Person&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="两种创建组件方式的对比"><a href="#两种创建组件方式的对比" class="headerlink" title="两种创建组件方式的对比"></a>两种创建组件方式的对比</h4><blockquote>
+<p>注意：使用class关键字创建的组件，有自己的私有数据和生命周期函数</p>
+<p>​            使用function创建的组件，只有props，没有自己的私有数据和生命周期函数</p>
+</blockquote>
+<ol>
+<li>用构造函数创建出来的组件：专业的名字叫做“无状态组件”</li>
+<li>用class关键字创建出来的组件：专业的名字叫做“有状态组件”</li>
+</ol>
+<blockquote>
+<p>用构造函数创建出来的组件，和用class创建出来的组件，这两种不同的组件之间的<strong>本质区别就是</strong>：有无state属性<br>有状态组件和无状态组件之间的本质区别就是：有无state属性 和 生命周期函数</p>
+</blockquote>
+<p>组件中的 <code>props</code> 和 <code>state/data</code> 之间的区别</p>
+<ul>
+<li>props 中的数据都是外界传递过来的</li>
+<li>state/data 中的数据， 都是组件私有的（通过Ajax 获取回来的数据，一般都是私有数据）</li>
+<li>props 中的数据 都是只读的，不能重新赋值</li>
+<li>state/data 中的数据，都是可读可写的</li>
+</ul>
+<h4 id="一个小案例，巩固有状态组件和无状态组件的使用"><a href="#一个小案例，巩固有状态组件和无状态组件的使用" class="headerlink" title="一个小案例，巩固有状态组件和无状态组件的使用"></a>一个小案例，巩固有状态组件和无状态组件的使用</h4><h5 id="通过for循环生成多个组件"><a href="#通过for循环生成多个组件" class="headerlink" title="通过for循环生成多个组件"></a>通过for循环生成多个组件</h5><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CmtItem</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>评论人： &#123;props.user&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>评论内容： &#123;props.content&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CmtList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;          </span><br><span class="line">            CommentList = [</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三'</span>, <span class="attr">content</span>: <span class="string">'哈哈，沙发'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三2'</span>, <span class="attr">content</span>: <span class="string">'哈哈，板凳'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三3'</span>, <span class="attr">content</span>: <span class="string">'哈哈，凉席'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三4'</span>, <span class="attr">content</span>: <span class="string">'哈哈，砖头'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三5'</span>, <span class="attr">content</span>: <span class="string">'哈哈，楼下山炮'</span> &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	render()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span> 这是评论列表组件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">            &#123;this.state.CommentList.map(item =&gt; <span class="tag">&lt;<span class="name">CmtItem</span> &#123;<span class="attr">...item</span>&#125; <span class="attr">key</span>=<span class="string">&#123;item.id&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">CmtItem</span>&gt;</span>)&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用render 函数渲染</span></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">CmtList</span>&gt;</span><span class="tag">&lt;/<span class="name">CmtList</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：在webpack.config.js中配置 @ 代表绝对路径./src。</p>
+<p>后面就不用    ./    这种相对路径了</p>
+</blockquote>
+<p>将父组件CmtList、子组件CmtItem抽离为.jsx文件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">CmtItem</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>评论人： &#123;props.user&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>评论内容： &#123;props.content&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 導入 评论项子组件</span></span><br><span class="line"><span class="keyword">import</span> CmtItem <span class="keyword">from</span> <span class="string">'@/components/CmtItem'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">CmtList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;          </span><br><span class="line">            CommentList = [</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三'</span>, <span class="attr">content</span>: <span class="string">'哈哈，沙发'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三2'</span>, <span class="attr">content</span>: <span class="string">'哈哈，板凳'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三3'</span>, <span class="attr">content</span>: <span class="string">'哈哈，凉席'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三4'</span>, <span class="attr">content</span>: <span class="string">'哈哈，砖头'</span> &#125;,</span><br><span class="line">                &#123; <span class="attr">user</span>: <span class="string">'张三5'</span>, <span class="attr">content</span>: <span class="string">'哈哈，楼下山炮'</span> &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	render()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span> 这是评论列表组件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">            &#123;this.state.CommentList.map(item =&gt; <span class="tag">&lt;<span class="name">CmtItem</span> &#123;<span class="attr">...item</span>&#125; <span class="attr">key</span>=<span class="string">&#123;item.id&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">CmtItem</span>&gt;</span>)&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> CmtList <span class="keyword">from</span> <span class="string">'@/components/CmtList'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用render 函数渲染</span></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">CmtList</span>&gt;</span><span class="tag">&lt;/<span class="name">CmtList</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a>style样式</h5><h4 id="使用CSS模块化"><a href="#使用CSS模块化" class="headerlink" title="使用CSS模块化"></a>使用CSS模块化</h4><ol>
+<li><p>可以在webpack.config.js中为css-loader启用模块化：</p>
+<img src="/2020/03/24/React-3/r2.png" class>
+</li>
+<li><p>另外两种方法：</p>
+<img src="/2020/03/24/React-3/r3.png" class>
+
+</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>理解React中虚拟DOM的概念<br>理解React中三种Diff算法的概念<br>使用JS中createElement的方式创建虚拟DOM<br>使用ReactDOM.render方法<br>使用JSX语法并理解其本质<br>掌握创建组件的两种方式<br>理解有状态组件和无状态组件的本质区别<br>理解props和state的区别</p>
+<h4 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h4><ul>
+<li><a href="http://www.cnblogs.com/tim100/p/6050514.html">React数据流和组件间的沟通总结</a></li>
+<li><a href="https://segmentfault.com/q/1010000005876655/a-1020000005876751">单向数据流和双向绑定各有什么优缺点？</a></li>
+<li><a href="https://www.zhihu.com/question/29504639?sort=created">怎么更好的理解虚拟DOM?</a></li>
+<li><a href="http://www.css88.com/react/index.html">React中文文档 - 版本较低</a></li>
+<li><a href="http://blog.csdn.net/yczz/article/details/49886061">React 源码剖析系列 － 不可思议的 react diff</a></li>
+<li><a href="http://www.infoq.com/cn/articles/react-dom-diff?from=timeline&isappinstalled=0">深入浅出React（四）：虚拟DOM Diff算法解析</a></li>
+<li><a href="http://www.cocoachina.com/webapp/20150721/12692.html">一看就懂的ReactJs入门教程（精华版）</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/06/css_modules.html">CSS Modules 用法教程</a></li>
+<li><a href="http://blog.csdn.net/itzhongzi/article/details/66045880">将MarkDown转换为HTML页面</a></li>
+<li><a href="https://jingyan.baidu.com/article/0320e2c1c9cf0e1b87507b26.html">win7命令行 端口占用 查询进程号 杀进程</a></li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/react/" rel="tag">react</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/25/ES6-%E5%B1%95%E5%BC%80%E8%BF%90%E7%AE%97%E7%AC%A6/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ES6-展开运算符</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/24/React-2/">
+                <span class="level-item">React 2</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '4e3fb0cd3921e7281d4f',
+        clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
+        id: 'f2bd1a269022c83faab5cc4024f62ca4',
+        repo: 'Oliver6565/Oliver6565.github.io.git',
+        owner: 'Oliver6565',
+        admin: "Oliver6565",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="Oliver">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Oliver
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        前端爱好者
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>重庆</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            26
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Oliver6565" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Oliver6565">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                <br />
+                <p class="is-size-7">
+                &copy; 2021 Oliver&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="/">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+        var grt= new Date("2/16/2020 17:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+        setInterval("createtime()",250);
+    </script>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+
+</body>
+</html>

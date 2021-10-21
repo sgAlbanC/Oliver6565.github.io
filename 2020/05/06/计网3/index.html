@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>计网3 - Neitherland</title>
+
+
+    <meta name="description" content="物理层 第三节 通信基础：基本概念、奈奎斯特定理香浓定理、编码与调制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网3">
+<meta property="og:url" content="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%913/index.html">
+<meta property="og:site_name" content="Neitherland">
+<meta property="og:description" content="物理层 第三节 通信基础：基本概念、奈奎斯特定理香浓定理、编码与调制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-05-06T12:22:33.000Z">
+<meta property="article:modified_time" content="2021-04-13T14:26:34.000Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="考研803">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/%E5%9B%BE%E4%B9%A6%E9%A6%86.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="Neitherland" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="计网3" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-06T12:22:33.000Z">2020-05-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/">考研笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1964 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                计网3
+            
+        </h1>
+        <div class="content">
+            <p><strong>物理层</strong> 第三节 通信基础：基本概念、奈奎斯特定理香浓定理、编码与调制</p>
+<a id="more"></a>
+
+
+
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="数据、信号与码元"><a href="#数据、信号与码元" class="headerlink" title="数据、信号与码元"></a>数据、信号与码元</h5><p>通信的目的是传递消息。</p>
+<ol>
+<li><strong>数据</strong>是指传送信息的实体。<strong>信号</strong>是指数据的<strong>电气或电磁</strong>表现，是数据在传输过程中的存在形式。数据和信号都可以用“模拟的”和“数字的”来修饰。<ul>
+<li>连续变化的数据（或信号）称为<strong>模拟数据</strong>（模拟信号）；</li>
+<li>取值仅允许为有限的几个离散数值的数据（或信号）称为<strong>数字数据</strong>（数字信号）；</li>
+</ul>
+</li>
+<li>数据的传输方式可分为串行传输、并行传输。<ul>
+<li><strong>串行传输</strong>是指：一个一个的比特按照时间顺序传输（对经济考虑，远距离通信通常采用串行传输）；</li>
+<li><strong>并行传输</strong>是指：多个比特通过多条通信信道同时传输；速度快，费用高，适用于近距离，用于计算机内部数据传输；</li>
+</ul>
+</li>
+<li><strong>码元</strong>：是指用一个固定时长的信号波形（数字脉冲）表示一位k进制数字，代表不同离散数值的基本波形，是<strong>数字通信</strong>中<strong>数字信号</strong>的计量单位，这个时长内的信号称为k进制码元，而该<strong>时长</strong>称为<strong>码元宽度</strong>。1码元可以携带多个比特的信息量。eg：在使用二进制编码时，只有两种不同的码元：一种代表0状态，一种代表1状态；在使用四进制编码时，2bit位可以表示四种码元：00 01 10 11；使用n进制编码，就有n中码元，即有 <em>2的x次方 = n</em> ，x个bit来表示。</li>
+</ol>
+<h5 id="信源、信道与信宿"><a href="#信源、信道与信宿" class="headerlink" title="信源、信道与信宿"></a>信源、信道与信宿</h5><ol>
+<li><strong>数据通信</strong>是指数字计算机或其他数字终端之间的通信。一个数据通信系统主要划分为信源、信道和信宿三部分。</li>
+<li><strong>信源</strong>是产生和发送数据的源头。<strong>信宿</strong>是接收数据的终点，它们通常都是计算机或其他数字终端转置。需要通过<strong>变换器</strong>（调制解调器）转换成合适于在<strong>信道</strong>上传输的信号，也需要反转换器转成原始信息。</li>
+<li>信道与电路不等同，<strong>信道</strong>是信号的<strong>传输媒介</strong>。<strong>噪声源</strong>是信道上的噪声（对信号的干扰）。</li>
+<li>信道分为<strong>模拟信道</strong>和<strong>数字信道</strong>；也可分为<strong>无线信道</strong>和<strong>有线信道</strong>。</li>
+<li>信道上传送信号有基带信号和宽带信号。<ul>
+<li><strong>基带信号</strong>：将数字信号 1 和 0 直接用不同电压表示，然后传到数字信道上（基带传输）；</li>
+<li><strong>宽带信号</strong>：将基带信号进行调制形成频分复用模拟信号，然后传到模拟信道上（宽带传输）；</li>
+</ul>
+</li>
+<li>通信双方信息交互方式，可分为三种基本方式：<ul>
+<li>单工通信：无线电、广播、电视广播</li>
+<li>半双工：任何一方不能同时发送和接收信息</li>
+<li>全双工</li>
+</ul>
+</li>
+<li>信道的极限容量是指信道的<strong>最高码元传输速率</strong>或信道的极限信息传输速率。</li>
+</ol>
+<h5 id="速率、波特和带宽"><a href="#速率、波特和带宽" class="headerlink" title="速率、波特和带宽"></a>速率、波特和带宽</h5><ol>
+<li><p>速率也称数据率，指数据传输速率，表示单位时间内传输的数据量<em>（s = vt）</em>。</p>
+<ul>
+<li><p><strong>码元传输速率</strong>。又称码元速率、波形速率。表示单位时间数字通信系统所传码元个数（也是脉冲个数或信号变化的次数），单位波特Baud。1 Baud = 1码元 / S。码元可多进制；码元速率与进制数无关。</p>
+</li>
+<li><p><strong>信息传输速率</strong>。又称信息速率，比特率。表示单位时间内数字通信系统传输的二进制码元个数（即比特数），单位比特/秒（b/s）。</p>
+</li>
+<li><p>若一个码元携带n比特的信息量，则M波特率的码元传输速率所对应的信息传输速率为 Mn b/s。</p>
+<p>eg：若一码元携带2bit信息量，则5Baud的码元传输速率对应的信息传输速率为：<u>10 b/s</u>。</p>
+<p>一码元携带2bit，即2*5=10 b/s。</p>
+</li>
+</ul>
+</li>
+<li><p>带宽原指具有的频带宽度，单位hz。在实际网络中，带宽表示最高数据率 b/s。</p>
+</li>
+</ol>
+<h4 id="奈奎斯特定理与香浓定理（考纲）"><a href="#奈奎斯特定理与香浓定理（考纲）" class="headerlink" title="奈奎斯特定理与香浓定理（考纲）"></a>奈奎斯特定理与香浓定理（考纲）</h4><h5 id="奈斯定理"><a href="#奈斯定理" class="headerlink" title="奈斯定理"></a>奈斯定理</h5><ol>
+<li><p>奈奎斯特（Nyquist）定理又称奈氏准则，在理想低通（没有噪声、宽带有限）的信道，极限码元传输速率为2W波特。W是理想低通信道的带宽，单位Hz。若用V表示每个码元离散电平的数目（即多少种不同的码元，即多少进制），则<strong>极限数据率</strong>为：</p>
+<p><u><em>理想低通信道下的极限传输率 = 2Wlog2V b/s</em></u></p>
+</li>
+<li><p>奈氏准则结论：</p>
+<ul>
+<li>任何信道，码元传输速率有上限。超过上限会出现码间串扰。</li>
+<li>信道频带越宽（通过的信号高频分量越多），就可用更高的速率进行码元的有效传输。</li>
+<li>给出了码元传输速率的限制，但未限制每个码元可以对应多少个二进制位。</li>
+</ul>
+<p>提高数据传输速率，就设法使每个码元携带更多个比特的信息量，此时需要采用多元制的调制方法。</p>
+</li>
+</ol>
+<h5 id="香浓定理"><a href="#香浓定理" class="headerlink" title="香浓定理"></a>香浓定理</h5><ol>
+<li><p>香浓（Shannon）定理给出了 带宽受限 且 有高斯白噪音干扰 的信道极限数据传输率，可以做到不产生误差。定理定义为：</p>
+<p><u><em>信道的极限数据传输率 = Wlog2（1+S/N） b/s</em></u></p>
+<p>（W为信道带宽，S/N为信噪比；S为传输信号平均功率，N为信道内部高斯噪声功率）</p>
+<p>单位转换：<u><em>信噪比 = 10log10（S/N）dB</em></u></p>
+</li>
+<li><p>香浓定理结论：</p>
+<ul>
+<li>信道带宽或信道中的信噪比越大，信息极限传输速率越高。</li>
+<li>对一定的传输宽带和一定的噪声比，信息传输速率的上限是确定的。</li>
+<li>只要信息的传输速率低于极限传输速率，就能找方法实现无差错的传输。</li>
+<li>香浓定理得出信息极限传输速率，实际要低很多。</li>
+</ul>
+<p>若S/N没有上限，那么极限信息传输速率也没有上限。虽然实际信噪比有限制的。</p>
+<p>限制了一个码元对应的二进制位数。</p>
+</li>
+</ol>
+<h4 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h4><p>编码 –&gt;数字信号</p>
+<p>调制 –&gt;模拟信号</p>
+<h5 id="数字数据编码为数字信号（考纲）"><a href="#数字数据编码为数字信号（考纲）" class="headerlink" title="数字数据编码为数字信号（考纲）"></a>数字数据编码为数字信号（考纲）</h5><ol>
+<li><p>归零编码</p>
+</li>
+<li><p>非归零编码</p>
+</li>
+<li><p>反向非归零编码</p>
+</li>
+<li><p>曼彻斯特编码（考纲）</p>
+<p><strong>注意</strong>：以太网使用的编码方式就是 曼彻斯特编码。</p>
+</li>
+<li><p>查分曼彻思编码（考纲）</p>
+</li>
+</ol>
+<h5 id="数字数据调制为模拟信号（考纲）"><a href="#数字数据调制为模拟信号（考纲）" class="headerlink" title="数字数据调制为模拟信号（考纲）"></a>数字数据调制为模拟信号（考纲）</h5><p>发送端数字数据调制为模拟信号在模拟信道上传输，在接收端将模拟信号还原为数字信号。对应调制解调器的调制和解调过程。</p>
+<ol>
+<li>调幅</li>
+<li>调频</li>
+<li>调相</li>
+<li>调幅+调相</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E8%80%83%E7%A0%94803/" rel="tag">考研803</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/07/%E8%AE%A1%E7%BD%914/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">计网4</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/06/%E8%AE%A1%E7%BD%912/">
+                <span class="level-item">计网2</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '4e3fb0cd3921e7281d4f',
+        clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
+        id: 'a8d76e1244bc8c2384411ebc996007c6',
+        repo: 'Oliver6565/Oliver6565.github.io.git',
+        owner: 'Oliver6565',
+        admin: "Oliver6565",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="Oliver">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Oliver
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        前端爱好者
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>重庆</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            26
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Oliver6565" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Oliver6565">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                <br />
+                <p class="is-size-7">
+                &copy; 2021 Oliver&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="/">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+        var grt= new Date("2/16/2020 17:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+        setInterval("createtime()",250);
+    </script>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+
+</body>
+</html>

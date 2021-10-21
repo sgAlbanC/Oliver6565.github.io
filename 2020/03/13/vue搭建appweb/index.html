@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>vue搭建appweb - Neitherland</title>
+
+
+    <meta name="description" content="webapp 外卖系统（移动端）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue搭建appweb">
+<meta property="og:url" content="http://yoursite.com/2020/03/13/vue%E6%90%AD%E5%BB%BAappweb/index.html">
+<meta property="og:site_name" content="Neitherland">
+<meta property="og:description" content="webapp 外卖系统（移动端）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-03-13T02:19:12.000Z">
+<meta property="article:modified_time" content="2021-04-16T12:17:48.000Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/%E5%9B%BE%E4%B9%A6%E9%A6%86.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="Neitherland" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="vue搭建appweb" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-13T02:19:12.000Z">2020-03-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1264 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                vue搭建appweb
+            
+        </h1>
+        <div class="content">
+            <h4 id="webapp-外卖系统（移动端）"><a href="#webapp-外卖系统（移动端）" class="headerlink" title="webapp 外卖系统（移动端）"></a>webapp 外卖系统（移动端）</h4><a id="more"></a>
+
+<p>！（前言：学习Vue项目搭建流程，记录心得（<strong>部分筆記為課件</strong>）。<strong>学习视频</strong> -&gt; <a href="https://www.bilibili.com/video/av49099807">https://www.bilibili.com/video/av49099807</a></p>
+<h4 id="1-使用-vue-cli-脚手架-搭建项目"><a href="#1-使用-vue-cli-脚手架-搭建项目" class="headerlink" title="1. 使用 vue-cli(脚手架)搭建项目"></a>1. 使用 vue-cli(脚手架)搭建项目</h4><ol>
+<li>Vue-cli 是 vue 官方提供的用于搭建基于 vue+webpack+es6 项目的脚手架工具 </li>
+<li>在线文档:<a href="https://github.com/vuejs/vue-cli">https://github.com/vuejs/vue-cli</a> </li>
+<li>操作: npm install -g vue-cli vue init webpack gshop cd gshop npm install npm run dev 访问: localhost:8080</li>
+</ol>
+<h4 id="2-项目结构分析"><a href="#2-项目结构分析" class="headerlink" title="2. 项目结构分析"></a>2. 项目结构分析</h4><p>gshop </p>
+<ul>
+<li>|– build : webpack 相关的配置文件夹(基本不需要修改) </li>
+<li>|– config: webpack 相关的配置文件夹(基本不需要修改) </li>
+<li>|– index.js: 指定的后台服务的端口号和静态资源文件夹 </li>
+<li>|– node_modules </li>
+<li>|– src : 源码文件夹 </li>
+<li>|– main.js: 应用入口 js </li>
+<li>|– static: 静态资源文件夹 </li>
+<li>|– .babelrc: babel 的配置文件 </li>
+<li>|– .editorconfig: 通过编辑器的编码/格式进行一定的配置 </li>
+<li>|– .eslintignore: eslint 检查忽略的配置 </li>
+<li>|– .eslintrc.js: eslint 检查的配置 </li>
+<li>|– .gitignore: git 版本管制忽略的配置 </li>
+<li>|– index.html: 主页面文件 </li>
+<li>|– package.json: 应用包配置文件 </li>
+<li>|– README.md: 应用描述说明的 readme 文件</li>
+</ul>
+<h4 id="3-编码测试与打包发布项目"><a href="#3-编码测试与打包发布项目" class="headerlink" title="3. 编码测试与打包发布项目"></a>3. 编码测试与打包发布项目</h4><ol>
+<li>编码测试 npm run dev 访问:<a href="http://localhost:8080">http://localhost:8080</a> 编码, 自动编译打包(HMR), 查看效果 </li>
+<li>打包发布 npm run build npm install -g serve serve dist 访问:<a href="http://localhost:5000">http://localhost:5000</a></li>
+</ol>
+<h4 id="4-項目源碼目錄設計"><a href="#4-項目源碼目錄設計" class="headerlink" title="4. 項目源碼目錄設計"></a>4. 項目源碼目錄設計</h4><ul>
+<li><p>src</p>
+<ul>
+<li><p>api    与后台交互模块文件夹</p>
+</li>
+<li><p>common（asstes） 通用资源文件夹，如fonts/img/stylus</p>
+<p>(stylus: css预编译器，Sass/Less</p>
+<p><em>npminstallstylusstylus-loader–save-dev</em>）</p>
+</li>
+<li><p>components    非路由组件文件夹</p>
+</li>
+<li><p>filters    自定义过滤器模块文件夹</p>
+</li>
+<li><p>mock     模拟数据接口文件夹</p>
+</li>
+<li><p>pages    路由组件文件夹</p>
+</li>
+<li><p>router    路由器文件夹-&gt;index.js/router.js 暴露router给入口文件main.js</p>
+</li>
+<li><p>store    vuex相关模块文件夹</p>
+</li>
+<li><p>App.vue    应用组件</p>
+</li>
+<li><p>main.js    入口JS</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h3><h4 id="props的详解："><a href="#props的详解：" class="headerlink" title="props的详解："></a><strong>props</strong>的详解：</h4><p>组件示例的作用域是孤立的，意味着不能（也不应该）在子组件的模板内直接引用父组件的数据。父组件的数据要通过prop才能下发到子组件中。</p>
+<p>props是子组件访问父组件数据的唯一接口</p>
+<ul>
+<li>一个组件可以直接在模板里面渲染data里面的数据（双大括号）。</li>
+</ul>
+<ul>
+<li>子组件不能直接在模板里面渲染父元素的数据。</li>
+</ul>
+<ul>
+<li>如果子组件想要引用父元素的数据，那么就在prop里面声明一个变量（比如a），这个变量就可以引用父元素的数据。然后在模板里渲染这个变量（前面的a），这时候渲染出来的就是父元素里面的数据。 </li>
+</ul>
+<h4 id="slot的详解："><a href="#slot的详解：" class="headerlink" title="slot的详解："></a><strong>slot</strong>的详解：</h4><p>给<slot>元素指定一个name后可以分发多个内容</slot></p>
+<p>一个简单的小例子：</p>
+<ul>
+<li>1.父组件传递了todos数组给子组件</li>
+<li>2.子组件通过props接受了数组数据，这里应该没有任何问题</li>
+<li>3.子组件拿到数组后v-for渲染列表，并且通过 <slot :todo="todo">的方式，把数组内的每一个todo对象，传递给父组件</slot></li>
+<li>4.父组件通过slot-scope=”slotProps”的方式，接受todo对象，之后就可以通过slotProps.todo.xxx的方式来使用了</li>
+</ul>
+<p>所以数据的流动经历了</p>
+<ul>
+<li>父组件传递todos数组给子组件</li>
+<li>子组件遍历todos数组，把里面的todo对象传递给父组件</li>
+</ul>
+<h4 id="Swiper"><a href="#Swiper" class="headerlink" title="Swiper"></a><strong>Swiper</strong></h4><p>左右滑动插件 npm i swiper -D 先下载 ——<em>可以去官网查看html结构，这样写会有好的css样式</em></p>
+<p>import Swiper from ‘swiper’</p>
+<h4 id="阿里巴巴iconfont"><a href="#阿里巴巴iconfont" class="headerlink" title="阿里巴巴iconfont"></a><strong>阿里巴巴iconfont</strong></h4><p>inconfont矢量标记图标。登录账号，选择图标添加购物车，生成网上链接，可以直接使用。<em>使用方式</em> 去官网看。</p>
+<h4 id="Svg图片"><a href="#Svg图片" class="headerlink" title="Svg图片"></a>Svg图片</h4><p>可以做验证码</p>
+<h4 id="router-back"><a href="#router-back" class="headerlink" title="$router.back()"></a>$router.back()</h4><p>&lt;a href=”javascript:” class=”go_back” @click=”$router.back()”&gt;</p>
+<p>返回到之前的路由</p>
+<p>$route 代表当前路由</p>
+<h4 id="postman"><a href="#postman" class="headerlink" title="postman"></a>postman</h4><p>创建集合，以便归类请求</p>
+<h4 id="封装ajax请求"><a href="#封装ajax请求" class="headerlink" title="封装ajax请求"></a>封装ajax请求</h4><h4 id="跨域问题的解决"><a href="#跨域问题的解决" class="headerlink" title="跨域问题的解决"></a>跨域问题的解决</h4><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><h4 id="01"><a href="#01" class="headerlink" title="01"></a>01</h4><ol>
+<li><p>项目开发准备</p>
+<ul>
+<li>项目描述</li>
+<li>技术选型</li>
+<li>API接口（接口文档 -&gt; postman 测接口）</li>
+<li>从此项目学到什么</li>
+</ul>
+</li>
+<li><p>开启项目开发</p>
+<ul>
+<li>使用脚手架创建项目</li>
+<li>安装依赖</li>
+<li>开发环境运行</li>
+<li>生产环境打包与发布</li>
+</ul>
+</li>
+<li><p>搭建项目整体界面结构</p>
+<ul>
+<li><p>stylus的理解和使用（结构化，变量，函数/minxin（混合</p>
+</li>
+<li><p>vue-router的理解和使用</p>
+<ul>
+<li>router-view/router-link/keep-alive</li>
+<li>$router: 路由对象，包含一些操作路由的功能函数，来实现编程式导航（跳转路由）</li>
+<li>$route: 当前路由对象，一些当前路由信息数据的容器，path/meta/query/params</li>
+</ul>
+</li>
+<li><p><strong>项目路由拆分</strong></p>
+<p>一般组件和导航路由组件</p>
+</li>
+<li><p>抽取组件</p>
+</li>
+<li><p>登录路由组件</p>
+</li>
+<li><p>后台项目</p>
+</li>
+<li><p>前后台交互</p>
+<p>ajax请求库：axios</p>
+<p>ajax请求函数封装：axios + promise</p>
+<p>接口请求函数封装，每个后台接口</p>
+</li>
+</ul>
+</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/vue/" rel="tag">vue</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/14/Promise%E7%9B%B8%E5%85%B3/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Promise相关</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/12/webpack%E7%9B%B8%E5%85%B3/">
+                <span class="level-item">webpack相关</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '4e3fb0cd3921e7281d4f',
+        clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
+        id: '7c667b7b0276d441c983bc48b076ca45',
+        repo: 'Oliver6565/Oliver6565.github.io.git',
+        owner: 'Oliver6565',
+        admin: "Oliver6565",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="Oliver">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Oliver
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        前端爱好者
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>重庆</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            26
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Oliver6565" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Oliver6565">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                <br />
+                <p class="is-size-7">
+                &copy; 2021 Oliver&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="/">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+        var grt= new Date("2/16/2020 17:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+        setInterval("createtime()",250);
+    </script>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+
+</body>
+</html>

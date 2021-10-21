@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>React 4 - Neitherland</title>
+
+
+    <meta name="description" content="组件的生命周期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 4">
+<meta property="og:url" content="http://yoursite.com/2020/03/26/React-4/index.html">
+<meta property="og:site_name" content="Neitherland">
+<meta property="og:description" content="组件的生命周期">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-03-26T13:32:53.000Z">
+<meta property="article:modified_time" content="2020-04-09T02:10:22.000Z">
+<meta property="article:author" content="Oliver">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/%E5%9B%BE%E4%B9%A6%E9%A6%86.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="alternate" href="/atom.xml" title="Neitherland" type="application/atom+xml">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="React 4" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-26T13:32:53.000Z">2020-03-26</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1869 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                React 4
+            
+        </h1>
+        <div class="content">
+            <h4 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h4><a id="more"></a>
+
+<ul>
+<li><p>概念：在组件创建、到加载到页面上运行、以及组件被销毁的过程中，总是伴随着各种各样的事件，这些在组件特定时期，触发的事件，统称为 组件的生命周期；</p>
+</li>
+<li><p>组件生命周期分为三部分：</p>
+<ul>
+<li><strong>组件创建阶段</strong>：组件创建阶段的生命周期函数，有一个显著的特点：创建阶段的生命周期函数，在组件的一辈子中，只执行一次；</li>
+</ul>
+<blockquote>
+<p>componentWillMount: 组件将要被挂载，此时还没有开始渲染虚拟DOM<br>render：第一次开始渲染真正的虚拟DOM，当render执行完，内存中就有了完整的虚拟DOM了<br>componentDidMount: 组件完成了挂载，此时，组件已经显示到了页面上，当这个方法执行完，组件就进入都了 运行中 的状态</p>
+</blockquote>
+<ul>
+<li><strong>组件运行阶段</strong>：也有一个显著的特点，根据组件的state和props的改变，有选择性的触发0次或多次；</li>
+</ul>
+<blockquote>
+<p>componentWillReceiveProps: 组件将要接收新属性，此时，只要这个方法被触发，就证明父组件为当前子组件传递了新的属性值；<br>shouldComponentUpdate: 组件是否需要被更新，此时，组件尚未被更新，但是，state 和 props 肯定是最新的<br>componentWillUpdate: 组件将要被更新，此时，尚未开始更新，内存中的虚拟DOM树还是旧的<br>render: 此时，又要重新根据最新的 state 和 props 重新渲染一棵内存中的 虚拟DOM树，当 render 调用完毕，内存中的旧DOM树，已经被新DOM树替换了！此时页面还是旧的<br>componentDidUpdate: 此时，页面又被重新渲染了，state 和 虚拟DOM 和 页面已经完全保持同步</p>
+</blockquote>
+<ul>
+<li><strong>组件销毁阶段</strong>：也有一个显著的特点，一辈子只执行一次；</li>
+</ul>
+<blockquote>
+<p>componentWillUnmount: 组件将要被卸载，此时组件还可以正常使用；</p>
+</blockquote>
+</li>
+</ul>
+<p><a href="https://cn.vuejs.org/v2/guide/instance.html#生命周期图示">vue中的生命周期图</a><br><a href="http://www.race604.com/react-native-component-lifecycle/">React Native 中组件的生命周期</a></p>
+<img src="/2020/03/26/React-4/React%E4%B8%AD%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" class>
+
+<h5 id="defaultProps"><a href="#defaultProps" class="headerlink" title="defaultProps"></a>defaultProps</h5><blockquote>
+<p>在组件创建之前，会先初始化默认的props属性，这是全局调用一次，严格地来说，这不是组件的生命周期的一部分。在组件被创建并加载候，首先调用 constructor 构造器中的 this.state = {}，来初始化组件的状态。</p>
+</blockquote>
+<p>React生命周期的回调函数总结成表格如下：</p>
+<img src="/2020/03/26/React-4/React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%A1%A8%E6%A0%BC.png" class>
+
+<ul>
+<li><p>Mounting：</p>
+<ul>
+<li>constructor()</li>
+<li>componentWillMount()</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+</li>
+<li><p>Updating：</p>
+<ul>
+<li>componentWillReceiveProps(nextProps)</li>
+<li>shouldComponentUpdate(nextProps, nextState)</li>
+<li>componentWillUpdate(nextProps, nextState)</li>
+<li>render()</li>
+<li>componentDidUpdate(prevProps, prevState)</li>
+</ul>
+</li>
+<li><p>Unmounting：</p>
+<ul>
+<li>componentWillUnmount()</li>
+</ul>
+</li>
+</ul>
+<h4 id="通过Counter计数器的小案例-了解生命周期函数"><a href="#通过Counter计数器的小案例-了解生命周期函数" class="headerlink" title="通过Counter计数器的小案例 - 了解生命周期函数"></a>通过Counter计数器的小案例 - 了解生命周期函数</h4><ol>
+<li>给组件设置默认属性：</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 设置 默认属性值 */</span></span><br><span class="line">   <span class="keyword">static</span> defaultProps = &#123;</span><br><span class="line">       initcount:<span class="number">0</span> <span class="comment">// 如果外界没有传initcount值，那就初始化为0</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>给属性进行类型校验，需要先运行<code>cnpm i prop-types --save</code></li>
+</ol>
+<h4 id="组件初始化时生命周期事件总结"><a href="#组件初始化时生命周期事件总结" class="headerlink" title="组件初始化时生命周期事件总结"></a>组件初始化时生命周期事件总结</h4><ol>
+<li>componentWillMount：</li>
+<li>render：</li>
+<li>componentDidMount：</li>
+<li>注意：在render函数中，不能调用<code>setState()</code>方法</li>
+</ol>
+<h4 id="通过原生的方式获取元素并绑定事件"><a href="#通过原生的方式获取元素并绑定事件" class="headerlink" title="通过原生的方式获取元素并绑定事件"></a>通过原生的方式获取元素并绑定事件</h4><h4 id="React中使用ref属性获取DOM元素引用"><a href="#React中使用ref属性获取DOM元素引用" class="headerlink" title="React中使用ref属性获取DOM元素引用"></a>React中使用ref属性获取DOM元素引用</h4><h4 id="使用React中的事件，绑定count自增"><a href="#使用React中的事件，绑定count自增" class="headerlink" title="使用React中的事件，绑定count自增"></a>使用React中的事件，绑定count自增</h4><h4 id="组件运行中事件的对比"><a href="#组件运行中事件的对比" class="headerlink" title="组件运行中事件的对比"></a>组件运行中事件的对比</h4><ol>
+<li>shouldComponentUpdate：</li>
+<li>componentWillUpdate：</li>
+<li>render：</li>
+<li>componentDidUpdate：</li>
+</ol>
+<h4 id="绑定this并传参的三种方式"><a href="#绑定this并传参的三种方式" class="headerlink" title="绑定this并传参的三种方式"></a>绑定this并传参的三种方式</h4><ol>
+<li><p>在事件中绑定this并传参：</p>
+<blockquote>
+<p>bind 作用： 为前面的函数(handleMsg1)，修改函数内部的this指向，让函数内部的this，指向bind参数列表中的第一个参数</p>
+<p>bind 和 call/apply 之间的区别：</p>
+<p>call/aplly 修改完this指向后，会立即调用前面的函数，但是bind只会修改this 指向， 并不会调用</p>
+<p>注意：bind 中的第一个参数，是用来修改this指向的，第一个参数后面的所有参数，都会当作将来调用 前面函数时候的参数传递进去</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"在事件中绑定this并传参"</span> onClick=&#123;<span class="keyword">this</span>.handleMsg1.bind(<span class="keyword">this</span>, <span class="string">'🍕'</span>, <span class="string">'🍟'</span>)&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在事件中绑定this并传参</span></span><br><span class="line">handleMsg1(arg1, arg2) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// 此时this是个null</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg: <span class="string">'在事件中绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>在构造函数中绑定this并传参:</p>
+<blockquote>
+<p>全局只bind一次，上面那种每次调用这个方法(this.handleMsg2),都要bind一次</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 修改构造函数中的代码：</span></span><br><span class="line"><span class="comment">// 注意：调用bind改变this指向后，bind函数调用的结果，有一个返回值。这个值，就是被改变this指向后的函数的应用</span></span><br><span class="line"><span class="comment">// 注意：bind不会修改原函数的this指向</span></span><br><span class="line">   <span class="keyword">this</span>.handleMsg2 = <span class="keyword">this</span>.handleMsg2.bind(<span class="keyword">this</span>, <span class="string">'🚗'</span>, <span class="string">'🚚'</span>);</span><br><span class="line"></span><br><span class="line">   &lt;input type=<span class="string">"button"</span> value=<span class="string">"在构造函数中绑定this并传参"</span> onClick=&#123;<span class="keyword">this</span>.handleMsg2&#125; /&gt;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 在构造函数中绑定this并传参</span></span><br><span class="line">   handleMsg2(arg1, arg2) &#123;</span><br><span class="line">       <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">           msg: <span class="string">'在构造函数中绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>用箭头函数绑定this并传参：</p>
+<p>箭头函数 本身就是一个 匿名的 function函数</p>
+<p>function默认的this，谁调用这个function，this就指向谁</p>
+<p>但箭头函数 this指向 外层 上下文</p>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    &lt;input type=<span class="string">"button"</span> value=<span class="string">"用箭头函数绑定this并传参"</span> onClick=&#123;() =&gt; &#123; <span class="keyword">this</span>.handleMsg3(<span class="string">'👩'</span>, <span class="string">'👰'</span>) &#125;&#125; /&gt;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用箭头函数绑定this并传参</span></span><br><span class="line">        handleMsg3(arg1, arg2) &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                msg: <span class="string">'用箭头函数绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">// ----------------------------------------------------------------- //</span></span><br><span class="line">		</span><br><span class="line">		handleMsg3 = <span class="function">(<span class="params">arg1, arg2</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                msg: <span class="string">'用箭头函数绑定this并传参：'</span> + arg1 + arg2</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="绑定文本框与state中的值"><a href="#绑定文本框与state中的值" class="headerlink" title="绑定文本框与state中的值"></a>绑定文本框与state中的值</h4><ol>
+<li>在Vue.js中，默认可以通过<code>v-model</code>指令，将表单控件和我们的<code>data</code>上面的属性进行双向数据绑定，数据变化和页面之间的变化是同步的！</li>
+<li>在React.js中，默认没有提供双向数据绑定这一功能，默认的，只能把<code>state</code>之上的数据同步到界面的控件上，但是不能默认实现把界面上数据的改变，同步到<code>state</code>之上，需要程序员手动调用相关的事件，来进行逆向的数据传输！</li>
+<li>绑定文本框和state的值：</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="comment">/*只要将value属性，和state上的状态进行绑定，那么，这个表单元素就变成了受控表单元素，这时候，如果没有调用相关的事件，是无法手动修改表单元素中的值的*/</span>&#125;</span><br><span class="line">&lt;input style=&#123;&#123; <span class="attr">width</span>: <span class="string">'100%'</span> &#125;&#125; ref=<span class="string">"txt"</span> type=<span class="string">"text"</span> value=&#123;<span class="keyword">this</span>.state.msg&#125; onChange=&#123;<span class="keyword">this</span>.handleTextChange&#125; /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是文本框内容改变时候的处理函数</span></span><br><span class="line">handleTextChange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        msg: <span class="keyword">this</span>.refs.txt.value</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="/2020/03/26/React-4/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A.png" class>
+
+<ol start="4">
+<li><p>注意 <code>setState</code>的一个问题：</p>
+<p>在 <code>setState</code>， 只会把 对应的 state 状态更新，而不会 覆盖其他的state状态</p>
+<p><code>this.setState</code>  方法的执行 是异步的</p>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保存最新的state状态值，在保存的时候，是异步地进行保存的，所以，如果想要获取最新的，刚刚保存的那个状态，需要通过回掉函数的形式去获取最新state</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">    msg: <span class="keyword">this</span>.refs.txt.value</span><br><span class="line">    <span class="comment">// msg: e.target.value</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取最新的state状态值</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.msg);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="发表评论案例"><a href="#发表评论案例" class="headerlink" title="发表评论案例"></a>发表评论案例</h4><h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><h5 id="context特性"><a href="#context特性" class="headerlink" title="context特性"></a>context特性</h5><p>记住一串单词组合<code>getChildContextTypes</code><br>前3个、后3个、后两个<br>一个方法、两个静态属性</p>
+<h4 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h4><p><a href="https://facebook.github.io/react/docs/typechecking-with-proptypes.html">类型校验</a><br><a href="https://reactjs.org/docs/animation.html#high-level-api-reactcsstransitiongroup">Animation Add-Ons</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/react/" rel="tag">react</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/27/jQuery/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">jQuery</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/25/ES6-class%E5%85%B3%E9%94%AE%E5%AD%9702/">
+                <span class="level-item">ES6-class关键字02</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '4e3fb0cd3921e7281d4f',
+        clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
+        id: '3f915057a6036e5cfa4005103ff6def3',
+        repo: 'Oliver6565/Oliver6565.github.io.git',
+        owner: 'Oliver6565',
+        admin: "Oliver6565",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="Oliver">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Oliver
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        前端爱好者
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>重庆</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            51
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            26
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Oliver6565" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/Oliver6565">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                <br />
+                <p class="is-size-7">
+                &copy; 2021 Oliver&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="/">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        var now = new Date(); 
+        function createtime() { 
+        var grt= new Date("2/16/2020 17:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+        setInterval("createtime()",250);
+    </script>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+
+</body>
+</html>
