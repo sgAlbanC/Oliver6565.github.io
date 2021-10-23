@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>TypeScript01 - Neitherland</title>
+<title>迷幻师的困局 - Neitherland</title>
 
 
-    <meta name="description" content="TypeScript 基础">
+    <meta name="description" content="“ Stop playing , start living ”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript01">
-<meta property="og:url" content="http://yoursite.com/2020/03/17/TypeScript01/index.html">
+<meta property="og:title" content="迷幻师的困局">
+<meta property="og:url" content="http://yoursite.com/2021/10/22/%E8%BF%B7%E5%B9%BB%E5%B8%88%E7%9A%84%E5%9B%B0%E5%B1%80/index.html">
 <meta property="og:site_name" content="Neitherland">
-<meta property="og:description" content="TypeScript 基础">
+<meta property="og:description" content="“ Stop playing , start living ”">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2020-03-17T05:39:31.000Z">
-<meta property="article:modified_time" content="2021-04-13T14:35:14.000Z">
+<meta property="article:published_time" content="2021-10-22T12:05:49.000Z">
+<meta property="article:modified_time" content="2021-10-23T04:44:36.664Z">
 <meta property="article:author" content="Oliver">
-<meta property="article:tag" content="TS">
+<meta property="article:tag" content="fillory">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="TypeScript01" height="28">
+                <img src="/images/logo.png" alt="迷幻师的困局" height="28">
             
             </a>
         </div>
@@ -127,17 +127,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-17T05:39:31.000Z">2020-03-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Typescript/">Typescript</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2021-10-22T12:05:49.000Z">2021-10-22</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 616 个字)
+                    几秒 读完 (大约 37 个字)
                 </span>
                 
                 
@@ -146,70 +142,15 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                TypeScript01
+                迷幻师的困局
             
         </h1>
         <div class="content">
-            <h4 id="TypeScript-基础"><a href="#TypeScript-基础" class="headerlink" title="TypeScript 基础"></a>TypeScript 基础</h4><a id="more"></a>
+            <p>“ Stop playing , start living ”</p>
+<a id="more"></a>
 
-<p>Typescript 是微软推出的一门语言，是JavaScript的超集，包含ES567</p>
-<p>新增了类型系统和完整的面向对象</p>
-<h4 id="第一章-TypeScript-基础"><a href="#第一章-TypeScript-基础" class="headerlink" title="第一章 TypeScript 基础"></a>第一章 TypeScript 基础</h4><h4 id="01-TypeScript-环境安装"><a href="#01-TypeScript-环境安装" class="headerlink" title="01.TypeScript 环境安装"></a>01.TypeScript 环境安装</h4><ol>
-<li><p>需要一个工具，将ts代码转换为浏览器或者nodejs识别的js代码，就需要ts环境（npm，nodejs的包管理器，用npm下载ts环境；网上下载安装nodejs，cmd node -v 查看）-&gt;cmd中 tsc -v 查看</p>
-<ul>
-<li>全局安装： <em>npm i -g typescript</em></li>
-<li>校验typescript： <em>tsc -v</em></li>
-<li>tsc的作用：<em>负责将ts代码转为浏览器、nodejs识别的js代码</em></li>
-</ul>
-</li>
-<li><p>第一个ts程序</p>
-<ul>
-<li><p>在后缀名为.ts文件中写typescript代码</p>
-</li>
-<li><p>使用tsc工具将typescript代码编译为浏览器、nodejs识别的js代码</p>
-</li>
-<li><p>在浏览器或者nodejs中执行js代码</p>
-<p><em>ts -&gt; js -&gt; html scprit标签引入</em></p>
-</li>
-</ul>
-</li>
-<li><p>在nodejs中执行typescript代码</p>
-<ul>
-<li>执行tsc转换过后的js代码   <em>node xxx.js</em></li>
-</ul>
-</li>
-<li><p>ts-node ： 自动将ts代码转换为js代码，并将其在nodejs中执行</p>
-<ul>
-<li>安装 <em>npm i -g ts-node</em></li>
-<li>使用 <em>ts-node xxx.ts</em>文件名</li>
-</ul>
-</li>
-<li><p>vscode配置自动编译（功能同4）</p>
-<ul>
-<li>tsc –init 生成tsconfig.json 改”outDir”:’./js’</li>
-<li>终端-运行任务-监视tsconfig.json</li>
-</ul>
-</li>
-</ol>
-<h4 id="02-TypeScript-数据类型-变量"><a href="#02-TypeScript-数据类型-变量" class="headerlink" title="02. TypeScript 数据类型 | 变量"></a>02. TypeScript 数据类型 | 变量</h4><ol>
-<li><p>在JavaScript中，变量中可以存储任意类型的数据</p>
-<p><em>var a = 10； a = “jack” ； a=true；</em></p>
-</li>
-<li><p>但是在TS语法规定：在声明变量的时候，必须制定变量的类型</p>
-</li>
-<li><p>声明变量的语法： </p>
-<p><u>let 变量名：变量类型</u></p>
-<p><em>let age： number</em></p>
-<p><em>let myName： String</em></p>
-</li>
-<li><p>变量的类型一旦指定后，这个变量只能存储这个类型的数据</p>
-<p><em>age = 18</em>； 这样可以的</p>
-<p><em>age = “jack”</em> 错误 -&gt; 因为上面age指定了类型为number</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag: boolean = <span class="literal">true</span></span><br><span class="line">flag = <span class="literal">false</span></span><br><span class="line"><span class="built_in">console</span>.log(flag)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str: string = <span class="string">''</span></span><br><span class="line">str = <span class="string">'12300'</span></span><br><span class="line"><span class="built_in">console</span>.log(str)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr:number[]=[<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2:<span class="built_in">Array</span>&lt;number&gt;=[<span class="number">33</span>,<span class="number">22</span>,<span class="number">11</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3:string[]=[<span class="string">'1'</span>,<span class="string">'2str'</span>,<span class="string">'3str'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr3)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr4:object[]=[&#123;<span class="attr">name</span>:<span class="string">'hall'</span>,<span class="attr">age</span>:<span class="string">'18'</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">'xun'</span>,<span class="attr">age</span>:<span class="string">'19'</span>&#125;]</span><br><span class="line"><span class="built_in">console</span>.log(arr4)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 元组类型</span></span><br><span class="line"><span class="keyword">var</span> arr5:[number,string]=[<span class="number">123</span>,<span class="string">'this is str'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr5)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚舉类型，使用单词就能够知道单纯的数字表示什么意思。易读</span></span><br><span class="line">enum Flag &#123;success=<span class="number">1</span>,error=<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">let</span> s:Flag=Flag.success</span><br><span class="line"><span class="built_in">console</span>.log(s)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 任意类型</span></span><br><span class="line"><span class="keyword">var</span> num:any=<span class="number">123</span></span><br><span class="line">num=<span class="string">'str'</span></span><br><span class="line">num=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined null 类型</span></span><br><span class="line"><span class="keyword">var</span> a:<span class="literal">undefined</span></span><br><span class="line">a=<span class="literal">undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b:<span class="literal">null</span></span><br><span class="line">b=<span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c:never</span><br><span class="line"><span class="comment">// c='122' 报错 c是never类型，从不使用类型</span></span><br><span class="line"><span class="comment">// 抛出异常，不常用</span></span><br><span class="line">c=<span class="function">(<span class="params">(</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'错误'</span>)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
+<hr>
+<p>Quentin从病床上起来，面对一切陌生的环境，好像是在一个精神疗养院。</p>
 
         </div>
         
@@ -217,7 +158,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/TS/" rel="tag">TS</a>
+                    <a class="has-link-grey -link" href="/tags/fillory/" rel="tag">fillory</a>
                 </div>
             </div>
         </div>
@@ -244,17 +185,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/18/TypeScript02/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">TypeScript02</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/14/Promise%E7%9B%B8%E5%85%B3/">
-                <span class="level-item">Promise相关</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/10/22/scikit-learn/">
+                <span class="level-item">scikit learn</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -275,7 +209,7 @@
     var gitalk = new Gitalk({
         clientID: '4e3fb0cd3921e7281d4f',
         clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
-        id: 'e1f5bcfb1ab6a67277601537eb8b3ad2',
+        id: '5483b00bebfe79d5941e73d6e55ca3c3',
         repo: 'Oliver6565/Oliver6565.github.io.git',
         owner: 'Oliver6565',
         admin: "Oliver6565",

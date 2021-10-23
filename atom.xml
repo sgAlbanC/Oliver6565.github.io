@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-10-22T12:07:50.944Z</updated>
+  <updated>2021-10-23T04:44:36.664Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>迷幻师的困局</title>
+    <link href="http://yoursite.com/2021/10/22/%E8%BF%B7%E5%B9%BB%E5%B8%88%E7%9A%84%E5%9B%B0%E5%B1%80/"/>
+    <id>http://yoursite.com/2021/10/22/%E8%BF%B7%E5%B9%BB%E5%B8%88%E7%9A%84%E5%9B%B0%E5%B1%80/</id>
+    <published>2021-10-22T12:05:49.000Z</published>
+    <updated>2021-10-23T04:44:36.664Z</updated>
+    
+    <content type="html"><![CDATA[<p>“ Stop playing , start living ”</p><a id="more"></a><hr><p>Quentin从病床上起来，面对一切陌生的环境，好像是在一个精神疗养院。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;“ Stop playing , start living ”&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="fillory" scheme="http://yoursite.com/tags/fillory/"/>
+    
+  </entry>
+  
+  <entry>
     <title>scikit learn</title>
     <link href="http://yoursite.com/2021/10/22/scikit-learn/"/>
     <id>http://yoursite.com/2021/10/22/scikit-learn/</id>
     <published>2021-10-22T11:57:12.000Z</published>
-    <updated>2021-10-22T12:07:50.944Z</updated>
+    <updated>2021-10-23T02:00:56.520Z</updated>
     
-    <content type="html"><![CDATA[<p>scikit-learn 机器学习的库。其他还有tensorflow、pytorch</p><a id="more"></a><hr><h4 id="Scikit-learn-有六个API大类"><a href="#Scikit-learn-有六个API大类" class="headerlink" title="Scikit-learn 有六个API大类"></a>Scikit-learn 有六个API大类</h4><p><strong>classfication</strong></p><p><strong>regression</strong></p><p><strong>clustering</strong></p><p>分类、回归、聚类</p><p><strong>dimensionality reduction</strong></p><p><strong>model selection</strong></p><p><strong>preprocessing</strong></p><p>降维（调优）</p><p>模型选择</p><p>特征工程（数据预处理）</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StarderScale, MinMaxScale</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassfier</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化、标准化操作</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>scikit-learn 机器学习的库。其他还有tensorflow、pytorch</p><a id="more"></a><hr><h4 id="Scikit-learn-有六个API大类"><a href="#Scikit-learn-有六个API大类" class="headerlink" title="Scikit-learn 有六个API大类"></a>Scikit-learn 有六个API大类</h4><p><strong>classfication</strong></p><p><strong>regression</strong></p><p><strong>clustering</strong></p><p>分类、回归、聚类</p><p><strong>dimensionality reduction</strong></p><p><strong>model selection</strong></p><p><strong>preprocessing</strong></p><p>降维（调优）</p><p>模型选择</p><p>特征工程（数据预处理）</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StarderScale, MinMaxScale</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassfier</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化、标准化操作</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -42,9 +63,9 @@
     <link href="http://yoursite.com/2021/10/22/Niffen/"/>
     <id>http://yoursite.com/2021/10/22/Niffen/</id>
     <published>2021-10-22T11:41:11.000Z</published>
-    <updated>2021-10-22T14:34:30.627Z</updated>
+    <updated>2021-10-23T04:39:33.163Z</updated>
     
-    <content type="html"><![CDATA[<p>Chapter III</p><p>“ 他全身燃烧了起来，直到不复存在，他变成了Niffen ”</p><a id="more"></a><hr><p>“ 是时候该学些魔法了，慢慢来 ” - Pete对Julia说到，Julia开始慢慢体会到魔法的滋味。</p><p>“  某种程度上，魔法师一直都在获得力量，远超自己的能量，元素。但是能量也会有代价。我们严格按照我们的处事方式开设这门课程是有原因的。自由散漫， 只关注在错误的事情上，缺乏引导，这些行为极其危险。有些咒语，有些能量太过强大，单凭一个魔法师无法驾驭。如果失控，它们就会反噬，会杀了你，改变你成为另外的样子 ” - 校长</p><p>（ 相比于Brakebills，Hedge witches的行为就太过危险 ）</p><p>“ 现在你们要进行测试，来识别你们的能力类型。这样会更好的引导，更好的了解自己，发觉自己的潜能，到达更高的高度 ” - 校长</p><p>Alice会折射光线，Kate明显是一个战斗魔法师。Q因为找不到自己的类型而自怨自哀当中。</p><hr><p>Alice和Q来到无忧小屋</p><p>Alice主动找到了Margo</p><p>“ 我之前并不是故意表现出这种态度的 ” - Alice</p><p>“ 没关系，每个人都有bitch的时候。你身上围绕着一种，不幸下，有一丝愤怒 ” - Margo</p><p>“ 我来Brakebills，是为了调查我哥哥的死因 ”  - Alice</p><p>Margo找到了五年前的照片，“ 当时Charlie喜欢一个女孩叫做Emily ”</p><hr><p>Margo和Alice找到了Emily</p><p>Emily 看到他俩后想离开，“ Emily, Charlie 是我哥哥 ” 这才叫住了Emily</p><p>“ 五年前，我迷恋上了我的教授，为了他我做了一个很坏的事情，我用魔法去整容，但我失败了。我的一半的脸都垮塌了，Charlie当时想帮助我恢复容貌，他将各种魔法混合在一起，在施展的时候，控制不住自己，他全身燃烧了起来，直到不复存在，他变成了Niffen ” - Emily</p><p>“ 你们知道什么是Niffen吗？”  - Emily</p><p>Alice和Margo对视了一下，Alice知道。</p><hr>]]></content>
+    <content type="html"><![CDATA[<p>Chapter III</p><p>“ 他全身燃烧了起来，直到不复存在，他变成了Niffen ”</p><a id="more"></a><hr><p>“ 是时候该学些魔法了，慢慢来 ” - Pete对Julia说到，Julia开始慢慢体会到魔法的滋味。</p><p>“  某种程度上，魔法师一直都在获得力量，远超自己的能量，元素。但是能量也会有代价。我们严格按照我们的处事方式开设这门课程是有原因的。自由散漫， 只关注在错误的事情上，缺乏引导，这些行为极其危险。有些咒语，有些能量太过强大，单凭一个魔法师无法驾驭。如果失控，它们就会反噬，会杀了你，改变你成为另外的样子 ” - 校长</p><p>（ 相比于Brakebills，Hedge witches的行为就太过危险 ）</p><p>“ 现在你们要进行测试，来识别你们的能力类型。这样会更好的引导，更好的了解自己，发觉自己的潜能，到达更高的高度 ” - 校长</p><p>Alice会折射光线，Kate明显是一个战斗魔法师。Q因为找不到自己的类型而自怨自哀当中。</p><hr><p>Alice和Q来到无忧小屋</p><p>Alice主动找到了Margo</p><p>“ 我之前并不是故意表现出这种态度的 ” - Alice</p><p>“ 没关系，每个人都有bitch的时候。你身上围绕着一种，不幸下，有一丝愤怒 ” - Margo</p><p>“ 我来Brakebills，是为了调查我哥哥的死因 ”  - Alice</p><p>Margo找到了五年前的照片，“ 当时Charlie喜欢一个女孩叫做Emily ”</p><hr><p>Margo和Alice找到了Emily</p><p>Emily 看到他俩后想离开，“ Emily, Charlie 是我哥哥 ” 这才叫住了Emily</p><p>“ 五年前，我迷恋上了我的教授，为了他我做了一个很坏的事情，我用魔法去整容，但我失败了。我的一半的脸都垮塌了，Charlie当时想帮助我恢复容貌，他将各种魔法混合在一起，在施展的时候，控制不住自己，他全身燃烧了起来，直到不复存在，他变成了Niffen ” - Emily</p><p>“ 你们知道什么是Niffen吗？”  - Emily</p><p>Alice和Margo对视了一下，Alice知道。</p><hr><p>“ you loser ,stop sing that ” Penny对Q吼道</p><p>“ 我没有唱… ” - Q</p><p>“ I know, I mean in your head, in your mind ” - Penny</p><p>“ 你观察我的大脑，你个恶心的疯子 ” - Q</p><p>“ 你以为我想，别唱了，信不信我捶死你 ” - Penny</p><p>Q被Penny吓到连连后退跑了</p><p>Penny最近脑袋中经常有各种声音，这让他十分难受。</p><p>最后经过测试得知他的魔法类型是穿越者，是很罕见的一种。学校找来了唯一的穿越者老师来授课。</p><hr><p>之前有Hedgewitch的人借书，是Eliet收费借给他们的。现在Eliet和Q一起去找书回来。因为那本魔法书要繁殖，需要上册。</p><p>来到废弃的工厂旁边，走进去，Q见到了正在学习魔法的Julia，他无奈也不敢相信Julia会跟这些业余魔法师混在一起。转身就要走，Julia拦下了他</p><p>“ 就这样？就这样走了？ ” - Julia上前质问道</p><p>“ 怎么，你想让我说什么？ ” - Q摇着头失望的说</p><p>“ 要不说声 对不起？最开始我以为是他们给我的测试，入学之前的测试，结果我等了一周、两周，我以为会有人来给我抹去记忆。然后我才意识到，你根本没有向他们提及我  ” - Julia</p><p>“ look，Jules “ - Q</p><p>“ 你曾是我最好的朋友 ” - Julia</p><p>“ 是的，所以我放手了 ” - Q</p><p>“ 什么叫你放手了 ” - Julia</p><p>“ Brakebills里的人，他们可以操纵光线，可以读心，可以飞，而你不过是会些把戏 ” - Q</p><p>“ 就是这样吗？真实的你？” - Julia</p><p>“ 你有想过你一直怎么对我的吗？” - Q</p><p>“ 什么，我.. ” - Julia</p><p>“ 当然，你永远都是很好的，都是对的，对待你什么都做不到的小Q非常贴心非常友好 “ - Q</p><p>“ 不要那么说我，那是你的说法 ” - Julia</p><p>“ 你和James不过都是同情我罢了 ” - Q</p><p>“ 你为什么要这么说 ” - Julia</p><p>“ 因为这是事 Julia ” - Q</p><p>“ 这不是事实 ” - Julia</p><p>“ 承认吧，承认吧，就承认吧 ” - Q</p><p>“ 所以你就要因此惩罚我 ” - Julia</p><p>“ 我不知道我还能说些什么，你不能怪我，是你自己没有魔法天赋，你男友知道你在这里吗？你跟一群把魔法当把戏的混混们一起 ” - Q</p><p>“ 你在开玩笑吗？这些人… ” - Julia</p><p>“ 不要在沦落至此了，我很抱歉，但我认真的，你会付出惨重的代价，清醒点吧 ” - Q</p><p>Q的无情和自私让Julia有些伤心</p><hr><p>“ 你差点就被开除了，下次可不要这么粗心了 ” - Marina高傲的对着Kate说</p><p>“ 只是突然出现了个满脸都是飞蛾的怪物，用了什么麻痹人的魔法，我不得已这么做 ” - Kate</p><hr><p>Niffen学校禁止讨论的话题。她找到了对应的咒语，想让她哥哥复活。她告诉了Quentin，但Q因为担心Alice会做出一些出格的事情，所以提前准备了一个绑定器，可以讲灵魂绑定在这个小盒子里，以便她哥哥出现时失控了，可以有东西控制住他。</p><p>夜晚，Alice来到学校喷泉旁边，开始施魔法。她哥哥从温泉中冒出来，全身上下的血管中不时冒出蓝色的火焰，面目凶残。Quentin突然出现叫住Alice</p><p>“ 他不是你哥哥，他是Niffen ” - Q喊道</p><p>Alice焦急得施展着魔法，急切的想唤起Charlie心中的理智 “ 我知道你在里面Charlie ”。Q想靠近，却被Charlie一挥手仍向了远处。</p><p>“ Alice… Don’t…  ” - Q</p><p>Alice自己快掌控不住魔法的时候，Q突然拿出那个小盒子喊道 “ cksooids danbyim, I bound you! ”. 只见Charlie的灵魂被吸入小盒子中。</p><p>“ 我马上就成功了 ” - Alice有些歇斯底里和绝望的喊道</p><p>“ 对不起 Alice ”</p><hr><p>Alice收拾行李准备离开学院了。</p><p>“ 你去哪儿？小可爱 ” - Margo</p><p>“ 我要走了，你开心了，少了竞争对手 ” - Alice</p>]]></content>
     
     <summary type="html">
     
@@ -436,27 +457,6 @@
     
     
       <category term="rest" scheme="http://yoursite.com/tags/rest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>django搭建</title>
-    <link href="http://yoursite.com/2020/04/03/django%E6%90%AD%E5%BB%BA/"/>
-    <id>http://yoursite.com/2020/04/03/django%E6%90%AD%E5%BB%BA/</id>
-    <published>2020-04-03T15:51:15.000Z</published>
-    <updated>2020-04-04T13:42:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>搭建django的一些坑</p><a id="more"></a><h5 id="1-下载安装python"><a href="#1-下载安装python" class="headerlink" title="1. 下载安装python"></a>1. 下载安装python</h5><p>3.4以上新版python下载后自带pip，pip根据提示自我更新</p><h5 id="2-用python-的pip管理器去下载django"><a href="#2-用python-的pip管理器去下载django" class="headerlink" title="2. 用python 的pip管理器去下载django"></a>2. 用python 的pip管理器去下载django</h5><p>注意pip 和 django  和python 的版本</p><p>注意 pip 自我更新 和下载django的时候，报错重来，多下几次。</p><h5 id="3-配置django环境变量"><a href="#3-配置django环境变量" class="headerlink" title="3. 配置django环境变量"></a>3. 配置django环境变量</h5><p>在path中加入两个 一个是到script 一个是到bin</p><h5 id="4-下载安装pycharm社区版（官网）"><a href="#4-下载安装pycharm社区版（官网）" class="headerlink" title="4. 下载安装pycharm社区版（官网）"></a>4. 下载安装pycharm社区版（官网）</h5><p>目前双击打不开，用cmd可以输入pycharm打开，命令不能关</p><h5 id="5-pycharm-设置背景颜色-字体大小"><a href="#5-pycharm-设置背景颜色-字体大小" class="headerlink" title="5. pycharm 设置背景颜色 字体大小"></a>5. pycharm 设置背景颜色 字体大小</h5><p>settings里面的</p><h5 id="6-project-interpreter"><a href="#6-project-interpreter" class="headerlink" title="6. project interpreter"></a>6. project interpreter</h5><p>在settings -&gt; Project 中添加 python</p><h5 id="7-django项目要添加python-exe"><a href="#7-django项目要添加python-exe" class="headerlink" title="7. django项目要添加python.exe"></a>7. django项目要添加python.exe</h5><h5 id="8-在下面-的-Terminal终端中执行"><a href="#8-在下面-的-Terminal终端中执行" class="headerlink" title="8. 在下面 的 Terminal终端中执行"></a>8. 在下面 的 Terminal终端中执行</h5><p>python manage.py runserver 开启服务器，django自带一个小型服务器，自动开启8000端口号。可在settings文件中更改</p><h5 id="9-python-3-x和2-x"><a href="#9-python-3-x和2-x" class="headerlink" title="9. python 3.x和2.x"></a>9. python 3.x和2.x</h5><p>两个版本是由差距的，会影响django还有一些依赖插件比如pymysql是3.x用的</p><h5 id="10-接口测试时Forbidden-CSRF-cookie-not-set"><a href="#10-接口测试时Forbidden-CSRF-cookie-not-set" class="headerlink" title="10. 接口测试时Forbidden (CSRF cookie not set.)"></a>10. 接口测试时Forbidden (CSRF cookie not set.)</h5><p>可以去settings里面 MIDDLEWARE = [ 那个csrf. ]  注释掉</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.views.decorators.csrf <span class="keyword">import</span> csrf_exempt</span><br><span class="line"> </span><br><span class="line"><span class="meta">@csrf_exempt </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_api</span><span class="params">(request)</span>:</span></span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        dic[<span class="string">'message'</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(json.dumps(dic))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        dic[<span class="string">'message'</span>] = <span class="string">'方法错误'</span></span><br><span class="line">        <span class="keyword">return</span> HttpResponse(json.dumps(dic, ensure_ascii=<span class="literal">False</span>))</span><br><span class="line">    </span><br><span class="line"> <span class="comment"># 这里是views里面的一个如何返回类似json文件的例子</span></span><br><span class="line"> <span class="comment"># 这样 就可以 简单的实现写views 不用管渲染的部分</span></span><br></pre></td></tr></table></figure><h5 id="11-ajax-简单传值"><a href="#11-ajax-简单传值" class="headerlink" title="11. ajax 简单传值"></a>11. ajax 简单传值</h5><img src="/2020/04/03/django%E6%90%AD%E5%BB%BA/d1.png" class><h5 id="12-Django-中-request方法"><a href="#12-Django-中-request方法" class="headerlink" title="12. Django 中 request方法"></a>12. Django 中 request方法</h5><p>request.session</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请求的路径，这里的路径是指相对路径，也就是说一个登陆后台页面的请求：http:&#96;&#96;&#x2F;&#96;&#96;&#x2F;&#96;&#96;127.0&#96;&#96;.&#96;&#96;0.1&#96;&#96;:&#96;&#96;8000&#96;&#96;&#x2F;&#96;&#96;admin 的路径是 &#96;&#96;&#x2F;&#96;&#96;admin</span><br><span class="line">获取完整路径（包括参数）：HttpRequest.get_full_path()</span><br><span class="line">获取绝对url： HttpRequest.bulid_absolute_uri(location) 此参数默认为完整路径</span><br></pre></td></tr></table></figure><p>request.encoding</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请求提交的数据的编码方式</span><br></pre></td></tr></table></figure><p> request.session</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.session 获取的是一个类似于字典的对象，可以进行读取写入操作，常用来保存一些数据来实现会话跟踪技术。 因为 HTTP 是一个无状态，不连续的协议。如果想让服务器记住当前的访问对象，就需要记录请求者的一些信息来达到这个目的。</span><br><span class="line"># 设置session&#96;&#96;request.session[&#96;&#96;&quot;name&quot;&#96;&#96;] &#96;&#96;&#x3D;&#96; &#96;&quot;root&quot;&#96;&#96;# 获取session&#96;&#96;name &#96;&#96;&#x3D;&#96; &#96;request.sessin[&#96;&#96;&quot;name&quot;&#96;&#96;]</span><br></pre></td></tr></table></figure><p>django会默认为session使用json序列化。json序列化只能序列化一些基本数据类型，如数字，字符串，列表等。所以session不能直接存储对象.可以简单的在settings中添加 SESSION_SERIALIZER = “django.contrib.sessions.serializers.PickleSerializer”</p><p>request.method   请求方式POST/GET</p><h5 id="13-request获取数据"><a href="#13-request获取数据" class="headerlink" title="13. request获取数据"></a>13. request获取数据</h5><p>request.body</p><p>请求的主体，返回一个字符串</p><p>request.data</p><p>请求数据部分，返回一个字典对象，其他和request.body很想</p><p><strong>request.POST</strong></p><p>获取post方式表单中提交的数据</p><p>request.POST[“username”]</p><p>request.POST.get（“username”）</p><p>request.GET</p><p>获取get方式表单中或url提交的数据</p><p>request.GET[“username”]</p><p>request.GET.get（“username”）</p><h5 id="14-postman请求"><a href="#14-postman请求" class="headerlink" title="14. postman请求"></a>14. postman请求</h5><p>请求post时，在body里面写参数！！</p><p>请求get时，在params里面写参数！！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;搭建django的一些坑&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="Django" scheme="http://yoursite.com/tags/Django/"/>
     
   </entry>
   

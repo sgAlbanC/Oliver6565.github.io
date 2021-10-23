@@ -3697,6 +3697,56 @@ required: true</code></pre><p>  },……数据集合</p>
 <p>“ 你们知道什么是Niffen吗？”  - Emily</p>
 <p>Alice和Margo对视了一下，Alice知道。</p>
 <hr>
+<p>“ you loser ,stop sing that ” Penny对Q吼道</p>
+<p>“ 我没有唱… ” - Q</p>
+<p>“ I know, I mean in your head, in your mind ” - Penny</p>
+<p>“ 你观察我的大脑，你个恶心的疯子 ” - Q</p>
+<p>“ 你以为我想，别唱了，信不信我捶死你 ” - Penny</p>
+<p>Q被Penny吓到连连后退跑了</p>
+<p>Penny最近脑袋中经常有各种声音，这让他十分难受。</p>
+<p>最后经过测试得知他的魔法类型是穿越者，是很罕见的一种。学校找来了唯一的穿越者老师来授课。</p>
+<hr>
+<p>之前有Hedgewitch的人借书，是Eliet收费借给他们的。现在Eliet和Q一起去找书回来。因为那本魔法书要繁殖，需要上册。</p>
+<p>来到废弃的工厂旁边，走进去，Q见到了正在学习魔法的Julia，他无奈也不敢相信Julia会跟这些业余魔法师混在一起。转身就要走，Julia拦下了他</p>
+<p>“ 就这样？就这样走了？ ” - Julia上前质问道</p>
+<p>“ 怎么，你想让我说什么？ ” - Q摇着头失望的说</p>
+<p>“ 要不说声 对不起？最开始我以为是他们给我的测试，入学之前的测试，结果我等了一周、两周，我以为会有人来给我抹去记忆。然后我才意识到，你根本没有向他们提及我  ” - Julia</p>
+<p>“ look，Jules “ - Q</p>
+<p>“ 你曾是我最好的朋友 ” - Julia</p>
+<p>“ 是的，所以我放手了 ” - Q</p>
+<p>“ 什么叫你放手了 ” - Julia</p>
+<p>“ Brakebills里的人，他们可以操纵光线，可以读心，可以飞，而你不过是会些把戏 ” - Q</p>
+<p>“ 就是这样吗？真实的你？” - Julia</p>
+<p>“ 你有想过你一直怎么对我的吗？” - Q</p>
+<p>“ 什么，我.. ” - Julia</p>
+<p>“ 当然，你永远都是很好的，都是对的，对待你什么都做不到的小Q非常贴心非常友好 “ - Q</p>
+<p>“ 不要那么说我，那是你的说法 ” - Julia</p>
+<p>“ 你和James不过都是同情我罢了 ” - Q</p>
+<p>“ 你为什么要这么说 ” - Julia</p>
+<p>“ 因为这是事 Julia ” - Q</p>
+<p>“ 这不是事实 ” - Julia</p>
+<p>“ 承认吧，承认吧，就承认吧 ” - Q</p>
+<p>“ 所以你就要因此惩罚我 ” - Julia</p>
+<p>“ 我不知道我还能说些什么，你不能怪我，是你自己没有魔法天赋，你男友知道你在这里吗？你跟一群把魔法当把戏的混混们一起 ” - Q</p>
+<p>“ 你在开玩笑吗？这些人… ” - Julia</p>
+<p>“ 不要在沦落至此了，我很抱歉，但我认真的，你会付出惨重的代价，清醒点吧 ” - Q</p>
+<p>Q的无情和自私让Julia有些伤心</p>
+<hr>
+<p>“ 你差点就被开除了，下次可不要这么粗心了 ” - Marina高傲的对着Kate说</p>
+<p>“ 只是突然出现了个满脸都是飞蛾的怪物，用了什么麻痹人的魔法，我不得已这么做 ” - Kate</p>
+<hr>
+<p>Niffen学校禁止讨论的话题。她找到了对应的咒语，想让她哥哥复活。她告诉了Quentin，但Q因为担心Alice会做出一些出格的事情，所以提前准备了一个绑定器，可以讲灵魂绑定在这个小盒子里，以便她哥哥出现时失控了，可以有东西控制住他。</p>
+<p>夜晚，Alice来到学校喷泉旁边，开始施魔法。她哥哥从温泉中冒出来，全身上下的血管中不时冒出蓝色的火焰，面目凶残。Quentin突然出现叫住Alice</p>
+<p>“ 他不是你哥哥，他是Niffen ” - Q喊道</p>
+<p>Alice焦急得施展着魔法，急切的想唤起Charlie心中的理智 “ 我知道你在里面Charlie ”。Q想靠近，却被Charlie一挥手仍向了远处。</p>
+<p>“ Alice… Don’t…  ” - Q</p>
+<p>Alice自己快掌控不住魔法的时候，Q突然拿出那个小盒子喊道 “ cksooids danbyim, I bound you! ”. 只见Charlie的灵魂被吸入小盒子中。</p>
+<p>“ 我马上就成功了 ” - Alice有些歇斯底里和绝望的喊道</p>
+<p>“ 对不起 Alice ”</p>
+<hr>
+<p>Alice收拾行李准备离开学院了。</p>
+<p>“ 你去哪儿？小可爱 ” - Margo</p>
+<p>“ 我要走了，你开心了，少了竞争对手 ” - Alice</p>
 ]]></content>
       <tags>
         <tag>filler</tag>
@@ -3719,13 +3769,26 @@ required: true</code></pre><p>  },……数据集合</p>
 <p>降维（调优）</p>
 <p>模型选择</p>
 <p>特征工程（数据预处理）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StarderScale, MinMaxScale</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassfier</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化、标准化操作</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StarderScale, MinMaxScale</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassfier</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化、标准化操作</span></span><br></pre></td></tr></table></figure>
 
 
 
 ]]></content>
       <tags>
         <tag>机器学习库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>迷幻师的困局</title>
+    <url>/2021/10/22/%E8%BF%B7%E5%B9%BB%E5%B8%88%E7%9A%84%E5%9B%B0%E5%B1%80/</url>
+    <content><![CDATA[<p>“ Stop playing , start living ”</p>
+<a id="more"></a>
+
+<hr>
+<p>Quentin从病床上起来，面对一切陌生的环境，好像是在一个精神疗养院。</p>
+]]></content>
+      <tags>
+        <tag>fillory</tag>
       </tags>
   </entry>
 </search>
