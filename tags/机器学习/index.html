@@ -133,6 +133,240 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-10-24T07:05:38.000Z">2021-10-24</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 459 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2021/10/24/pandas%E5%AD%A6%E4%B9%A0/">pandas学习</a>
+            
+        </h1>
+        <div class="content">
+            <h4 id="Pandas学习"><a href="#Pandas学习" class="headerlink" title="Pandas学习"></a>Pandas学习</h4><ul>
+<li>以Numpy为基础，借力Numpy模块在计算方面性能高的优势</li>
+<li>基于matplotlib，能够简便画图</li>
+<li>独特的数据结构（Series、DataFrame、MultiIndex）</li>
+</ul>
+<hr>
+<h4 id="1-Series的创建"><a href="#1-Series的创建" class="headerlink" title="1 Series的创建"></a>1 Series的创建</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入pandas</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pd.Series(data=<span class="literal">None</span>, index=<span class="literal">None</span>, dtype=<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">data：传入的数据，可以是ndarray、list等</span><br><span class="line">index：索引，必须是唯一的，且与数据的长度相等。如果没有传入索引参数，则默认会自动创建一个从<span class="number">0</span>-N的整数索引。</span><br><span class="line">dtype：数据的类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Series的属性"><a href="#2-Series的属性" class="headerlink" title="2 Series的属性"></a><strong>2 Series的属性</strong></h4><p>为了更方便地操作Series对象中的索引和数据，<strong>Series中提供了两个属性index和values</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">color_count = pd.Series(&#123;<span class="string">'red'</span>:<span class="number">100</span>, <span class="string">'blue'</span>:<span class="number">200</span>, <span class="string">'green'</span>: <span class="number">500</span>, <span class="string">'yellow'</span>:<span class="number">1000</span>&#125;)</span><br><span class="line">color_count</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看索引</span></span><br><span class="line">color_count.index</span><br><span class="line"><span class="comment"># 查看值</span></span><br><span class="line">color_count.values</span><br><span class="line"><span class="comment"># 可用索引获取值</span></span><br><span class="line">color_count[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-DataFrame的创建"><a href="#3-DataFrame的创建" class="headerlink" title="3 DataFrame的创建"></a>3 DataFrame的创建</h4><p>DataFrame是一个类似于二维数组或表格(如excel)的对象，既有行索引，又有列索引</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入pandas</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">pd.DataFrame(data=<span class="literal">None</span>, index=<span class="literal">None</span>, columns=<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">x1 = pd.DataFrame(np.random.randn(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Pandas中的数据结构</span></span><br><span class="line">score_df = pd.DataFrame(score)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造行索引序列</span></span><br><span class="line">subjects = [<span class="string">"语文"</span>, <span class="string">"数学"</span>, <span class="string">"英语"</span>, <span class="string">"政治"</span>, <span class="string">"体育"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造列索引序列</span></span><br><span class="line">stu = [<span class="string">'同学'</span> + str(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(score_df.shape[<span class="number">0</span>])]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加行索引</span></span><br><span class="line">data = pd.DataFrame(score, columns=subjects, index=stu)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-DataFrame属性"><a href="#4-DataFrame属性" class="headerlink" title="4 DataFrame属性"></a>4 DataFrame属性</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">(<span class="number">10</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行索引</span></span><br><span class="line">data.index</span><br><span class="line"><span class="comment"># 列索引</span></span><br><span class="line">data.columns</span><br><span class="line"><span class="comment"># 直接获取其中array的值</span></span><br><span class="line">data.values</span><br><span class="line"><span class="comment"># 转置</span></span><br><span class="line">T</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果不补充参数，默认5行。填入参数N则显示前N行</span></span><br><span class="line">data.head(<span class="number">5</span>)</span><br><span class="line">data.tail(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新添加索引123456</span></span><br><span class="line">data.reset_index(drop = <span class="literal">True</span> / Fales)</span><br><span class="line"><span class="comment"># 重新设置其中一列作为索引</span></span><br><span class="line">data.set_index()</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-文件读写"><a href="#5-文件读写" class="headerlink" title="5 文件读写"></a>5 文件读写</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取，查看结果</span></span><br><span class="line">pd.read_csv(<span class="string">"./data/test.csv"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选取10行数据保存,便于观察数据</span></span><br><span class="line">data[:<span class="number">10</span>].to_csv(<span class="string">"./data/test.csv"</span>, columns=[<span class="string">'open'</span>])</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-10-24T07:05:05.000Z">2021-10-24</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 580 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2021/10/24/numpy%E5%AD%A6%E4%B9%A0/">numpy学习</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="Numpy数组运算库"><a href="#Numpy数组运算库" class="headerlink" title="Numpy数组运算库"></a>Numpy数组运算库</h3><p>Numpy（Numerical Python）是一个开源的Python科学计算库，<strong>用于快速处理任意维度的数组</strong>。</p>
+<p>Numpy<strong>支持常见的数组和矩阵操作</strong>。对于同样的数值计算任务，使用Numpy比直接使用Python要简洁的多。</p>
+<p>Numpy<strong>使用ndarray对象来处理多维数组</strong>，该对象是一个快速而灵活的大数据容器。</p>
+<p><u>ndarray的优势</u>：</p>
+<ul>
+<li><p>内存块风格</p>
+<ul>
+<li>list – 分离式存储,存储内容多样化</li>
+<li>ndarray – 一体式存储,存储类型必须一样</li>
+</ul>
+</li>
+<li><p>ndarray支持并行化运算（向量化运算）</p>
+</li>
+<li><p>ndarray底层是用C语言写的,效率更高,释放了GIL</p>
+</li>
+</ul>
+<h4 id="1-ndarray的属性"><a href="#1-ndarray的属性" class="headerlink" title="1 ndarray的属性"></a>1 ndarray的属性</h4><table>
+<thead>
+<tr>
+<th align="center">属性名字</th>
+<th align="center">属性解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>ndarray.shape</strong></td>
+<td align="center">数组维度的元组</td>
+</tr>
+<tr>
+<td align="center">ndarray.ndim</td>
+<td align="center">数组维数</td>
+</tr>
+<tr>
+<td align="center">ndarray.size</td>
+<td align="center">数组中的元素数量</td>
+</tr>
+<tr>
+<td align="center">ndarray.itemsize</td>
+<td align="center">一个数组元素的长度（字节）</td>
+</tr>
+<tr>
+<td align="center"><strong>ndarray.dtype</strong></td>
+<td align="center">数组元素的类型</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过np.array来创建一个ndarray对象</span></span><br><span class="line">score = np.array(</span><br><span class="line">[[<span class="number">80</span>, <span class="number">89</span>, <span class="number">86</span>, <span class="number">67</span>, <span class="number">79</span>],</span><br><span class="line">[<span class="number">78</span>, <span class="number">97</span>, <span class="number">89</span>, <span class="number">67</span>, <span class="number">81</span>],</span><br><span class="line">[<span class="number">90</span>, <span class="number">94</span>, <span class="number">78</span>, <span class="number">67</span>, <span class="number">74</span>],</span><br><span class="line">[<span class="number">91</span>, <span class="number">91</span>, <span class="number">90</span>, <span class="number">67</span>, <span class="number">69</span>],</span><br><span class="line">[<span class="number">76</span>, <span class="number">87</span>, <span class="number">75</span>, <span class="number">67</span>, <span class="number">86</span>],</span><br><span class="line">[<span class="number">70</span>, <span class="number">79</span>, <span class="number">84</span>, <span class="number">67</span>, <span class="number">84</span>],</span><br><span class="line">[<span class="number">94</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">67</span>, <span class="number">64</span>],</span><br><span class="line">[<span class="number">86</span>, <span class="number">85</span>, <span class="number">83</span>, <span class="number">67</span>, <span class="number">80</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成0和1的数组</span></span><br><span class="line">ones = np.ones([<span class="number">4</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-浅拷贝和深拷贝"><a href="#2-浅拷贝和深拷贝" class="headerlink" title="2 浅拷贝和深拷贝"></a>2 浅拷贝和深拷贝</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line"><span class="comment"># 从现有的数组当中创建，深拷贝</span></span><br><span class="line">a1 = np.array(a)</span><br><span class="line"><span class="comment"># 相当于索引的形式，并没有真正的创建一个新的</span></span><br><span class="line">a2 = np.asarray(a)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-生成固定范围数组"><a href="#3-生成固定范围数组" class="headerlink" title="3 生成固定范围数组"></a>3 生成固定范围数组</h4><ul>
+<li><p>np.linspace(start,stop,num,endpoint)</p>
+<ul>
+<li><p>start 开始值 ；stop 终止值</p>
+</li>
+<li><p>num 要生成的等间隔样例数量，默认为50</p>
+</li>
+<li><p>endpoint 序列中是否包含stop值，默认为true</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成等间隔的数组</span></span><br><span class="line">np.linspace(<span class="number">0</span>, <span class="number">100</span>, <span class="number">11</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回结果</span></span><br><span class="line">array([  <span class="number">0.</span>,  <span class="number">10.</span>,  <span class="number">20.</span>,  <span class="number">30.</span>,  <span class="number">40.</span>,  <span class="number">50.</span>,  <span class="number">60.</span>,  <span class="number">70.</span>,  <span class="number">80.</span>,  <span class="number">90.</span>, <span class="number">100.</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>np.arange()</p>
+<ul>
+<li><p>step – 步长</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">10</span>, <span class="number">50</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>np.logspace()</p>
+<ul>
+<li>生成以10的N次幂的数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-生成随机数组"><a href="#4-生成随机数组" class="headerlink" title="4 生成随机数组"></a>4 生成随机数组</h4><p>（ np.random模块 ）</p>
+<p><strong>正态分布</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成均值为1.74，标准差为1的正态分布数据，100000000个</span></span><br><span class="line"><span class="comment"># 第三个参数 也可以是（4,5），这样是生成4行5列矩阵</span></span><br><span class="line"></span><br><span class="line">x1 = np.random.normal(<span class="number">1.75</span>, <span class="number">1</span>, <span class="number">100000000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图看分布状况</span></span><br><span class="line"><span class="comment"># 1）创建画布</span></span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>, <span class="number">10</span>), dpi=<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2）绘制直方图</span></span><br><span class="line">plt.hist(x1, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3）显示图像</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>均匀分布</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成均匀分布的随机数</span></span><br><span class="line"></span><br><span class="line">x2 = np.random.uniform(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">100000000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图看分布状况</span></span><br><span class="line"><span class="comment"># 1）创建画布</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">10</span>), dpi=<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2）绘制直方图</span></span><br><span class="line">plt.hist(x=x2, bins=<span class="number">1000</span>)  <span class="comment"># x代表要使用的数据，bins表示要划分区间数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3）显示图像</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-10-24T07:02:25.000Z">2021-10-24</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 288 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2021/10/24/matplotlib%E5%AD%A6%E4%B9%A0/">matplotlib学习</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="Matplotlib画图"><a href="#Matplotlib画图" class="headerlink" title="Matplotlib画图"></a>Matplotlib画图</h3><h4 id="1-matplotlib-pyplot模块"><a href="#1-matplotlib-pyplot模块" class="headerlink" title="1 matplotlib.pyplot模块"></a>1 matplotlib.pyplot模块</h4><p>matplotlib.pytplot包含了一系列类似于matlab的画图函数。</p>
+<p><u>画各种图，折线图、统计图、散点图、饼状图、柱状图等利用不同的函数</u></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">各种图的API：</span><br><span class="line"></span><br><span class="line">plt.plot(x,y) 折线图</span><br><span class="line">plt.scatter(x, y) 散点图</span><br><span class="line">plt.bar(x, width, align=<span class="string">'center'</span>) 柱状图</span><br><span class="line">plt.hist(x,bins) 直方图 <span class="comment"># x是数据  bins是多少一组</span></span><br><span class="line">plt.pie(x, labels=,autopct=,colors) 饼状图</span><br><span class="line">Parameters:  </span><br><span class="line">x:数量，自动算百分比</span><br><span class="line">labels:每部分名称</span><br><span class="line">autopct:占比显示指定%<span class="number">1.2</span>f%%</span><br><span class="line">colors:每部分颜色</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-画图流程"><a href="#2-画图流程" class="headerlink" title="2 画图流程"></a>2 画图流程</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.创建画布</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">10</span>), dpi=<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.绘制折线图</span></span><br><span class="line">plt.plot([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> ,<span class="number">7</span>], [<span class="number">17</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">15</span>,<span class="number">11</span>,<span class="number">11</span>,<span class="number">13</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.显示图像</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画出温度变化图</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 0.准备x, y坐标的数据</span></span><br><span class="line">x = range(<span class="number">60</span>)</span><br><span class="line">y_shanghai = [random.uniform(<span class="number">15</span>, <span class="number">18</span>) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.创建画布</span></span><br><span class="line">plt.figure(figsize=(<span class="number">20</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.绘制折线图</span></span><br><span class="line"></span><br><span class="line">plt.grid(<span class="literal">True</span>, linestyle=<span class="string">'--'</span>, alpha=<span class="number">0.5</span>) <span class="comment"># 添加网格</span></span><br><span class="line">plt.plot(x, y_shanghai)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.显示图像</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-中文显示问题解决"><a href="#3-中文显示问题解决" class="headerlink" title="3 中文显示问题解决"></a>3 中文显示问题解决</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> mpl</span><br><span class="line"><span class="comment"># 设置显示中文字体</span></span><br><span class="line">mpl.rcParams[<span class="string">"font.sans-serif"</span>] = [<span class="string">"SimHei"</span>]</span><br><span class="line"><span class="comment"># 设置正常显示符号</span></span><br><span class="line">mpl.rcParams[<span class="string">"axes.unicode_minus"</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2021-10-13T10:01:31.000Z">2021-10-13</time>
                 
                 <div class="level-item">
@@ -277,7 +511,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            51
+                            54
                         </p>
                     </a>
                 </div>
@@ -355,60 +589,60 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-24T07:05:38.000Z">2021-10-24</time></div>
+                    <a href="/2021/10/24/pandas%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">pandas学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-24T07:05:05.000Z">2021-10-24</time></div>
+                    <a href="/2021/10/24/numpy%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">numpy学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-24T07:02:25.000Z">2021-10-24</time></div>
+                    <a href="/2021/10/24/matplotlib%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">matplotlib学习</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-23T09:45:12.000Z">2021-10-23</time></div>
+                    <a href="/2021/10/23/scikit-learn/" class="title has-link-black-ter is-size-6 has-text-weight-normal">scikit learn</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-22T12:05:49.000Z">2021-10-22</time></div>
                     <a href="/2021/10/22/%E8%BF%B7%E5%B9%BB%E5%B8%88%E7%9A%84%E5%9B%B0%E5%B1%80/" class="title has-link-black-ter is-size-6 has-text-weight-normal">迷幻师的困局</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-22T11:57:12.000Z">2021-10-22</time></div>
-                    <a href="/2021/10/22/scikit-learn/" class="title has-link-black-ter is-size-6 has-text-weight-normal">scikit learn</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-22T11:41:11.000Z">2021-10-22</time></div>
-                    <a href="/2021/10/22/Niffen/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Niffen</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-22T04:52:23.000Z">2021-10-22</time></div>
-                    <a href="/2021/10/22/Hedge-witches/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hedge witches</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-10-22T02:05:34.000Z">2021-10-22</time></div>
-                    <a href="/2021/10/22/Brakebills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Brakebills</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -570,7 +804,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
                         <span class="tag">机器学习</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -747,7 +981,7 @@
                     <span class="level-item">十月 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -972,7 +1206,7 @@
                     <span class="level-item">十月 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
