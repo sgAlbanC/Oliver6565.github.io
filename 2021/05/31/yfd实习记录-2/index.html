@@ -7,20 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>重绘和重排 - Neitherland</title>
+<title>yfd实习记录 2 - Neitherland</title>
 
 
-    <meta name="description" content="HTML页面进行重绘和重排（回流）">
+    <meta name="description" content="体检 + 5.28 所发生的事情">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重绘和重排">
-<meta property="og:url" content="http://yoursite.com/2021/04/13/%E9%87%8D%E7%BB%98%E5%92%8C%E9%87%8D%E6%8E%92/index.html">
+<meta property="og:title" content="yfd实习记录 2">
+<meta property="og:url" content="http://yoursite.com/2021/05/31/yfd%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95-2/index.html">
 <meta property="og:site_name" content="Neitherland">
-<meta property="og:description" content="HTML页面进行重绘和重排（回流）">
+<meta property="og:description" content="体检 + 5.28 所发生的事情">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2021-04-13T15:36:02.000Z">
-<meta property="article:modified_time" content="2021-04-14T08:42:42.000Z">
+<meta property="article:published_time" content="2021-05-31T02:46:00.000Z">
+<meta property="article:modified_time" content="2021-10-24T09:05:39.499Z">
 <meta property="article:author" content="Oliver">
+<meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -81,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="重绘和重排" height="28">
+                <img src="/images/logo.png" alt="yfd实习记录 2" height="28">
             
             </a>
         </div>
@@ -126,17 +127,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-04-13T15:36:02.000Z">2021-04-13</time>
+                <time class="level-item has-text-grey" datetime="2021-05-31T02:46:00.000Z">2021-05-31</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                <a class="has-link-grey -link" href="/categories/%E5%AE%9E%E4%B9%A0/">实习</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 452 个字)
+                    8 分钟 读完 (大约 1194 个字)
                 </span>
                 
                 
@@ -145,31 +146,34 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                重绘和重排
+                yfd实习记录 2
             
         </h1>
         <div class="content">
-            <p>HTML页面进行重绘和重排（回流）</p>
+            <p>体检 + 5.28 所发生的事情</p>
 <a id="more"></a>
 
-<h3 id="浏览器运行机制："><a href="#浏览器运行机制：" class="headerlink" title="浏览器运行机制："></a>浏览器运行机制：</h3><ol>
-<li>构建DOM树    生成内容树（html结构）</li>
-<li>构建渲染树      css样式</li>
-<li>布局渲染树      从根节点(&lt;html&gt;)递归调用，计算每一个元素的大小，位置等；给出每个节点所在屏幕上出现的确定坐标</li>
-<li>绘制渲染树      遍历渲染树，使用UI层来绘制每个节点</li>
-</ol>
-<h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><p>​        重绘指的是，一个元素外观（颜色、背景）的改变，所触发的浏览器行为，即浏览器会根据新属性重新绘制页面</p>
-<h3 id="重排（回流）"><a href="#重排（回流）" class="headerlink" title="重排（回流）"></a>重排（回流）</h3><p>​        重排指的是，一个元素或多个元素因为规模尺寸、布局、隐藏等改变页面需要重新构建页面。注意：每个页面至少需要回流一次，就是第一次加载的时候。</p>
-<p>重排一定会导致重绘！！重排和重绘都会导致浏览器速度变慢！</p>
-<h3 id="优化方法："><a href="#优化方法：" class="headerlink" title="优化方法："></a>优化方法：</h3><ol>
-<li>浏览器自己的优化：浏览器会维护1个队列，把所有会引起重绘和重拍的操作放在队列中，达到一定数量或者一定时间间隔，浏览器就会更新队列，进行一次批处理。（维护队列，后批处理）</li>
-<li>我们要注意的优化：减少对渲染树的操作，我们可以合并多次DOM和样式的修改，并减少对style样式的请求<ul>
-<li>直接改变元素的className</li>
-<li>需要多次重排的元素，position可以改为 absolute 或 fixed 。元素脱离了文档流，他的变化不会影响到其他元素了</li>
-</ul>
-</li>
-</ol>
+<h3 id="pt1-体检"><a href="#pt1-体检" class="headerlink" title="pt1 体检"></a>pt1 体检</h3><p>几天前，去沙坪坝爱康国宾医院体检，体检完成后，一健传回hr，体检费用140。</p>
+<p>体检就是常规的体检。</p>
+<h3 id="pt2-5-28事件"><a href="#pt2-5-28事件" class="headerlink" title="pt2 5.28事件"></a>pt2 5.28事件</h3><p>5月28日下午4点多，微信的入职群和租房群被解散，然后接到一个重庆那边的电话，说猿辅导业务已满，暂停招人（借口），让我自愿放弃入职。当时我就十分的气愤，拿到offer以后，公司要求的什么，我都做了，什么都准备好了，就在入职前几天，先把微信群解散，再一个个打电话引导性的让我们放弃入职，我当时就坚决不自愿放弃入职。公司单方面毁offer，造成我的时间和金钱的损失谁来赔偿？让我相互理解？真的狗！</p>
+<p>后来有个和我一起面试通过的小姐姐加了我微信，她是在小红书上看到的。再后来微博上面有几个人在发微博指控，就知道了是全国的猿辅导都在毁offer，hr一律不回复（有些还是回了，有些没回的可能也被开了）。后来加了全国的猿辅导维权群，里面有人提议打电话到总部去申述。第二天早上我就打电话过去申述，她那边询问我的情况和我的诉求，我就说能入职就入职，但我不放弃入职的机会！下午的时候北京那边又打来电话，又询问我的诉求，我也是说，因为一切都准备好了，这样一通电话就让我放弃入职是不可能的！欺负大学生吗？我说能入职尽量入职，到6月3号的时候，如果实在不能入职，我这边也在找另外的工作。</p>
+<p>当天下午，收到第一次打电话让我放弃入职的那个电话号码打来，就说可以6月3号入职，说是岗位稀缺（借口），让我不要给其他人说可以入职的事情。</p>
+<p>（因为出了这种事，所有的打工人都是受害者，所以打电话时我只是控诉了公司的这种不诚信，不透明的恶劣方式，其余的也表示无奈）</p>
+<h3 id="pt3-气愤–冷静"><a href="#pt3-气愤–冷静" class="headerlink" title="pt3 气愤–冷静"></a>pt3 气愤–冷静</h3><p>28号上午的时候还在举行双选会，28号下午就停止招人，明显的不是因为岗位需求减少的原因，而是有什么文件下达，这种国家层面的要求我们谁也不能说什么。所以在挂断第一通电话过后，回想了一下，我又打了过去，就仔细说明了我的诉求：能正常入职就正常入职，不能那就等到6月3号再说。29号 上午的时候，我们学校居然还有人在发猿辅导招聘的广告，我加了QQ，他说可以把简历给他，我就说了我的情况，他就不说话了，然后boss直聘上还在招人，还有在线下举办招聘会的情况，我就想说这是混乱了吗？我不想搞什么阴谋论。</p>
+<p>那个群里面真的是鱼龙混杂，居然还有人说 “与其在这维权，不如抓紧时间找下一份工作”，这种人什么成分一目了然。被毁offer的甚至有春招过来的，推掉其他很多offer过来的，错过了黄金春招，然后听信一句不如抓紧时间？？</p>
+<p>28号-29号，因为房租的问题，我必须在那边找到实习或者兼职，我也投了作业帮、清北教育等，但这个形势下，估计也不会招人了。我在boss直聘上看了看其他职位，有工资不高，但比较轻松的。（这算是当时以及现在的备用选项）。</p>
+<h3 id="pt4-在线教育"><a href="#pt4-在线教育" class="headerlink" title="pt4 在线教育"></a>pt4 在线教育</h3><p>这种在线教育真的，在国家的红线徘徊，谁也想不到哪一天会崩塌，然后失业。只能说，冲！考公务员！</p>
+<h3 id="pt5-打工人真难"><a href="#pt5-打工人真难" class="headerlink" title="pt5 打工人真难"></a>pt5 打工人真难</h3><p>今天5月31号，我就想尽早入职，然后培训。毕竟培训期间是有工资的，即使说培训完过后把我开除，这下我也有准备去找下家。</p>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E5%AE%9E%E4%B9%A0/" rel="tag">实习</a>
+                </div>
+            </div>
         </div>
         
         
@@ -195,16 +199,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/04/16/vue%E5%9F%BA%E7%A1%80-4%E5%B0%8F%E6%97%B6/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/08/02/yfd%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%953/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">vue基础--4小时</span>
+                <span class="level-item">yfd实习记录 3</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2021/03/09/The-farewell/">
-                <span class="level-item">The farewell</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/05/24/yfd%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95-1/">
+                <span class="level-item">yfd实习记录 1</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -225,7 +229,7 @@
     var gitalk = new Gitalk({
         clientID: '4e3fb0cd3921e7281d4f',
         clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
-        id: 'c4d80d08a03c4e874eecd56880acadb1',
+        id: 'bc0c6929a6fcf4c4f7f20e639d7c343e',
         repo: 'Oliver6565/Oliver6565.github.io.git',
         owner: 'Oliver6565',
         admin: "Oliver6565",
