@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>vue基础--4小时 - Neitherland</title>
+<title>vue快速复习 - Neitherland</title>
 
 
     <meta name="description" content="vue基础快速复习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue基础--4小时">
-<meta property="og:url" content="http://yoursite.com/2021/04/16/vue%E5%9F%BA%E7%A1%80-4%E5%B0%8F%E6%97%B6/index.html">
+<meta property="og:title" content="vue快速复习">
+<meta property="og:url" content="http://yoursite.com/2021/11/06/vue%E5%BF%AB%E9%80%9F%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Neitherland">
 <meta property="og:description" content="vue基础快速复习">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2021-04-16T12:14:24.000Z">
-<meta property="article:modified_time" content="2021-04-23T02:14:56.000Z">
+<meta property="article:published_time" content="2021-11-06T12:14:24.000Z">
+<meta property="article:modified_time" content="2021-11-08T15:16:30.755Z">
 <meta property="article:author" content="Oliver">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="vue基础--4小时" height="28">
+                <img src="/images/logo.png" alt="vue快速复习" height="28">
             
             </a>
         </div>
@@ -126,7 +126,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-04-16T12:14:24.000Z">2021-04-16</time>
+                <time class="level-item has-text-grey" datetime="2021-11-06T12:14:24.000Z">2021-11-06</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Vue/">Vue</a>
@@ -136,7 +136,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 697 个字)
+                    7 分钟 读完 (大约 1081 个字)
                 </span>
                 
                 
@@ -145,7 +145,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                vue基础--4小时
+                vue快速复习
             
         </h1>
         <div class="content">
@@ -153,9 +153,13 @@
 <a id="more"></a>
 
 <h3 id="一、vue基础"><a href="#一、vue基础" class="headerlink" title="一、vue基础"></a>一、vue基础</h3><h4 id="vue简介"><a href="#vue简介" class="headerlink" title="vue简介"></a>vue简介</h4><ol>
-<li>javascript框架，比jquery库更强大；</li>
-<li>更简单的DOM操作；（以前通过id获取元素，操作页面）</li>
-<li>响应式数据驱动</li>
+<li><p>javascript框架，比jquery库更强大；</p>
+</li>
+<li><p>更简单的DOM操作；（以前通过id获取元素，操作页面）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'btn'</span>).addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">'haha'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>响应式数据驱动</p>
+</li>
 </ol>
 <h4 id="第一个vue程序"><a href="#第一个vue程序" class="headerlink" title="第一个vue程序"></a>第一个vue程序</h4><ol>
 <li><p>选择环境：开发环境：学习阶段使用</p>
@@ -211,11 +215,17 @@
 </ul>
 </li>
 </ol>
-<h4 id="记事本"><a href="#记事本" class="headerlink" title="记事本"></a>记事本</h4><p>v-for 渲染数组列表；根据数组形成列表结构</p>
+<h4 id="案例：记事本"><a href="#案例：记事本" class="headerlink" title="案例：记事本"></a>案例：记事本</h4><p>v-for 渲染数组列表；根据数组形成列表结构</p>
 <p>v-model 获取用户输入的数据；</p>
 <p>v-on 绑定事件，@keyup.enter=”add”回车，add方法中新增数据；</p>
 <p>​                            删除数据：@click：”remove(index)”；方法中写：this.lists.splice(index,1)</p>
-<h3 id="三、网络应用"><a href="#三、网络应用" class="headerlink" title="三、网络应用"></a>三、网络应用</h3><p>ajax、promise 、.then、 axios</p>
+<h3 id="三、网络应用"><a href="#三、网络应用" class="headerlink" title="三、网络应用"></a>三、网络应用</h3><p>ajax、promise 、.then、 axios、await、async</p>
+<p>promise是js的内置对象，为了解决回调嵌套太多导致的回调地狱问题。</p>
+<p>new promise；实例化promise对象，然后通过.then方法得到其返回的结果</p>
+<p><strong>axios是一个专门发起请求的库</strong>，axios发起请求，返回的就是一个promise对象，也就可以在后面.then拿到其结果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get 用params携带参数</span></span><br><span class="line"><span class="comment">// post 用data传参数；会携带到body对象中去</span></span><br><span class="line"></span><br><span class="line">axios(&#123;</span><br><span class="line">  method:<span class="string">'GET'</span></span><br><span class="line">  url:<span class="string">"http://xxxx"</span>,</span><br><span class="line">  params:&#123;</span><br><span class="line">  	id:<span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过async await 和.then方式 都可以拿到promise对象中的数据。因为axios请求返回值就是promise对象，所以可以用await修饰</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'btn'</span>).addEventListener(<span class="string">'click'</span>,<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> axios(&#123;</span><br><span class="line">                      method:<span class="string">'POST'</span></span><br><span class="line">                      url:<span class="string">"http://xxxx"</span>,</span><br><span class="line">                      data :&#123;</span><br><span class="line">                        name:<span class="string">'zs'</span>,</span><br><span class="line">                        age:<span class="string">'19'</span></span><br><span class="line">                      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 继续优化</span></span><br><span class="line"><span class="comment">// &#123;data:res&#125; = &#123;data,param,aa,ccxx,...&#125; 对一大群数据中，结构出自己需要的，并且更名为res</span></span><br><span class="line"><span class="comment">// 解构赋值，是因为axios给promise的数据外面又套了一层，共有6个大类对象，我们请求的后端数据是在data中的</span></span><br><span class="line"><span class="comment">// 而这个data 又可能与我们在后端写的data重名，导致后面获取真正数据时出现data.data，所以我们更名为res</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'btn'</span>).addEventListener(<span class="string">'click'</span>,<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;<span class="attr">data</span>:res&#125; = <span class="keyword">await</span> axios(&#123;</span><br><span class="line">                      method:<span class="string">'POST'</span></span><br><span class="line">                      url:<span class="string">"http://xxxx"</span>,</span><br><span class="line">                      data :&#123;</span><br><span class="line">                        name:<span class="string">'zs'</span>,</span><br><span class="line">                        age:<span class="string">'19'</span></span><br><span class="line">                      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(res.data),</span><br><span class="line">    <span class="built_in">console</span>.log(res.status)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// axios还有 axios.get('http://xxxx',params...) 这种写法 .get .post</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2021/11/06/vue%E5%BF%AB%E9%80%9F%E5%A4%8D%E4%B9%A0/1.png" class>
 
         </div>
         
@@ -241,17 +251,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/05/24/yfd%E5%AE%9E%E4%B9%A0%E8%AE%B0%E5%BD%95-1/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">yfd实习记录 1</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2021/04/13/%E9%87%8D%E7%BB%98%E5%92%8C%E9%87%8D%E6%8E%92/">
-                <span class="level-item">重绘和重排</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/10/24/pandas%E5%AD%A6%E4%B9%A0/">
+                <span class="level-item">pandas学习</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -272,7 +275,7 @@
     var gitalk = new Gitalk({
         clientID: '4e3fb0cd3921e7281d4f',
         clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
-        id: 'f102484444c96a1c427cb5d3ab07f31b',
+        id: 'd38a02a7b1de9888c978e8c3df7c6df8',
         repo: 'Oliver6565/Oliver6565.github.io.git',
         owner: 'Oliver6565',
         admin: "Oliver6565",
