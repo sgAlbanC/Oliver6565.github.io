@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-11-08T15:16:30.755Z</updated>
+  <updated>2021-11-09T12:14:31.223Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue工程化</title>
+    <link href="http://yoursite.com/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    <id>http://yoursite.com/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/</id>
+    <published>2021-11-09T12:07:21.000Z</published>
+    <updated>2021-11-09T12:14:31.223Z</updated>
+    
+    <content type="html"><![CDATA[<p>vue-cli  vue ui vue create ‘项目名’</p><a id="more"></a><p><strong>1.单页面应用程序</strong></p><p>在工程化的项目中，vue要做的事情就是，通过<strong>main.js</strong> 将<strong>App.vue</strong>(各种vue组件)，渲染到<strong>index.html</strong>的指定区域中。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;&lt;div&gt; 只能由一个根节点div，包裹着组件中的其他内容 &lt;&#x2F;div&gt;&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js入口函数，将组件挂载到页面中</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> App.vue</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure><img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/1.png" class><p><strong>2.运行项目</strong></p><p>package.json 中 “scripts”： “serve” 开发 ；“build” 发布</p><p><strong>npm run serve</strong>, 在终端启动项目</p><p><em>在vue ui 中比较好操作！！！</em></p><p><strong>3.根组件问题</strong></p><p>render函数中，渲染的是哪个 .vue组件，这个组件就是<strong>根组件</strong>。</p><p>（其他的组件都放在components这个文件夹下）</p><p>el:’#app’/ .$mount(‘#app’)，谁挂载到单页面应用index.html中，谁就是根组件。</p><p>在一般工程化项目中，import App from App.vue；这个App.vue就是根组件。</p><p><strong>4.vue组件的三个组成部分</strong></p><p>一键生成标三部分格式：先要装插件，然后输入&lt;, 然后选择第一个，就能一键生成</p><ul><li><p><strong>templates</strong>  组件的<strong>模板结构</strong>（必须有，里面有一个最大的&lt;div&gt;  &lt;/div&gt;）</p></li><li><pre><code class="js"><span class="comment">// 固定写法 export default</span><span class="keyword">export</span> <span class="keyword">default</span>{    <span class="comment">// 这里的 data 是一个函数，这样在多个组件的时候，就不会相互影响。（如果是对象就会有问题）</span>    data(){        <span class="keyword">return</span> {            username:<span class="string">''</span>,            age:<span class="string">''</span>        }        },    methods:{},       watch:{}, <span class="comment">// 监视器 handler(newVal){}</span>    computed:{}, <span class="comment">// 复用的计算方法放在这里面</span>}&lt;!--￼<span class="number">2</span>--&gt;</code></pre></li></ul><p>通过components注册的是<strong>私有子组件</strong>，在组件A的components节点下，就只能在组件A中使用</p><p><strong>6.全局注册组件</strong></p><p>在 vue 项目中 <strong>main.js 入口文件</strong>中，通过 Vue.components()方法，可以注册全局组件。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> Count <span class="keyword">from</span> <span class="string">'./xxx/Count.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.components(<span class="string">'MyCount'</span>,Count)</span><br><span class="line"><span class="comment">// 这样 在其他组件中，就可以在模板结构中用 标签 &lt;MyCount&gt;&lt;/MyCount&gt; 使用这个全局组件</span></span><br></pre></td></tr></table></figure><img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/2.png" class><p><strong>7.组件的props</strong></p><p>(组件之间的通信)</p><p>props是组件的<strong>自定义属性</strong>，在<strong>封装通用组件</strong>的时候，合理地使用 props 可以极大的<strong>提高组件的复用性</strong>！</p><p>props允许使用者通过<u>自定义属性</u>，为当前组件指定初始值。</p><img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/3.png" class>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;vue-cli  vue ui vue create ‘项目名’&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>箭头函数、异步回调</title>
+    <link href="http://yoursite.com/2021/11/08/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E3%80%81%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83/"/>
+    <id>http://yoursite.com/2021/11/08/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E3%80%81%E5%BC%82%E6%AD%A5%E5%9B%9E%E8%B0%83/</id>
+    <published>2021-11-08T15:20:43.000Z</published>
+    <updated>2021-11-08T15:35:27.597Z</updated>
+    
+    <content type="html"><![CDATA[<p>箭头函数、异步方法、回调函数、普通函数、匿名函数、闭包</p><a id="more"></a><p>普通函数的<strong>两种创建方式</strong>：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数声明，调用和声明没有先后顺序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数表达式; 需先定义再调用 有顺序</span></span><br><span class="line"><span class="comment">// 这后面也是匿名函数，即没有函数名字，而是直接赋值给了一个变量foo2</span></span><br><span class="line"><span class="keyword">var</span> foo2 = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">foo2(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自执行函数,也是匿名函数</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>回调函数</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> a+b;</span><br><span class="line">&#125;,<span class="number">2000</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2000过后会执行前面那个函数</span></span><br><span class="line"><span class="comment">// 回调函数是用于解决异步方法、异步请求的</span></span><br></pre></td></tr></table></figure><p>箭头函数</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一般的函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="comment">// 箭头函数; 没有函数名，也是匿名函数</span></span><br><span class="line">()=&gt;&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo2 = <span class="function">(<span class="params">a,b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>箭头函数的一些特性</strong></p><p>a. 不能用于实例化对象，即不能new</p><p>b. this 定义的时候就给定了，就是指向它外层的那个函数对象的this，一般指向window；在vue项目开发中，一般指向某个组件的vue实例对象上面</p><p>c. 没有agruments对象（这个对象是普通函数中用于保存实参的）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;箭头函数、异步方法、回调函数、普通函数、匿名函数、闭包&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>vue快速复习</title>
@@ -402,52 +444,6 @@
     <summary type="html">
     
       &lt;p&gt;&lt;strong&gt;数据链路层&lt;/strong&gt; 第五节 数据链路层的功能 + 组帧 +差错控制&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="考研笔记" scheme="http://yoursite.com/categories/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="考研803" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94803/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计网4</title>
-    <link href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%BD%914/"/>
-    <id>http://yoursite.com/2020/05/07/%E8%AE%A1%E7%BD%914/</id>
-    <published>2020-05-07T04:25:30.000Z</published>
-    <updated>2021-04-13T14:26:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>物理层</strong> 第四节 传输介质与物理层设备</p><a id="more"></a><h4 id="双绞线、同轴电缆、光纤与无线传输介质"><a href="#双绞线、同轴电缆、光纤与无线传输介质" class="headerlink" title="双绞线、同轴电缆、光纤与无线传输介质"></a>双绞线、同轴电缆、光纤与无线传输介质</h4><p>传输介质，又称传输媒体，是发送设备和接收设备之间的物理通路，并非物理层的设备！！！。传输介质可分为<strong>导向传输介质</strong>和<strong>非导向传输介质</strong>。导向传输：电磁波被导向沿着固体媒介(铜线或光纤)传播；非导向传输：传输介质是空气、真空或海水。</p><h5 id="双绞线"><a href="#双绞线" class="headerlink" title="双绞线"></a>双绞线</h5><ol><li>最常用的古老传输介质，两根采用一定规则并排绞合、相互绝缘的铜导线组成。</li><li>绞合减少对相邻导线电磁干扰。无层的双绞线是(UTP)，双绞线外面加一层金属丝编织成的屏蔽层，这就是屏蔽双绞线(STP)。</li><li>双绞线便宜，在局域网和传统电话网中普遍使用。双绞线带宽取决于铜线粗细和传输距离。模拟传输和数字传输都可以使用双绞线，通信距离一般几千米到数十千米。距离太远，模拟传输需要用<strong>放大器放大</strong>衰减信号；数字传输需要用<strong>中继器</strong>将失真的信号<strong>整形</strong>。</li></ol><h5 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h5><ol><li>同轴电缆由内导体、绝缘层、网状编织层屏蔽层和塑料外层构成。共用一个轴心。按特性阻抗数值的不同，分为两类：基带同轴电缆传输基带数字信号，用于局域网；宽带同轴电缆传输宽带信号，用于有线电视系统。</li><li>外导体屏蔽层，良好抗干扰特性，广泛用于传输较高速率的数据，其传输距离更远，比双绞线贵。</li></ol><h5 id="光纤（考纲）"><a href="#光纤（考纲）" class="headerlink" title="光纤（考纲）"></a>光纤（考纲）</h5><ol><li>光纤通信利用光导纤维（简称光纤）传递光脉冲来通信。有光脉冲为1，无光脉冲为0。光纤通信系统的带宽范围极大。</li><li>光纤由<strong>纤芯</strong>（实心）和包层组成，光波通过纤芯进行传导，包层较纤芯有较低的折射率。当光纤从高折射率介质射向低折射率介质，其折射角大于入射角。如果入射角足够大，会形成全反射，即光线碰到包层时会折射回纤芯，这个过程不断重复，光沿着光纤传输下去。</li><li>两种光纤：<ul><li><strong>多模光纤</strong>：入射角不同，形成多束光纤传输。光源是发光二极管。光脉冲在多模光纤传输逐渐展宽，易失真，只适合短距离传输。</li><li><strong>单模光纤</strong>：光纤直径减小到一个光波长度，光纤就像一根波导，可使光纤一直向前传播，不会产生过多反射。光源是定向性好的激光二极管，制作成本高，衰减小，适合远距离传输。</li></ul></li></ol><p>光纤特点：</p><ul><li>传输损耗小，中继距离长，对远距离传输特别经济</li><li>抗雷电和电磁干扰好</li><li>无串音干扰，保密性好</li><li>体积小，重量轻</li></ul><h5 id="无线传输介质"><a href="#无线传输介质" class="headerlink" title="无线传输介质"></a>无线传输介质</h5><ol><li>无线电波：信号向所有方向扩散；广泛用于通信领域：无线手机通信、计算机网络中的无线局域网（WLAN）等。</li><li>微波、红外线和激光：高频率带宽；信号固定方向传播，直线；卫星通信使用微波信号。</li></ol><h4 id="物理层接口的特性"><a href="#物理层接口的特性" class="headerlink" title="物理层接口的特性"></a>物理层接口的特性</h4><p>主要任务：确定与传输媒体的接口有关的一些特性：</p><p>机械特性、电器特性、功能特性、规程特性</p><h4 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h4><ol><li>中继器，又称转发器。主要功能，将信号整形并放大再转发出去，信号再生。放大器是放大模拟信号，中继器整形数字信号。</li><li>具有5-4-3规则</li></ol><h4 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h4><ol><li>集线器（Hub）实质上是一个多端口的中继器，也工作在物理层。由Hub组成的网络是共享式网络，但逻辑上仍是一个总线网。Hub只能在半双工状态下工作。</li><li>对信号进行放大后发到其他所有端口。</li><li>星型拓扑结构的中间就是集线器。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;物理层&lt;/strong&gt; 第四节 传输介质与物理层设备&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="考研笔记" scheme="http://yoursite.com/categories/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="考研803" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94803/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计网3</title>
-    <link href="http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%913/"/>
-    <id>http://yoursite.com/2020/05/06/%E8%AE%A1%E7%BD%913/</id>
-    <published>2020-05-06T12:22:33.000Z</published>
-    <updated>2021-04-13T14:26:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>物理层</strong> 第三节 通信基础：基本概念、奈奎斯特定理香浓定理、编码与调制</p><a id="more"></a><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="数据、信号与码元"><a href="#数据、信号与码元" class="headerlink" title="数据、信号与码元"></a>数据、信号与码元</h5><p>通信的目的是传递消息。</p><ol><li><strong>数据</strong>是指传送信息的实体。<strong>信号</strong>是指数据的<strong>电气或电磁</strong>表现，是数据在传输过程中的存在形式。数据和信号都可以用“模拟的”和“数字的”来修饰。<ul><li>连续变化的数据（或信号）称为<strong>模拟数据</strong>（模拟信号）；</li><li>取值仅允许为有限的几个离散数值的数据（或信号）称为<strong>数字数据</strong>（数字信号）；</li></ul></li><li>数据的传输方式可分为串行传输、并行传输。<ul><li><strong>串行传输</strong>是指：一个一个的比特按照时间顺序传输（对经济考虑，远距离通信通常采用串行传输）；</li><li><strong>并行传输</strong>是指：多个比特通过多条通信信道同时传输；速度快，费用高，适用于近距离，用于计算机内部数据传输；</li></ul></li><li><strong>码元</strong>：是指用一个固定时长的信号波形（数字脉冲）表示一位k进制数字，代表不同离散数值的基本波形，是<strong>数字通信</strong>中<strong>数字信号</strong>的计量单位，这个时长内的信号称为k进制码元，而该<strong>时长</strong>称为<strong>码元宽度</strong>。1码元可以携带多个比特的信息量。eg：在使用二进制编码时，只有两种不同的码元：一种代表0状态，一种代表1状态；在使用四进制编码时，2bit位可以表示四种码元：00 01 10 11；使用n进制编码，就有n中码元，即有 <em>2的x次方 = n</em> ，x个bit来表示。</li></ol><h5 id="信源、信道与信宿"><a href="#信源、信道与信宿" class="headerlink" title="信源、信道与信宿"></a>信源、信道与信宿</h5><ol><li><strong>数据通信</strong>是指数字计算机或其他数字终端之间的通信。一个数据通信系统主要划分为信源、信道和信宿三部分。</li><li><strong>信源</strong>是产生和发送数据的源头。<strong>信宿</strong>是接收数据的终点，它们通常都是计算机或其他数字终端转置。需要通过<strong>变换器</strong>（调制解调器）转换成合适于在<strong>信道</strong>上传输的信号，也需要反转换器转成原始信息。</li><li>信道与电路不等同，<strong>信道</strong>是信号的<strong>传输媒介</strong>。<strong>噪声源</strong>是信道上的噪声（对信号的干扰）。</li><li>信道分为<strong>模拟信道</strong>和<strong>数字信道</strong>；也可分为<strong>无线信道</strong>和<strong>有线信道</strong>。</li><li>信道上传送信号有基带信号和宽带信号。<ul><li><strong>基带信号</strong>：将数字信号 1 和 0 直接用不同电压表示，然后传到数字信道上（基带传输）；</li><li><strong>宽带信号</strong>：将基带信号进行调制形成频分复用模拟信号，然后传到模拟信道上（宽带传输）；</li></ul></li><li>通信双方信息交互方式，可分为三种基本方式：<ul><li>单工通信：无线电、广播、电视广播</li><li>半双工：任何一方不能同时发送和接收信息</li><li>全双工</li></ul></li><li>信道的极限容量是指信道的<strong>最高码元传输速率</strong>或信道的极限信息传输速率。</li></ol><h5 id="速率、波特和带宽"><a href="#速率、波特和带宽" class="headerlink" title="速率、波特和带宽"></a>速率、波特和带宽</h5><ol><li><p>速率也称数据率，指数据传输速率，表示单位时间内传输的数据量<em>（s = vt）</em>。</p><ul><li><p><strong>码元传输速率</strong>。又称码元速率、波形速率。表示单位时间数字通信系统所传码元个数（也是脉冲个数或信号变化的次数），单位波特Baud。1 Baud = 1码元 / S。码元可多进制；码元速率与进制数无关。</p></li><li><p><strong>信息传输速率</strong>。又称信息速率，比特率。表示单位时间内数字通信系统传输的二进制码元个数（即比特数），单位比特/秒（b/s）。</p></li><li><p>若一个码元携带n比特的信息量，则M波特率的码元传输速率所对应的信息传输速率为 Mn b/s。</p><p>eg：若一码元携带2bit信息量，则5Baud的码元传输速率对应的信息传输速率为：<u>10 b/s</u>。</p><p>一码元携带2bit，即2*5=10 b/s。</p></li></ul></li><li><p>带宽原指具有的频带宽度，单位hz。在实际网络中，带宽表示最高数据率 b/s。</p></li></ol><h4 id="奈奎斯特定理与香浓定理（考纲）"><a href="#奈奎斯特定理与香浓定理（考纲）" class="headerlink" title="奈奎斯特定理与香浓定理（考纲）"></a>奈奎斯特定理与香浓定理（考纲）</h4><h5 id="奈斯定理"><a href="#奈斯定理" class="headerlink" title="奈斯定理"></a>奈斯定理</h5><ol><li><p>奈奎斯特（Nyquist）定理又称奈氏准则，在理想低通（没有噪声、宽带有限）的信道，极限码元传输速率为2W波特。W是理想低通信道的带宽，单位Hz。若用V表示每个码元离散电平的数目（即多少种不同的码元，即多少进制），则<strong>极限数据率</strong>为：</p><p><u><em>理想低通信道下的极限传输率 = 2Wlog2V b/s</em></u></p></li><li><p>奈氏准则结论：</p><ul><li>任何信道，码元传输速率有上限。超过上限会出现码间串扰。</li><li>信道频带越宽（通过的信号高频分量越多），就可用更高的速率进行码元的有效传输。</li><li>给出了码元传输速率的限制，但未限制每个码元可以对应多少个二进制位。</li></ul><p>提高数据传输速率，就设法使每个码元携带更多个比特的信息量，此时需要采用多元制的调制方法。</p></li></ol><h5 id="香浓定理"><a href="#香浓定理" class="headerlink" title="香浓定理"></a>香浓定理</h5><ol><li><p>香浓（Shannon）定理给出了 带宽受限 且 有高斯白噪音干扰 的信道极限数据传输率，可以做到不产生误差。定理定义为：</p><p><u><em>信道的极限数据传输率 = Wlog2（1+S/N） b/s</em></u></p><p>（W为信道带宽，S/N为信噪比；S为传输信号平均功率，N为信道内部高斯噪声功率）</p><p>单位转换：<u><em>信噪比 = 10log10（S/N）dB</em></u></p></li><li><p>香浓定理结论：</p><ul><li>信道带宽或信道中的信噪比越大，信息极限传输速率越高。</li><li>对一定的传输宽带和一定的噪声比，信息传输速率的上限是确定的。</li><li>只要信息的传输速率低于极限传输速率，就能找方法实现无差错的传输。</li><li>香浓定理得出信息极限传输速率，实际要低很多。</li></ul><p>若S/N没有上限，那么极限信息传输速率也没有上限。虽然实际信噪比有限制的。</p><p>限制了一个码元对应的二进制位数。</p></li></ol><h4 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h4><p>编码 –&gt;数字信号</p><p>调制 –&gt;模拟信号</p><h5 id="数字数据编码为数字信号（考纲）"><a href="#数字数据编码为数字信号（考纲）" class="headerlink" title="数字数据编码为数字信号（考纲）"></a>数字数据编码为数字信号（考纲）</h5><ol><li><p>归零编码</p></li><li><p>非归零编码</p></li><li><p>反向非归零编码</p></li><li><p>曼彻斯特编码（考纲）</p><p><strong>注意</strong>：以太网使用的编码方式就是 曼彻斯特编码。</p></li><li><p>查分曼彻思编码（考纲）</p></li></ol><h5 id="数字数据调制为模拟信号（考纲）"><a href="#数字数据调制为模拟信号（考纲）" class="headerlink" title="数字数据调制为模拟信号（考纲）"></a>数字数据调制为模拟信号（考纲）</h5><p>发送端数字数据调制为模拟信号在模拟信道上传输，在接收端将模拟信号还原为数字信号。对应调制解调器的调制和解调过程。</p><ol><li>调幅</li><li>调频</li><li>调相</li><li>调幅+调相</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;物理层&lt;/strong&gt; 第三节 通信基础：基本概念、奈奎斯特定理香浓定理、编码与调制&lt;/p&gt;
     
     </summary>
     
