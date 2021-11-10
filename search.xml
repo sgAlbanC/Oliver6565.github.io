@@ -3971,7 +3971,7 @@ required: true</code></pre><p>  },……数据集合</p>
   <entry>
     <title>vue工程化</title>
     <url>/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/</url>
-    <content><![CDATA[<p>vue-cli  vue ui vue create ‘项目名’</p>
+    <content><![CDATA[<p>vue-cli 3.0以上才会自带 vue ui ；vue create ‘项目名’</p>
 <a id="more"></a>
 
 <p><strong>1.单页面应用程序</strong></p>
@@ -3980,7 +3980,7 @@ required: true</code></pre><p>  },……数据集合</p>
 
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.js入口函数，将组件挂载到页面中</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> App.vue</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/1.png" class>
+
 
 <p><strong>2.运行项目</strong></p>
 <p>package.json 中 “scripts”： “serve” 开发 ；“build” 发布</p>
@@ -4018,13 +4018,32 @@ required: true</code></pre><p>  },……数据集合</p>
 <p>在 vue 项目中 <strong>main.js 入口文件</strong>中，通过 Vue.components()方法，可以注册全局组件。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> Count <span class="keyword">from</span> <span class="string">'./xxx/Count.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.components(<span class="string">'MyCount'</span>,Count)</span><br><span class="line"><span class="comment">// 这样 在其他组件中，就可以在模板结构中用 标签 &lt;MyCount&gt;&lt;/MyCount&gt; 使用这个全局组件</span></span><br></pre></td></tr></table></figure>
 
-<img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/2.png" class>
-
 <p><strong>7.组件的props</strong></p>
-<p>(组件之间的通信)</p>
 <p>props是组件的<strong>自定义属性</strong>，在<strong>封装通用组件</strong>的时候，合理地使用 props 可以极大的<strong>提高组件的复用性</strong>！</p>
 <p>props允许使用者通过<u>自定义属性</u>，为当前组件指定初始值。</p>
-<img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/3.png" class>
+<p>props的值是<strong>只读的</strong>，可以用插值表达式 <strong>放在全局组件的模块结构中</strong>，就是可以渲染出来，显示到页面，但不要去修改。不同的其他组件使用这个全局组件，然后可以通过在 标签 &lt;MyCount init=”9” &gt;&lt;/MyCount&gt; 这样来设置。</p>
+<p><strong>8.组件之间的样式冲突问题</strong></p>
+<p>默认情况下，<strong>写在.vue 组件中的样式会全局生效</strong>，因此很容易造成<strong>多个组件之间的样式冲突问题</strong>。</p>
+<p>导致组件之间样式冲突的根本原因是：</p>
+<ul>
+<li>单页面应用程序中，所有组件的DOM结构，都是基于<u>唯一的 index.html</u> 也面进行呈现的</li>
+<li>每个组件中的样式，都会影响整个 <u>index.html</u> 页面中的DOM元素</li>
+</ul>
+<img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/4.png" class>
+
+<p><strong>9. .vue会被解析会js文件</strong></p>
+<p>浏览器不会解析.vue文件的，package.json文件中有一个配置：“vue-template-compiler” ：“ 2.6.11 ”，会将.vue文件转换成 JavaScript 文件让浏览器解析</p>
+<p><strong>10.组件的生命周期</strong></p>
+<p><strong>生命周期</strong>：是指一个组件从 *<em>创建 – 渲染 – 运行 – 销毁 *</em>的整个过程</p>
+<p><strong>生命周期函数</strong>：是由vue 框架提供的<strong>内置函数</strong>，会伴随着组件的生命周期，<strong>自动调用执行</strong></p>
+<img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/5.png" class>
+
+<img src="/2021/11/09/vue%E5%B7%A5%E7%A8%8B%E5%8C%96/6.png" class>
+
+<p>new Vue()； 每个vue组件 就是一个vue实例</p>
+<p>【webpack 从 main.js开始打包，发现main.js中用到了App.vue；App.vue又用到了Left.vue，Right.vue；后面俩组件又用到了Count.vue；这样一步步往后面延伸，一步步的开启组件的生命周期（ps: 组件在封装好没调用之前，都没有进入生命周期中，即没有实例new，只是封装好了）】</p>
+<p><strong>11.组件之间的数据共享</strong></p>
+<p><strong>12.ref 引用</strong></p>
 ]]></content>
       <categories>
         <category>Vue</category>
