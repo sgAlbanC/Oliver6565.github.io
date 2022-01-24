@@ -1,155 +1,258 @@
 <!DOCTYPE html>
-<html  lang="zh">
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<meta name="generator" content="Hexo 4.2.1" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>RESTfull - Neitherland</title>
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <meta name="description" content="RESTfull 一种软件架构风格、设计风格，不是标准，提供了一组设计原则和约束条件。">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="RESTfull 一种软件架构风格、设计风格，不是标准，提供了一组设计原则和约束条件。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RESTfull">
 <meta property="og:url" content="http://yoursite.com/2020/04/06/RESTfull/index.html">
 <meta property="og:site_name" content="Neitherland">
 <meta property="og:description" content="RESTfull 一种软件架构风格、设计风格，不是标准，提供了一组设计原则和约束条件。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-06T02:26:24.000Z">
 <meta property="article:modified_time" content="2020-04-06T02:52:14.000Z">
 <meta property="article:author" content="Oliver">
 <meta property="article:tag" content="rest">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/06/RESTfull/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>RESTfull | Neitherland</title>
+  
 
 
 
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-<link rel="icon" href="/images/%E5%9B%BE%E4%B9%A6%E9%A6%86.svg">
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
-    
-    
-<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-    
-    
-    
-    
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-    
-    
-    
-    
-    
-    
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
 <link rel="alternate" href="/atom.xml" title="Neitherland" type="application/atom+xml">
 </head>
-<body class="is-2-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.png" alt="RESTfull" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">首页</a>
-                
-                <a class="navbar-item"
-                href="/archives">归档</a>
-                
-                <a class="navbar-item"
-                href="/categories">分类</a>
-                
-                <a class="navbar-item"
-                href="/tags">标签</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Neitherland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
 </nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
     
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-06T02:26:24.000Z">2020-04-06</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1223 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
             
-                RESTfull
-            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/RESTfull/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Oliver">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neitherland">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RESTfull
         </h1>
-        <div class="content">
-            <p>RESTfull <em>一种软件架构风格、设计风格</em>，不是标准，提供了一组设计原则和约束条件。</p>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-06 10:26:24 / 修改时间：10:52:14" itemprop="dateCreated datePublished" datetime="2020-04-06T10:26:24+08:00">2020-04-06</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>RESTfull <em>一种软件架构风格、设计风格</em>，不是标准，提供了一组设计原则和约束条件。</p>
 <a id="more"></a>
 
-<p>主要用于客户端和服务器交互类软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存机制。<a href="https://baike.sogou.com/v73300762.htm?fromTitle=RESTful">查看词条</a></p>
+<p>主要用于客户端和服务器交互类软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存机制。<a href="https://baike.sogou.com/v73300762.htm?fromTitle=RESTful" target="_blank" rel="noopener">查看词条</a></p>
 <h5 id="原则条件"><a href="#原则条件" class="headerlink" title="原则条件"></a>原则条件</h5><ol>
 <li>REST 指的是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是 RESTful。</li>
 <li>Web应用程序最重要的REST原则是，客户端和服务器之间的交互在请求之间是（http请求）无状态的。客户端到服务器的每一个请求都必须包含理解请求所必需的信息。</li>
@@ -167,7 +270,7 @@
 <li><p>RESTful架构将服务器分成前端服务器和后端服务器两部分，前端服务器为用户提供无模型的视图；后端服务器为前端服务器提供接口。浏览器向前端服务器请求视图，通过视图中包含的AJAX函数发起接口请求获取模型。</p>
 </li>
 </ol>
-<h5 id="其他概念-更多"><a href="#其他概念-更多" class="headerlink" title="其他概念 (更多)"></a><a href="https://mp.weixin.qq.com/s?src=3&timestamp=1586138856&ver=1&signature=YaSPg7qpu0Qva1*0Fzsibkd*dUmaJaaRaWFCm3-pr1P-9LJdS0n17C0d*v1U1XkrVZ1MzAtvI5I*Euqi3Y9oBTCQGSLdTUalCdtpQVVTXLfAxGBasGoGcxLFxFzqUr7DADEmF*rpU-Hdyd0*7Pmvty3KNdVeA-ilKzurRx4iF5w=">其他概念 (更多)</a></h5><h6 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h6><ol>
+<h5 id="其他概念-更多"><a href="#其他概念-更多" class="headerlink" title="其他概念 (更多)"></a><a href="https://mp.weixin.qq.com/s?src=3&timestamp=1586138856&ver=1&signature=YaSPg7qpu0Qva1*0Fzsibkd*dUmaJaaRaWFCm3-pr1P-9LJdS0n17C0d*v1U1XkrVZ1MzAtvI5I*Euqi3Y9oBTCQGSLdTUalCdtpQVVTXLfAxGBasGoGcxLFxFzqUr7DADEmF*rpU-Hdyd0*7Pmvty3KNdVeA-ilKzurRx4iF5w=" target="_blank" rel="noopener">其他概念 (更多)</a></h5><h6 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h6><ol>
 <li>服务器设计接口，应当设计为无状态接口。即服务器端不保存任何与客户端相关的状态上下文信息。 客户端在每次调用接口时，需要提供足够的信息，以供服务器完成操作</li>
 <li>无状态设计中，服务端减少了保存客户端相关上下文数据，因此，一方面服务端能够更加容易实现动态扩展；减少了服务端从故障中恢复的任务量</li>
 <li>但无状态也会带来额外的问题。客户端将需要保存完整的用户状态信息，在每次与服务端交互时可能需要增加与用户状态相关的上下文信息，这样将导致请求数据的重复和增大</li>
@@ -185,401 +288,259 @@
 </ol>
 <h6 id="统一接口"><a href="#统一接口" class="headerlink" title="统一接口"></a>统一接口</h6><p>​    统一接口，即是不同系统模块之间的调用接口统一规范，使用统一的调用协议，统一的数据格式等。统一接口带来的是系统交互的规范化，接口调用与业务解耦，各模块独立进化。</p>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/rest/" rel="tag">rest</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="bdsharebuttonbox">
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-</div>
-<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-        
     </div>
-</div>
 
-
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/07/Mockjs/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Mockjs</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/03/django%E6%90%AD%E5%BB%BA/">
-                <span class="level-item">django搭建</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
-<script>
-    var gitalk = new Gitalk({
-        clientID: '4e3fb0cd3921e7281d4f',
-        clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
-        id: '4929b87ee1ab9966b369a96d08a44638',
-        repo: 'Oliver6565/Oliver6565.github.io.git',
-        owner: 'Oliver6565',
-        admin: "Oliver6565",
-        createIssueManually: false,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container')
-</script>
-
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
-                <div>
-                    
-                    <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Oliver">
-                    </figure>
-                    
-                    <p class="is-size-4 is-block">
-                        Oliver
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        前端爱好者
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>重庆</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        文章
-                    </p>
-                    <a href="/archives">
-                        <p class="title has-text-weight-normal">
-                            57
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        分类
-                    </p>
-                    <a href="/categories">
-                        <p class="title has-text-weight-normal">
-                            11
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        标签
-                    </p>
-                    <a href="/tags">
-                        <p class="title has-text-weight-normal">
-                            28
-                        </p>
-                    </a>
-                </div>
-            </div>
-        </nav>
-        
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/Oliver6565" target="_blank" rel="noopener">
-                关注我</a>
-        </div>
-        
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Github" href="https://github.com/Oliver6565">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
-    </div>
-</div>
-    
-        
     
     
-        <div class="column-right-shadow is-hidden-widescreen ">
-        
-        </div>
+    
+
+    <div>
+      
+        <div>
+    
+       <div style="text-align:center;color:#bfbfbf;font-size:16px;">
+             <span>-------- 本文结束 </span>
+             ，
+             <span> 感谢阅读 --------</span>
+       </div>
     
 </div>
+      
+    </div>
+        
 
-                
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-                <br />
-                <p class="is-size-7">
-                &copy; 2022 Oliver&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="/">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
         </div>
     </div>
-   
-    <script>
-        var now = new Date(); 
-        function createtime() { 
-        var grt= new Date("2/16/2020 17:00:00");//此处修改你的建站时间或者网站上线时间 
-        now.setTime(now.getTime()+250); 
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-                } 
-        setInterval("createtime()",250);
-    </script>
+  </div>
 
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
 
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/rest/" rel="tag"># rest</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/03/django%E6%90%AD%E5%BB%BA/" rel="prev" title="django搭建">
+      <i class="fa fa-chevron-left"></i> django搭建
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/07/Mockjs/" rel="next" title="Mockjs">
+      Mockjs <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
 
 <script>
-var IcarusThemeSettings = {
-    site: {
-        url: 'http://yoursite.com',
-        external_link: {"enable":true,"exclude":[]}
-    },
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
-};
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#原则条件"><span class="nav-number">1.</span> <span class="nav-text">原则条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RESTful架构"><span class="nav-number">3.</span> <span class="nav-text">RESTful架构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他概念-更多"><span class="nav-number">4.</span> <span class="nav-text">其他概念 (更多)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#无状态"><span class="nav-number">4.1.</span> <span class="nav-text">无状态</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#缓存"><span class="nav-number">4.2.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#系统分层"><span class="nav-number">4.3.</span> <span class="nav-text">系统分层</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#统一接口"><span class="nav-number">4.4.</span> <span class="nav-text">统一接口</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
 
-
-
-<script src="/js/animation.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-<script src="/js/gallery.js" defer></script>
-
-
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oliver"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Oliver</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oliver6565" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oliver6565" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
 
 
 
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
     </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oliver</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">100k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:31</span>
 </div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
 </html>
