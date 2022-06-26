@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>React 1 - Neitherland</title>
+<title>img相关 - Neitherland</title>
 
 
-    <meta name="description" content="React和Vue对比">
+    <meta name="description" content="img相关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React 1">
-<meta property="og:url" content="http://yoursite.com/2020/03/23/React-1/index.html">
+<meta property="og:title" content="img相关">
+<meta property="og:url" content="http://yoursite.com/2022/06/26/img%E7%9B%B8%E5%85%B3/index.html">
 <meta property="og:site_name" content="Neitherland">
-<meta property="og:description" content="React和Vue对比">
+<meta property="og:description" content="img相关">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2020-03-23T13:51:20.000Z">
-<meta property="article:modified_time" content="2021-04-13T14:30:44.000Z">
+<meta property="article:published_time" content="2022-06-26T03:46:26.000Z">
+<meta property="article:modified_time" content="2022-06-26T03:52:58.240Z">
 <meta property="article:author" content="Oliver">
-<meta property="article:tag" content="react">
+<meta property="article:tag" content="img css">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="React 1" height="28">
+                <img src="/images/logo.png" alt="img相关" height="28">
             
             </a>
         </div>
@@ -127,13 +127,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-23T13:51:20.000Z">2020-03-23</time>
+                <time class="level-item has-text-grey" datetime="2022-06-26T03:46:26.000Z">2022-06-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/css/">css</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 164 个字)
+                    1 分钟 读完 (大约 183 个字)
                 </span>
                 
                 
@@ -142,25 +146,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                React 1
+                img相关
             
         </h1>
         <div class="content">
-            <h4 id="React和Vue对比"><a href="#React和Vue对比" class="headerlink" title="React和Vue对比"></a>React和Vue对比</h4><a id="more"></a>
+            <p>img相关</p>
+<a id="more"></a>
 
-<h5 id="1-如何实现组件化"><a href="#1-如何实现组件化" class="headerlink" title="1.如何实现组件化"></a>1.如何实现组件化</h5><p>Vue: 通过 <em>.vue</em> 文件，来创建对应的<strong>组件</strong>;（Vue.component() 这也是一种)</p>
-<p>(.vue 这种文件需要有vue-loader去编译（webpack里面的一个loader）)</p>
-<p>eg: Home.vue</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">v-lazy</span>=<span class="string">"item.image"</span> <span class="attr">title</span>=<span class="string">"图片"</span> <span class="attr">alt</span>=<span class="string">"用户头像"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>template     结构</li>
-<li>script           行为</li>
-<li>style             样式</li>
+<li>title 通常当鼠标滑动到元素上的时候显示；大多数选择器都可以加title属性</li>
+<li>alt 是img元素的特有属性，是图片内容的等价描述，用于图片无法加载时显示、读屏器阅读图片。可提图片高可访问性，除了纯装饰图片外都必须设置有意义的值，搜索引擎会重点分析。</li>
+<li>v-lazy 是当页面需要加载大量图片时（需要向下滚动页面获取图片)，使用懒加载可以实现只优先加载页面可视区域的图片，从而使得页面加载更为流畅。</li>
 </ul>
-<p>App.js</p>
-<p>import Home from ‘./Home.vue’</p>
-<p>React: 有组件化的概念，但没有像vue这样的组件模板文件；React中，一切都是以JS来表现的；JS知识要合格，ES6和ES7(async await)需了解.</p>
-<h5 id="2-团队"><a href="#2-团队" class="headerlink" title="2.团队"></a>2.团队</h5><p>React是有FaceBook前端官方团队进行维护和更新</p>
-<p>Vue是以尤雨溪为主导的开源小团队</p>
 
         </div>
         
@@ -168,7 +167,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/react/" rel="tag">react</a>
+                    <a class="has-link-grey -link" href="/tags/img-css/" rel="tag">img css</a>
                 </div>
             </div>
         </div>
@@ -195,17 +194,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/24/React-2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">React 2</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/23/%E7%A7%BB%E5%8A%A8WEB%E5%BC%80%E5%8F%91%E4%B9%8Brem%E9%80%82%E9%85%8D%E5%B8%83%E5%B1%80/">
-                <span class="level-item">移动Web开发--rem适配布局</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2022/06/26/22%E4%B8%AA%E8%B6%85%E8%AF%A6%E7%BB%86JS%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
+                <span class="level-item">22个超详细JS数组方法</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -226,7 +218,7 @@
     var gitalk = new Gitalk({
         clientID: '4e3fb0cd3921e7281d4f',
         clientSecret: 'f7faa80eb510bdad643cd801857cfdb72b9bd618',
-        id: '1f7f370745e5f7e286ea268ba8223844',
+        id: '3941f397dcf0d4900710ac7da8391a1d',
         repo: 'Oliver6565/Oliver6565.github.io.git',
         owner: 'Oliver6565',
         admin: "Oliver6565",
