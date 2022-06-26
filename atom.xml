@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-11-12T13:52:15.108Z</updated>
+  <updated>2022-06-26T03:04:08.907Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>22个超详细JS数组方法</title>
+    <link href="http://yoursite.com/2022/06/26/22%E4%B8%AA%E8%B6%85%E8%AF%A6%E7%BB%86JS%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2022/06/26/22%E4%B8%AA%E8%B6%85%E8%AF%A6%E7%BB%86JS%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/</id>
+    <published>2022-06-26T02:47:30.000Z</published>
+    <updated>2022-06-26T03:04:08.907Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h3><h4 id="1-使用数组字面量表达式"><a href="#1-使用数组字面量表达式" class="headerlink" title="1. 使用数组字面量表达式"></a>1. 使用数组字面量表达式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = []; <span class="comment">// 创建一个空数组</span></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">20</span>]； <span class="comment">// 创建一个包含1项，数据为20的数组</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;创建数组&quot;&gt;&lt;a href=&quot;#创建数组&quot; class=&quot;headerlink&quot; title=&quot;创建数组&quot;&gt;&lt;/a&gt;创建数组&lt;/h3&gt;&lt;h4 id=&quot;1-使用数组字面量表达式&quot;&gt;&lt;a href=&quot;#1-使用数组字面量表达式&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>vue工程化</title>
@@ -429,29 +455,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>计网5</title>
-    <link href="http://yoursite.com/2020/05/07/%E8%AE%A1%E7%BD%915/"/>
-    <id>http://yoursite.com/2020/05/07/%E8%AE%A1%E7%BD%915/</id>
-    <published>2020-05-07T05:28:03.000Z</published>
-    <updated>2021-04-13T14:36:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>数据链路层</strong> 第五节 数据链路层的功能 + 组帧 +差错控制</p><a id="more"></a><h4 id="数据链路层的功能（考纲）"><a href="#数据链路层的功能（考纲）" class="headerlink" title="数据链路层的功能（考纲）"></a>数据链路层的功能（考纲）</h4><p>数据链路层（小秘） 使用下层 物理层的服务，并提供服务给上层 网络层。这三层是通信子网；主要作用，加强物理层传输原始比特流的功能，将物理层（傻子）提供的可能出差错的链路改造成逻辑上无差错的数据链路，使之对网络层（boss）表现为一条无差错链路。</p><h5 id="为网络层提供服务"><a href="#为网络层提供服务" class="headerlink" title="为网络层提供服务"></a>为网络层提供服务</h5><ol><li><p>无确认的无连接服务</p><p>机器发送数据帧时不需先建立链路连接，收到帧也不用确认，对丢失的帧，链路层也不重发（真随缘发送）。适用于实时通信或误码率较低的通信信道，如以太网：通信质量好，有线传输链路。</p></li><li><p>有确认的无连接服务</p><p>机器发送数据帧时不需先建立链路连接，收到帧要发回确认。丢失帧重传。误码率高的比如无线传输。</p></li><li><p>有确认的面向连接服务</p><p>帧传输三阶段：建立数据链、传输帧、释放数据链路。</p><p>注：不存在无确认的面向连接服务。</p></li></ol><h5 id="链路管理"><a href="#链路管理" class="headerlink" title="链路管理"></a>链路管理</h5><p>数据链路层连接的“建立、维持、释放”过程称为链路管理。主要用于有确认的面向连接服务。</p><h5 id="帧定界、帧同步与透明传输"><a href="#帧定界、帧同步与透明传输" class="headerlink" title="帧定界、帧同步与透明传输"></a>帧定界、帧同步与透明传输</h5><p><a href="https://blog.csdn.net/cainv89/article/details/50603699?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase">https://blog.csdn.net/cainv89/article/details/50603699?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase</a></p><p>我们需要对网络层（boss）的<strong>分组封装成帧</strong>，以帧传输。将一段数据的<strong>前后</strong>分别添加首部、尾部就构成帧。首尾部包含很多<strong>控制信息</strong>，主要作用是确定帧的界限，即<strong>帧定界</strong>。<strong>帧同步</strong>：接收方能从接收到的二进制比特流中区分出帧的起始与终止。</p><p><strong>透明传输</strong>：不管所传输的数据是什么样的比特组合，都应当能在链路上传送。</p><h5 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h5><p>控制发送速率。（大题必考！！！后面会有流量控制与可靠传输机制详细讲解，<u>停等协议</u>和<u>滑动窗口协议</u>）。发送方发送速度大于接收方接收速度，控制发送方的发送速率。</p><h4 id="组帧（考纲）"><a href="#组帧（考纲）" class="headerlink" title="组帧（考纲）"></a>组帧（考纲）</h4><p>将比特组合成帧，以帧为单位传输，为了在出错时只发送帧，而不是全部比特数据。</p><h4 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h4><p>差错检测防止差错的无效数据帧，浪费网络资源</p><h5 id="检错编码"><a href="#检错编码" class="headerlink" title="检错编码"></a>检错编码</h5><h5 id="纠错编码"><a href="#纠错编码" class="headerlink" title="纠错编码"></a>纠错编码</h5><p>海明码</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;数据链路层&lt;/strong&gt; 第五节 数据链路层的功能 + 组帧 +差错控制&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="考研笔记" scheme="http://yoursite.com/categories/%E8%80%83%E7%A0%94%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="考研803" scheme="http://yoursite.com/tags/%E8%80%83%E7%A0%94803/"/>
     
   </entry>
   
